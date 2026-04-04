@@ -3,17 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raag & Rhythm</title>
-    <meta name="description" content="Raag & Rhythm official website">
+    <title>Raag & Rhythm | Premium Music Academy</title>
+    <meta name="description" content="Raag & Rhythm Academy. Defining musical identity through precision and passion.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <h1>Welcome to Raag & Rhythm</h1>
+    <div class="noise-overlay"></div>
+    
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <video id="splash-video" playsinline>
+                <source src="assets/hero-loop.mp4" type="video/mp4">
+            </video>
+            <button id="enter-btn">Experience Raag & Rhythm</button>
+        </div>
+    </div>
+
+    <header class="navbar hidden-initially">
+        <div class="nav-container">
+            <div class="brand">
+                <img src="assets/logo-light.svg" alt="Raag & Rhythm Logo" class="nav-logo" />
+            </div>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#app" class="nav-link">App</a>
+                <a href="#contact" class="btn-primary-small">Join the Academy</a>
+            </nav>
+        </div>
     </header>
-    <main>
-        <p>This is a starting point for the new website.</p>
+
+    <main class="hidden-initially">
+        <section class="hero" id="home">
+            <div class="hero-bg-glow"></div>
+            <div class="hero-simple">
+                <div class="hero-illustration-wrap">
+                    <img src="assets/hero-illustration.svg" alt="Raag & Rhythm Illustration" class="hero-illus" />
+                    <div class="hero-text-overlay">
+                        <p class="hero-tagline">Your trusted companion and mentor to master Indian Classical Music.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="grid-2-col">
+                    <div class="about-text">
+                        <h2 class="section-title">Engineered for <br /><span class="gradient-text">Excellence.</span></h2>
+                        <p class="section-subtitle">Raag & Rhythm is not just a classical academy. It is a modern institution that honors traditional roots while integrating high-fidelity digital learning environments.</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <h3>50+</h3>
+                                <p>Master Classes</p>
+                            </div>
+                            <div class="stat-box">
+                                <h3>0ms</h3>
+                                <p>Latency Learning</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="glass-card main-glass">
+                            <div class="glass-inner-visual"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COURSES SECTION -->
+        <section id="courses" class="section courses-section">
+            <div class="container">
+                <h2 class="section-title text-center">Premium <span class="gradient-text">Curriculum.</span></h2>
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <h3>Vocal Mastery</h3>
+                            <p>Classical conditioning combined with modern breathwork techniques.</p>
+                            <a href="#" class="course-link">Discover →</a>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <h3>Strings & Percussion</h3>
+                            <p>Rhythmic precision and dexterity training for multi-instrumentalists.</p>
+                            <a href="#" class="course-link">Discover →</a>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <h3>Digital Production</h3>
+                            <p>Integrate classical loops into modern DAWs seamlessly.</p>
+                            <a href="#" class="course-link">Discover →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- DIGITAL APP SECTION -->
+        <section id="app" class="section app-section">
+            <div class="container">
+                <div class="grid-2-col">
+                    <div class="app-visual">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="app-header">
+                                    <img src="assets/logo-light.svg" alt="App Logo" class="app-logo-small" />
+                                </div>
+                                <div class="app-main-ui">
+                                    <div class="app-wave-visual"></div>
+                                    <p class="app-raag-title">Raag Bhairavi</p>
+                                    <p class="app-raag-subtitle">Morning Practice • 16 Beats</p>
+                                    
+                                    <div class="app-controls">
+                                        <img src="assets/app-ui/prev.png" alt="Prev" class="app-control-icon small" />
+                                        <img src="assets/app-ui/play.png" alt="Play" class="app-control-icon large" />
+                                        <img src="assets/app-ui/next.png" alt="Next" class="app-control-icon small" />
+                                    </div>
+                                    
+                                    <div class="app-slider">
+                                        <img src="assets/app-ui/slider.svg" alt="Slider" class="app-slider-img" />
+                                    </div>
+                                    
+                                    <div class="app-toggle-row">
+                                        <div class="app-toggle">
+                                            <img src="assets/app-ui/scale-on.png" alt="Scale On" class="app-toggle-icon" />
+                                            <span>Scale</span>
+                                        </div>
+                                        <div class="app-toggle">
+                                            <img src="assets/app-ui/scale-off.png" alt="Metronome Off" class="app-toggle-icon" />
+                                            <span>Beat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-text">
+                        <div class="badge">DIGITAL COMPANION</div>
+                        <h2 class="section-title">The Maestro in your <br /><span class="gradient-text">Pocket.</span></h2>
+                        <p class="section-subtitle">Our proprietary digital tool ensures zero-latency practice and real-time rhythmic analysis, whether you're at the academy or on the move.</p>
+                        
+                        <ul class="feature-list">
+                            <li><strong>Zero-Latency Playback:</strong> High-fidelity samples optimized for rhythm precision.</li>
+                            <li><strong>Adaptive Tempo:</strong> Seamlessly transition between Drut and Vilambit layas.</li>
+                            <li><strong>Personal Dashboard:</strong> Track your progress and master new Raags daily.</li>
+                        </ul>
+                        
+                        <div class="app-links">
+                            <a href="#" class="btn-primary">Download Beta</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+        <section id="testimonials" class="section testimonials-section">
+            <div class="container">
+                <h2 class="section-title text-center">Student <br /><span class="gradient-text">Voices.</span></h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-card">
+                        <p class="quote">"The transition from classical roots to digital tools is seamless. Raag & Rhythm has defined my musical journey."</p>
+                        <p class="author">Aryan Sharma</p>
+                        <p class="role">Vocal Student</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="quote">"The zero-latency app is a game-changer for rhythm practice. I've never felt more connected to the beat."</p>
+                        <p class="author">Priya Verma</p>
+                        <p class="role">Sitar Apprentice</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="quote">"An elite institution with a modern heart. The maestros here are truly world-class."</p>
+                        <p class="author">Dr. Rahul Mehta</p>
+                        <p class="role">Classical Enthusiast</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
