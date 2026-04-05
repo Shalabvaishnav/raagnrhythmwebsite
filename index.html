@@ -15,172 +15,293 @@
     
     <header class="navbar">
         <div class="nav-container">
-            <div class="brand">
-                <img src="assets/logo-light.svg" alt="Raag & Rhythm Logo" class="nav-logo" />
-            </div>
             <nav class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
+                <a href="#faculty" class="nav-link">Faculty</a>
                 <a href="#courses" class="nav-link">Courses</a>
-                <a href="#app" class="nav-link">App</a>
-                <a href="#contact" class="btn-primary-small">Join the Academy</a>
+                <a href="#app" class="nav-link">Products</a>
+                <a href="resource/" class="nav-link">Resource</a>
+                <a href="#contact" class="nav-link">Contact Us</a>
+                <a href="#contact" class="btn-academy">Join the Academy</a>
             </nav>
         </div>
     </header>
 
     <main>
         <section class="hero" id="home">
-            <div class="hero-bg-glow"></div>
-            <div class="hero-simple">
-                <div class="hero-illustration-wrap">
-                    <img src="assets/hero-illustration.svg" alt="Raag & Rhythm Illustration" class="hero-illus" />
-                    <div class="hero-text-overlay">
-                        <p class="hero-tagline">Your trusted companion and mentor to master Indian Classical Music.</p>
-                    </div>
+            <div class="hero-content">
+                <div class="type-toggle">
+                    <button class="toggle-btn active">Indian</button>
+                    <button class="toggle-btn">Western</button>
                 </div>
+                <div class="hero-logo-wrap">
+                    <img src="assets/logo-light.svg" alt="Raag & Rhythm Logo">
+                </div>
+                <p class="hero-tagline">Your trusted companion and mentor to master Indian Classical and Western Music.</p>
+                <h1 class="hero-headline">Welcomes you to your Music Journey</h1>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>Explore below</span>
+                <div class="scroll-line"></div>
             </div>
         </section>
 
         <!-- ABOUT SECTION -->
-        <section id="about" class="section about-section">
+        <section id="about" class="section about-section reveal">
             <div class="container">
-                <div class="grid-2-col">
-                    <div class="about-text">
-                        <h2 class="section-title">Engineered for <br /><span class="gradient-text">Excellence.</span></h2>
-                        <p class="section-subtitle">Raag & Rhythm is not just a classical academy. It is a modern institution that honors traditional roots while integrating high-fidelity digital learning environments.</p>
-                        
-                        <div class="stats-grid">
-                            <div class="stat-box">
-                                <h3>50+</h3>
-                                <p>Master Classes</p>
-                            </div>
-                            <div class="stat-box">
-                                <h3>0ms</h3>
-                                <p>Latency Learning</p>
+                <div class="about-grid">
+                    <div class="about-text-content">
+                        <div class="about-header">
+                            <span class="about-label">About Us</span>
+                            <h2 class="about-title">Building Musicians, <br />Not Just Students</h2>
+                        </div>
+                        <div class="about-content">
+                            <p>At Raag & Rhythm Academy, our vision is to make high-quality music education accessible across India, nurturing not just skilled musicians but individuals with a deep and lifelong connection to music.</p>
+                            <p>Whether a student aspires to perform professionally or simply pursue music as a passion, our goal is to provide the knowledge, discipline, and real-world musical exposure needed to truly grow.</p>
+                            
+                            <div class="about-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">40+</span>
+                                    <span class="stat-text">Master Classes</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">40+</span>
+                                    <span class="stat-text">Master Classes</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">40+</span>
+                                    <span class="stat-text">Master Classes</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="about-visual">
-                        <div class="glass-card main-glass">
-                            <div class="glass-inner-visual"></div>
+                    <div class="about-image-wrap">
+                        <img src="assets/design/about-students.png" alt="Students at Raag & Rhythm" class="about-image">
+                        <div class="about-image-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FACULTY SECTION -->
+        <section id="faculty" class="section faculty-section reveal">
+            <div class="container">
+                <div class="faculty-header">
+                    <h2 class="section-title">Faculty</h2>
+                    <div class="faculty-categories">
+                        <button class="cat-btn active">Vocals Carnatic</button>
+                        <button class="cat-btn">Vocals Hindustani</button>
+                        <button class="cat-btn">Vocals Western</button>
+                        <button class="cat-btn">Instruments</button>
+                    </div>
+                </div>
+                <div class="faculty-grid">
+                    <div class="faculty-card glass-card">
+                        <div class="fac-placeholder"></div>
+                        <div class="faculty-card-inner">
+                            <span class="fac-role">Carnatic Vocal</span>
+                            <h3 class="fac-name">Aishwarya Mam</h3>
+                        </div>
+                    </div>
+                    <div class="faculty-card glass-card">
+                        <div class="fac-placeholder"></div>
+                        <div class="faculty-card-inner">
+                            <span class="fac-role">Hindustani Vocal</span>
+                            <h3 class="fac-name">Suresh Ji</h3>
+                        </div>
+                    </div>
+                    <div class="faculty-card glass-card">
+                        <div class="fac-placeholder"></div>
+                        <div class="faculty-card-inner">
+                            <span class="fac-role">Western Vocal</span>
+                            <h3 class="fac-name">John Doe</h3>
+                        </div>
+                    </div>
+                    <div class="faculty-card glass-card">
+                        <div class="fac-placeholder"></div>
+                        <div class="faculty-card-inner">
+                            <span class="fac-role">Instruments</span>
+                            <h3 class="fac-name">Malini Devi</h3>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- COURSES SECTION -->
-        <section id="courses" class="section courses-section">
+        <!-- PREMIUM CURRICULUM SECTION -->
+        <section id="courses" class="section curriculum-section reveal">
             <div class="container">
-                <h2 class="section-title text-center">Premium <span class="gradient-text">Curriculum.</span></h2>
-                <div class="courses-grid">
-                    <div class="course-card">
-                        <div class="card-glow"></div>
-                        <div class="card-content">
-                            <h3>Vocal Mastery</h3>
-                            <p>Classical conditioning combined with modern breathwork techniques.</p>
-                            <a href="#" class="course-link">Discover →</a>
+                <div class="text-center">
+                    <h2 class="section-title">Premium <span class="gradient-text">Curriculum</span></h2>
+                    <p class="section-subtitle">The Four Levels: Tap any level to explore what your child will learn.</p>
+                </div>
+                
+                <div class="levels-stack">
+                    <div class="level-card">
+                        <div class="level-info">
+                            <div class="level-number">1</div>
+                            <div class="level-text">
+                                <h3>Foundation</h3>
+                                <p>Beginner grades</p>
+                            </div>
                         </div>
+                        <div class="level-icon">↓</div>
                     </div>
-                    <div class="course-card">
-                        <div class="card-glow"></div>
-                        <div class="card-content">
-                            <h3>Strings & Percussion</h3>
-                            <p>Rhythmic precision and dexterity training for multi-instrumentalists.</p>
-                            <a href="#" class="course-link">Discover →</a>
+                    
+                    <div class="level-card">
+                        <div class="level-info">
+                            <div class="level-number">2</div>
+                            <div class="level-text">
+                                <h3>Elementary</h3>
+                                <p>Early grades</p>
+                            </div>
                         </div>
+                        <div class="level-icon">↓</div>
                     </div>
-                    <div class="course-card">
-                        <div class="card-glow"></div>
-                        <div class="card-content">
-                            <h3>Digital Production</h3>
-                            <p>Integrate classical loops into modern DAWs seamlessly.</p>
-                            <a href="#" class="course-link">Discover →</a>
+                    
+                    <div class="level-card">
+                        <div class="level-info">
+                            <div class="level-number">3</div>
+                            <div class="level-text">
+                                <h3>Intermediate</h3>
+                                <p>Middle grades</p>
+                            </div>
                         </div>
+                        <div class="level-icon">↓</div>
+                    </div>
+                    
+                    <div class="level-card">
+                        <div class="level-info">
+                            <div class="level-number">4</div>
+                            <div class="level-text">
+                                <h3>Advanced</h3>
+                                <p>Performance grades</p>
+                            </div>
+                        </div>
+                        <div class="level-icon">↓</div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- DIGITAL APP SECTION -->
-        <section id="app" class="section app-section">
+        <!-- OUR PRODUCTS SECTION -->
+        <section id="app" class="section products-section reveal">
             <div class="container">
-                <div class="grid-2-col">
-                    <div class="app-visual">
-                        <div class="phone-frame">
+                <div class="products-tabs">
+                    <button class="cat-btn active">Apps</button>
+                    <button class="cat-btn">Other Products</button>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="app-preview">
+                        <div class="phone-mockup">
+                            <div class="phone-top"></div>
                             <div class="phone-screen">
-                                <div class="app-header">
-                                    <img src="assets/logo-light.svg" alt="App Logo" class="app-logo-small" />
-                                </div>
-                                <div class="app-main-ui">
-                                    <div class="app-wave-visual"></div>
-                                    <p class="app-raag-title">Raag Bhairavi</p>
-                                    <p class="app-raag-subtitle">Morning Practice • 16 Beats</p>
-                                    
-                                    <div class="app-controls">
-                                        <img src="assets/app-ui/prev.png" alt="Prev" class="app-control-icon small" />
-                                        <img src="assets/app-ui/play.png" alt="Play" class="app-control-icon large" />
-                                        <img src="assets/app-ui/next.png" alt="Next" class="app-control-icon small" />
-                                    </div>
-                                    
-                                    <div class="app-slider">
-                                        <img src="assets/app-ui/slider.svg" alt="Slider" class="app-slider-img" />
-                                    </div>
-                                    
-                                    <div class="app-toggle-row">
-                                        <div class="app-toggle">
-                                            <img src="assets/app-ui/scale-on.png" alt="Scale On" class="app-toggle-icon" />
-                                            <span>Scale</span>
-                                        </div>
-                                        <div class="app-toggle">
-                                            <img src="assets/app-ui/scale-off.png" alt="Metronome Off" class="app-toggle-icon" />
-                                            <span>Beat</span>
-                                        </div>
-                                    </div>
+                                <!-- App content placeholder -->
+                                <div style="display: flex; flex-direction: column; align-items: center; padding-top: 40px;">
+                                    <img src="assets/logo-light.svg" style="height: 20px; opacity: 0.5; margin-bottom: 40px;">
+                                    <div style="width: 200px; height: 200px; background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%); border-radius: 50%; opacity: 0.1; filter: blur(20px);"></div>
+                                    <h4 style="font-family: var(--font-heading); margin-top: -100px;">Tanpura</h4>
+                                    <p style="font-size: 10px; color: var(--text-muted);">Digital Music Companion</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="app-text">
-                        <div class="badge">DIGITAL COMPANION</div>
-                        <h2 class="section-title">The Maestro in your <br /><span class="gradient-text">Pocket.</span></h2>
-                        <p class="section-subtitle">Our proprietary digital tool ensures zero-latency practice and real-time rhythmic analysis, whether you're at the academy or on the move.</p>
-                        
-                        <ul class="feature-list">
-                            <li><strong>Zero-Latency Playback:</strong> High-fidelity samples optimized for rhythm precision.</li>
-                            <li><strong>Adaptive Tempo:</strong> Seamlessly transition between Drut and Vilambit layas.</li>
-                            <li><strong>Personal Dashboard:</strong> Track your progress and master new Raags daily.</li>
-                        </ul>
-                        
-                        <div class="app-links">
-                            <a href="#" class="btn-primary">Download Beta</a>
+                    
+                    <div class="product-info">
+                        <div style="display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+                            <span style="color: var(--text-white); font-size: 13px; font-weight: 700; border-bottom: 2px solid var(--bg-red); padding-bottom: 8px;">Tanpura</span>
+                            <span style="color: var(--text-muted); font-size: 13px;">Thalam App</span>
+                            <span style="color: var(--text-muted); font-size: 13px;">Tuner</span>
                         </div>
+                        
+                        <span class="product-badge">Digital Music Companion</span>
+                        <h2>The Maestro Tanpura</h2>
+                        <p>A simple and reliable Tanpura app designed to help you stay in perfect pitch during practice.</p>
+                        
+                        <div class="product-features">
+                            <div class="feature-point">
+                                <span>→</span>
+                                <div>
+                                    <h4>No Ads and interruptions</h4>
+                                    <p>High-fidelity samples optimized for rhythm precision.</p>
+                                </div>
+                            </div>
+                            <div class="feature-point">
+                                <span>→</span>
+                                <div>
+                                    <h4>Accurate & Stable Sound</h4>
+                                    <p>High-fidelity samples optimized for rhythm precision.</p>
+                                </div>
+                            </div>
+                            <div class="feature-point">
+                                <span>→</span>
+                                <div>
+                                    <h4>Easy Pitch Control</h4>
+                                    <p>Quickly adjust scale to match your vocal range or instrument.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="btn-download">Download (WIP)</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- TESTIMONIALS SECTION -->
-        <section id="testimonials" class="section testimonials-section">
+        <section id="testimonials" class="section testimonials-section reveal">
             <div class="container">
-                <h2 class="section-title text-center">Student <br /><span class="gradient-text">Voices.</span></h2>
-                <div class="testimonial-slider">
-                    <div class="testimonial-card">
-                        <p class="quote">"The transition from classical roots to digital tools is seamless. Raag & Rhythm has defined my musical journey."</p>
-                        <p class="author">Aryan Sharma</p>
-                        <p class="role">Vocal Student</p>
+                <h2 class="section-title text-center">Student Voices</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card glass-card">
+                        <p class="quote">“Aishwarya miss is a good music teacher… pays a lot of attention to the notes… very patient and encouraging.”</p>
+                        <span class="author">Jocelyn Jacob</span>
+                        <span class="role">Vocals (Carnatic)</span>
                     </div>
-                    <div class="testimonial-card">
-                        <p class="quote">"The zero-latency app is a game-changer for rhythm practice. I've never felt more connected to the beat."</p>
-                        <p class="author">Priya Verma</p>
-                        <p class="role">Sitar Apprentice</p>
+                    <div class="testimonial-card glass-card">
+                        <p class="quote">“Has thorough knowledge and stresses on perfection… very friendly classes.”</p>
+                        <span class="author">Meenu</span>
+                        <span class="role">Vocals (Carnatic)</span>
                     </div>
-                    <div class="testimonial-card">
-                        <p class="quote">"An elite institution with a modern heart. The maestros here are truly world-class."</p>
-                        <p class="author">Dr. Rahul Mehta</p>
-                        <p class="role">Classical Enthusiast</p>
+                    <div class="testimonial-card glass-card">
+                        <p class="quote">“Excellent teacher… very patient… keeps a 4-year-old engaged.”</p>
+                        <span class="author">Nyra Chimalakonda</span>
+                        <span class="role">Vocals Western</span>
+                    </div>
+                    <div class="testimonial-card glass-card">
+                        <p class="quote">“Fantastic singer… melodious voice… great teaching sense.”</p>
+                        <span class="author">Sahil Mishra</span>
+                        <span class="role">Vocals (Carnatic)</span>
+                    </div>
+                    <div class="testimonial-card glass-card">
+                        <p class="quote">“Kind, patient and professional… taught notes, raga and song… very helpful.”</p>
+                        <span class="author">Harsh Sahu</span>
+                        <span class="role">Vocals (Carnatic)</span>
+                    </div>
+                    <div class="testimonial-card glass-card">
+                        <p class="quote">“Seen so much improvement… teaches both theory and practical.”</p>
+                        <span class="author">Anu</span>
+                        <span class="role">Vocals (Carnatic)</span>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- FOOTER SECTION -->
+        <footer class="footer-section">
+            <div class="container">
+                <div class="footer-quote-wrap">
+                    <h3>A note to students</h3>
+                    <div class="footer-quote">Show up. Practice. <span class="highlight">Enjoy the process.</span></div>
+                    <p class="footer-subtext">Results will follow. Music is a journey — every small step forward is a win worth celebrating. 🎶</p>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>© 2026 Raag N Rhythm Music Academy · All rights reserved</p>
+                </div>
+            </div>
+        </footer>
     </main>
 
     <script src="script.js"></script>
