@@ -108,6 +108,50 @@
     animation: fadeUp .9s .35s ease both;
   }
 
+  .hero-divider {
+    position: relative; z-index: 2;
+    width: min(280px, 70vw);
+    margin: 1.8rem auto 0;
+    display: flex; align-items: center; gap: .8rem;
+    animation: fadeUp .9s .42s ease both;
+  }
+  .hero-divider::before, .hero-divider::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,195,4,.35), transparent);
+  }
+  .hero-divider-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--gold);
+    opacity: .6;
+    flex-shrink: 0;
+  }
+
+  .hero-credentials {
+    position: relative; z-index: 2;
+    margin-top: 1rem;
+    text-align: center;
+    animation: fadeUp .9s .48s ease both;
+  }
+  .hero-credentials .cred-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(.95rem, 3.5vw, 1.15rem);
+    color: var(--gold);
+    font-style: italic;
+    letter-spacing: .02em;
+    margin-bottom: .3rem;
+  }
+  .hero-credentials .cred-line {
+    font-size: clamp(.75rem, 2.8vw, .82rem);
+    color: rgba(255,248,238,.52);
+    letter-spacing: .04em;
+    line-height: 1.7;
+  }
+  .hero-credentials .cred-line strong {
+    color: rgba(255,248,238,.75);
+    font-weight: 500;
+  }
+
   .scroll-cue {
     position: relative; z-index: 2;
     margin-top: 3rem;
@@ -491,6 +535,16 @@
   <h1 class="hero-tagline">Welcome to Your <em>Carnatic Music</em> Journey</h1>
   <p class="hero-sub">A guide for students &amp; parents</p>
 
+  <div class="hero-divider"><span class="hero-divider-dot"></span></div>
+
+  <div class="hero-credentials">
+    <div class="cred-name">Ms. Aishwarya Unni</div>
+    <div class="cred-line">
+      <strong>10+ Years Experience</strong> &nbsp;·&nbsp; B.A. &amp; M.A. Music <strong>(Topper)</strong>, Delhi University<br>
+      Music Teacher · Basava Int. School, Dwarka
+    </div>
+  </div>
+
   <div class="scroll-cue">
     <p>Explore below</p>
     <span></span>
@@ -631,6 +685,7 @@
           <div class="tag-cloud">
             <span class="tag">Geethams</span>
             <span class="tag">Swarajatis</span>
+            <span class="tag">Jatiswaras</span>
             <span class="tag">Gamakas (Ornamentation)</span>
           </div>
           <div class="outcomes-title">Outcomes</div>
@@ -657,6 +712,7 @@
         <div class="level-body-inner">
           <div class="tag-cloud">
             <span class="tag">Varnams</span>
+            <span class="tag">Jatiswaras</span>
             <span class="tag">Kritis</span>
             <span class="tag">Basic Improvisation</span>
           </div>
