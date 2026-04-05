@@ -1,309 +1,1207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="indian">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raag & Rhythm | Premium Music Academy</title>
-    <meta name="description" content="Raag & Rhythm Academy. Defining musical identity through precision and passion.">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raag N Rhythm Music Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ===== CSS VARIABLES / THEMES ===== */
+  :root {
+    --transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-theme="indian"] {
+    --bg-grad-start: #1a0000;
+    --bg-grad-mid: #7f1010;
+    --bg-grad-end: #991b1b;
+    --bg-grad-right: #6b0000;
+    --accent: #d97706;
+    --accent2: #f59e0b;
+    --pill-active-bg: #d97706;
+    --pill-active-text: #fff;
+    --pill-inactive-border: rgba(255,255,255,0.35);
+    --pill-inactive-text: rgba(255,255,255,0.7);
+    --card-bg: rgba(255,255,255,0.07);
+    --card-border: rgba(255,255,255,0.1);
+    --level-1: linear-gradient(90deg, #c0392b, #e85d04);
+    --level-2: linear-gradient(90deg, #e85d04, #f48c06);
+    --level-3: linear-gradient(90deg, #f48c06, #faa307);
+    --level-4: linear-gradient(90deg, #faa307, #ffba08);
+    --level-num-bg: rgba(255,255,255,0.25);
+    --tag-bg: rgba(217,119,6,0.25);
+    --tag-border: rgba(217,119,6,0.5);
+    --tag-text: #fbbf24;
+    --footer-bg: #fdf6ee;
+    --footer-text: #1a0000;
+    --footer-accent: #d97706;
+    --footer-sub: #5a3a1a;
+    --nav-pill-bg: rgba(80,0,0,0.55);
+    --cta-bg: #1a1a1a;
+    --cta-text: #fff;
+    --hero-bg: radial-gradient(ellipse at 70% 40%, #c0392b 0%, #7f1010 40%, #1a0000 80%);
+    --section-bg: radial-gradient(ellipse at 30% 60%, #6b0000 0%, #1a0000 60%);
+    --testimonial-bg: rgba(255,255,255,0.06);
+    --testimonial-border: rgba(255,255,255,0.1);
+  }
+
+  [data-theme="western"] {
+    --bg-grad-start: #0d0d2b;
+    --bg-grad-mid: #2d2d7a;
+    --bg-grad-end: #4040a0;
+    --bg-grad-right: #1a1a5c;
+    --accent: #7c6af7;
+    --accent2: #a89cf8;
+    --pill-active-bg: #1a1a2e;
+    --pill-active-text: #fff;
+    --pill-inactive-border: rgba(255,255,255,0.35);
+    --pill-inactive-text: rgba(255,255,255,0.7);
+    --card-bg: rgba(255,255,255,0.07);
+    --card-border: rgba(255,255,255,0.1);
+    --level-1: linear-gradient(90deg, #2d2d7a, #4040a0);
+    --level-2: linear-gradient(90deg, #4040a0, #5a5abf);
+    --level-3: linear-gradient(90deg, #5a5abf, #7070d0);
+    --level-4: linear-gradient(90deg, #7070d0, #9090e0);
+    --level-num-bg: rgba(255,255,255,0.25);
+    --tag-bg: rgba(124,106,247,0.2);
+    --tag-border: rgba(124,106,247,0.5);
+    --tag-text: #a89cf8;
+    --footer-bg: #f0f0ff;
+    --footer-text: #0d0d2b;
+    --footer-accent: #4040a0;
+    --footer-sub: #2d2d7a;
+    --nav-pill-bg: rgba(10,10,50,0.55);
+    --cta-bg: #1a1a2e;
+    --cta-text: #fff;
+    --hero-bg: radial-gradient(ellipse at 70% 40%, #4040a0 0%, #2d2d7a 40%, #0d0d2b 80%);
+    --section-bg: radial-gradient(ellipse at 30% 60%, #1a1a5c 0%, #0d0d2b 60%);
+    --testimonial-bg: rgba(255,255,255,0.06);
+    --testimonial-border: rgba(124,106,247,0.2);
+  }
+
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: #fff;
+    background: var(--bg-grad-start);
+    overflow-x: hidden;
+    transition: background var(--transition);
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: var(--nav-pill-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background var(--transition);
+    white-space: nowrap;
+  }
+
+  .nav-link {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 30px;
+    transition: color 0.2s, background 0.2s;
+    text-transform: uppercase;
+  }
+
+  .nav-link:hover { color: #fff; background: rgba(255,255,255,0.1); }
+  .nav-link.active { color: #fff; background: rgba(255,255,255,0.15); }
+
+  .nav-cta {
+    background: var(--cta-bg);
+    color: var(--cta-text);
+    border: none;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+    margin-left: 8px;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ===== HERO ===== */
+  #hero {
+    min-height: 100vh;
+    background: var(--hero-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  /* Indian/Western Toggle */
+  .theme-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 50px;
+    padding: 4px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .theme-btn {
+    padding: 8px 28px;
+    border-radius: 30px;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.04em;
+  }
+
+  .theme-btn.active {
+    background: var(--pill-active-bg);
+    color: var(--pill-active-text);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  .theme-btn.inactive {
+    background: transparent;
+    color: var(--pill-inactive-text);
+    border: 1px solid var(--pill-inactive-border);
+  }
+
+  /* Logo area */
+  .hero-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .logo-icon {
+    width: 90px;
+    height: 90px;
+    position: relative;
+  }
+
+  /* SVG Logo */
+  .logo-circle {
+    fill: var(--accent);
+    transition: fill var(--transition);
+  }
+
+  .hero-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    text-align: left;
+  }
+
+  .hero-tagline {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 24px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 80px;
+  }
+
+  .explore-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 36px;
+  }
+
+  .explore-line {
+    width: 1px;
+    height: 40px;
+    background: var(--accent);
+    animation: pulse-line 2s ease-in-out infinite;
+    transition: background var(--transition);
+  }
+
+  @keyframes pulse-line {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ===== SECTIONS BASE ===== */
+  section {
+    padding: 100px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .full-section {
+    background: var(--section-bg);
+    padding: 100px 20px;
+    transition: background var(--transition);
+  }
+
+  .full-section > .inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-list {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+
+  .about-list li {
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    padding: 6px 0 6px 24px;
+    position: relative;
+  }
+
+  .about-list li::before {
+    content: '•';
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    transition: color var(--transition);
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+  }
+
+  .stat-item .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #fff;
+  }
+
+  .stat-item .label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  .about-image {
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+  }
+
+  .about-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    opacity: 0.5;
+  }
+
+  /* ===== FACULTY ===== */
+  .faculty-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 8px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  .tab-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    transition: background var(--transition), border-color var(--transition);
+  }
+
+  .tab-arrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .tab-arrow:hover { background: rgba(255,255,255,0.1); }
+
+  .faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .faculty-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    aspect-ratio: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .faculty-card-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.1));
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+
+  .coming-soon-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .coming-soon-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .coming-soon-box p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ===== CURRICULUM ===== */
+  .curriculum-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .curriculum-intro h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .curriculum-intro p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 32px;
+  }
+
+  .level-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .level-item {
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .level-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+    position: relative;
+  }
+
+  .level-item:nth-child(1) .level-header { background: var(--level-1); }
+  .level-item:nth-child(2) .level-header { background: var(--level-2); }
+  .level-item:nth-child(3) .level-header { background: var(--level-3); }
+  .level-item:nth-child(4) .level-header { background: var(--level-4); }
+
+  .level-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--level-num-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .level-info h4 {
+    font-size: 17px;
+    font-weight: 800;
+    color: rgba(0,0,0,0.85);
+  }
+
+  .level-info p {
+    font-size: 13px;
+    color: rgba(0,0,0,0.6);
+  }
+
+  .level-chevron {
+    margin-left: auto;
+    font-size: 14px;
+    color: rgba(0,0,0,0.6);
+    transition: transform 0.3s;
+  }
+
+  .level-item.open .level-chevron { transform: rotate(180deg); }
+
+  .level-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: rgba(0,0,0,0.25);
+  }
+
+  .level-item.open .level-body { max-height: 300px; }
+
+  .level-body-inner {
+    padding: 20px 24px 20px 76px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+  }
+
+  .level-body-inner ul { list-style: none; }
+  .level-body-inner ul li::before { content: '♪ '; color: var(--accent); }
+
+  /* ===== PRODUCTS ===== */
+  .product-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 400px;
+  }
+
+  .product-image-panel {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    font-size: 80px;
+  }
+
+  .product-info {
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .product-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .product-subtitle {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    transition: color var(--transition);
+  }
+
+  .product-info p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .feature-list {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+
+  .feature-list li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    padding: 6px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .feature-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-weight: 800;
+    flex-shrink: 0;
+    transition: color var(--transition);
+  }
+
+  .feature-list li strong {
+    display: block;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .download-btn {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.2s, border-color 0.2s;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .download-btn:hover { background: rgba(255,255,255,0.1); }
+
+  /* App sub-tabs */
+  .app-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .app-tab {
+    padding: 6px 16px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .app-tab.active {
+    background: var(--tag-bg);
+    border-color: var(--tag-border);
+    color: var(--tag-text);
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .testimonial-card {
+    background: var(--testimonial-bg);
+    border: 1px solid var(--testimonial-border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: background var(--transition), border-color var(--transition);
+  }
+
+  .testimonial-card blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    quotes: '\201C''\201D';
+  }
+
+  .testimonial-card blockquote::before { content: open-quote; }
+  .testimonial-card blockquote::after { content: close-quote; }
+
+  .testimonial-author {
+    font-weight: 800;
+    font-size: 13px;
+    color: #fff;
+  }
+
+  .testimonial-role {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 3px;
+  }
+
+  /* ===== FOOTER CTA ===== */
+  .footer-cta {
+    background: var(--footer-bg);
+    padding: 80px 20px;
+    text-align: center;
+    transition: background var(--transition);
+  }
+
+  .footer-cta .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--footer-accent);
+    margin-bottom: 16px;
+    font-weight: 800;
+    transition: color var(--transition);
+  }
+
+  .footer-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--footer-text);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    transition: color var(--transition);
+  }
+
+  .footer-cta h2 span {
+    color: var(--footer-accent);
+    transition: color var(--transition);
+  }
+
+  .footer-cta p {
+    font-size: 16px;
+    color: var(--footer-sub);
+    line-height: 1.6;
+    transition: color var(--transition);
+  }
+
+  .footer-copy {
+    background: var(--footer-bg);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    color: rgba(0,0,0,0.35);
+    transition: background var(--transition);
+  }
+
+  /* ===== THEME TRANSITION OVERLAY ===== */
+  .theme-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .theme-overlay.flash {
+    opacity: 0.15;
+    background: white;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .product-card { grid-template-columns: 1fr; }
+    nav { padding: 8px 12px; gap: 2px; }
+    .nav-link { font-size: 11px; padding: 5px 8px; }
+    .hero-brand { font-size: 32px; }
+    h2.section-title { font-size: 36px; }
+  }
+
+  @media (max-width: 600px) {
+    .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+    nav { display: none; } /* simplified for mobile */
+    .stats-row { gap: 20px; }
+  }
+
+  /* ===== SCROLL ANIMATIONS ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
 </head>
-    <div class="noise-overlay"></div>
-    
-    <header class="navbar">
-        <div class="nav-container">
-            <nav class="nav-links">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#faculty" class="nav-link">Faculty</a>
-                <a href="#courses" class="nav-link">Courses</a>
-                <a href="#app" class="nav-link">Products</a>
-                <a href="resource/" class="nav-link">Resource</a>
-                <a href="#contact" class="nav-link">Contact Us</a>
-                <a href="#contact" class="btn-academy">Join the Academy</a>
-            </nav>
+<body>
+
+<!-- Theme transition overlay -->
+<div class="theme-overlay" id="themeOverlay"></div>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#hero" class="nav-link active">Home</a>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#faculty" class="nav-link">Courses</a>
+  <a href="#products" class="nav-link">Products</a>
+  <a href="#resources" class="nav-link">Resources</a>
+  <a href="#testimonials" class="nav-link">Contact Us</a>
+  <button class="nav-cta">Join the Academy</button>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <!-- Indian / Western toggle -->
+  <div class="theme-toggle">
+    <button class="theme-btn active" id="btnIndian" onclick="setTheme('indian')">Indian</button>
+    <button class="theme-btn inactive" id="btnWestern" onclick="setTheme('western')">Western</button>
+  </div>
+
+  <!-- Logo -->
+  <div class="hero-logo">
+    <svg class="logo-icon" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="45" cy="55" r="32" class="logo-circle"/>
+      <!-- veena/guitar merged silhouette -->
+      <rect x="41" y="8" width="8" height="38" rx="4" fill="white" opacity="0.9"/>
+      <ellipse cx="45" cy="56" rx="20" ry="24" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
+      <path d="M35 58 Q45 48 55 58 Q45 68 35 58Z" fill="white" opacity="0.5"/>
+      <circle cx="45" cy="58" r="4" fill="white" opacity="0.9"/>
+      <!-- frets -->
+      <line x1="41" y1="22" x2="49" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/>
+      <line x1="41" y1="30" x2="49" y2="30" stroke="white" stroke-width="1.5" opacity="0.6"/>
+      <line x1="41" y1="38" x2="49" y2="38" stroke="white" stroke-width="1.5" opacity="0.6"/>
+    </svg>
+    <div class="hero-brand">Raag N<br>Rhythm</div>
+  </div>
+
+  <p class="hero-tagline">Your trusted companion and mentor to master<br>Indian Classical and Western Music.</p>
+  <h1 class="hero-title">Welcomes you to your Music Journey</h1>
+
+  <div class="explore-label">
+    EXPLORE BELOW
+    <div class="explore-line"></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="full-section" id="about">
+  <div class="inner">
+    <h2 class="section-title reveal">About Us</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h3>Building Musicians,<br>Not Just Students</h3>
+        <p>At Raag & Rhythm Academy, our vision is to make high-quality music education accessible across India, nurturing not just skilled musicians but individuals with a deep and lifelong connection to music. We aim to go beyond conventional teaching.</p>
+        <p>Whether a student aspires to perform professionally or simply pursue music as a passion, our goal is to provide the knowledge, discipline, and real-world musical exposure needed to truly grow. Our programs are thoughtfully designed to include:</p>
+        <ul class="about-list">
+          <li>Structured practical training</li>
+          <li>Strong theoretical foundation (with mandatory theory sessions)</li>
+          <li>Regular concerts and performance opportunities</li>
+        </ul>
+        <p>This ensures that students don't just learn music — they experience it, perform it, and live it.</p>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="num">40+</div>
+            <div class="label">Master Classes</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">40+</div>
+            <div class="label">Students</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">40+</div>
+            <div class="label">Performances</div>
+          </div>
         </div>
-    </header>
+      </div>
+      <div class="about-image reveal">
+        <div class="about-image-placeholder">🎵</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <div class="type-toggle">
-                    <button class="toggle-btn active">Indian</button>
-                    <button class="toggle-btn">Western</button>
-                </div>
-                <div class="hero-logo-wrap">
-                    <img src="assets/logo-light.svg" alt="Raag & Rhythm Logo">
-                </div>
-                <p class="hero-tagline">Your trusted companion and mentor to master Indian Classical and Western Music.</p>
-                <h1 class="hero-headline">Welcomes you to your Music Journey</h1>
-            </div>
-            
-            <div class="scroll-indicator">
-                <span>Explore below</span>
-                <div class="scroll-line"></div>
-            </div>
-        </section>
+<!-- FACULTY -->
+<div style="background: radial-gradient(ellipse at 60% 40%, var(--bg-grad-mid) 0%, var(--bg-grad-start) 70%); padding: 100px 20px; transition: background var(--transition);" id="faculty">
+  <div style="max-width:1100px;margin:0 auto;">
+    <h2 class="section-title reveal">Faculty</h2>
+    <div class="faculty-tabs reveal">
+      <button class="tab-arrow">←</button>
+      <button class="tab-btn active">Vocals Carnatic</button>
+      <button class="tab-btn">Vocals Hindustani</button>
+      <button class="tab-btn">Vocals Western</button>
+      <button class="tab-btn">Instruments</button>
+      <button class="tab-arrow">→</button>
+    </div>
+    <div class="faculty-grid reveal">
+      <div class="faculty-card"><div class="faculty-card-inner"></div></div>
+      <div class="faculty-card"><div class="faculty-card-inner"></div></div>
+      <div class="faculty-card"><div class="faculty-card-inner"></div></div>
+      <div class="faculty-card"><div class="faculty-card-inner"></div></div>
+    </div>
+    <div class="coming-soon-box reveal" style="margin-top:32px;">
+      <div style="font-size:40px;">🎓</div>
+      <div>
+        <h3>Coming Soon...</h3>
+        <p>We're building something exciting to make your learning experience even better. Stay tuned!</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- ABOUT SECTION -->
-        <section id="about" class="section about-section reveal">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-text-content">
-                        <div class="about-header">
-                            <span class="about-label">About Us</span>
-                            <h2 class="about-title">Building Musicians, <br />Not Just Students</h2>
-                        </div>
-                        <div class="about-content">
-                            <p>At Raag & Rhythm Academy, our vision is to make high-quality music education accessible across India, nurturing not just skilled musicians but individuals with a deep and lifelong connection to music.</p>
-                            <p>Whether a student aspires to perform professionally or simply pursue music as a passion, our goal is to provide the knowledge, discipline, and real-world musical exposure needed to truly grow.</p>
-                            
-                            <div class="about-stats">
-                                <div class="stat-item">
-                                    <span class="stat-number">40+</span>
-                                    <span class="stat-text">Master Classes</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-number">40+</span>
-                                    <span class="stat-text">Master Classes</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-number">40+</span>
-                                    <span class="stat-text">Master Classes</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-image-wrap">
-                        <img src="assets/design/about-students.png" alt="Students at Raag & Rhythm" class="about-image">
-                        <div class="about-image-glow"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- CURRICULUM -->
+<div class="full-section" id="curriculum">
+  <div class="inner">
+    <h2 class="section-title reveal">Premium Curriculum</h2>
+    <div class="curriculum-tabs faculty-tabs reveal">
+      <button class="tab-arrow">←</button>
+      <button class="tab-btn active">Vocals Carnatic</button>
+      <button class="tab-btn">Vocals Hindustani</button>
+      <button class="tab-btn">Vocals Western</button>
+      <button class="tab-btn">Instruments</button>
+      <button class="tab-arrow">→</button>
+    </div>
+    <div class="curriculum-intro reveal">
+      <h3>The Four Levels</h3>
+      <p>Tap any level to explore what your child will learn.</p>
+    </div>
+    <div class="level-accordion reveal">
+      <div class="level-item open" onclick="toggleLevel(this)">
+        <div class="level-header">
+          <div class="level-num">1</div>
+          <div class="level-info"><h4>Foundation</h4><p>Beginner grades</p></div>
+          <span class="level-chevron">▾</span>
+        </div>
+        <div class="level-body">
+          <div class="level-body-inner">
+            <ul>
+              <li>Introduction to Swaras (Sa, Ri, Ga, Ma, Pa, Da, Ni)</li>
+              <li>Sarali Varisai — basic ascending/descending exercises</li>
+              <li>Introduction to Talas — Adi Tala (8 beats)</li>
+              <li>Purandaradasa Geethas — beginner compositions</li>
+              <li>Basic pitch matching and voice training</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="level-item" onclick="toggleLevel(this)">
+        <div class="level-header">
+          <div class="level-num">2</div>
+          <div class="level-info"><h4>Elementary</h4><p>Early grades</p></div>
+          <span class="level-chevron">▾</span>
+        </div>
+        <div class="level-body">
+          <div class="level-body-inner">
+            <ul>
+              <li>Janta Varisai and Daatu Varisai</li>
+              <li>Introduction to Gamakas (ornamentations)</li>
+              <li>Raga identification — Mayamalavagowla, Mohanam</li>
+              <li>Swarajathis and Varnams (basic)</li>
+              <li>Rhythm training — Roopaka and Misra Chapu talas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="level-item" onclick="toggleLevel(this)">
+        <div class="level-header">
+          <div class="level-num">3</div>
+          <div class="level-info"><h4>Intermediate</h4><p>Middle grades</p></div>
+          <span class="level-chevron">▾</span>
+        </div>
+        <div class="level-body">
+          <div class="level-body-inner">
+            <ul>
+              <li>Advanced Varnams and Keerthanas (Musical Trinity)</li>
+              <li>Raga Alapana — structured improvisation</li>
+              <li>Neraval and Kalpana Swara basics</li>
+              <li>Theory of 72 Melakarta ragas</li>
+              <li>Stage performance preparation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="level-item" onclick="toggleLevel(this)">
+        <div class="level-header">
+          <div class="level-num">4</div>
+          <div class="level-info"><h4>Advanced</h4><p>Performance grades</p></div>
+          <span class="level-chevron">▾</span>
+        </div>
+        <div class="level-body">
+          <div class="level-body-inner">
+            <ul>
+              <li>Full concert format — Varnam, Keerthanas, Ragam Tanam Pallavi</li>
+              <li>Manodharma Sangeetham (creative improvisation)</li>
+              <li>Advanced Tala systems — Khandachapu, Sankirna Chapu</li>
+              <li>Composition and original kriti writing</li>
+              <li>Professional concert preparation and critique</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- FACULTY SECTION -->
-        <section id="faculty" class="section faculty-section reveal">
-            <div class="container">
-                <div class="faculty-header">
-                    <h2 class="section-title">Faculty</h2>
-                    <div class="faculty-categories">
-                        <button class="cat-btn active">Vocals Carnatic</button>
-                        <button class="cat-btn">Vocals Hindustani</button>
-                        <button class="cat-btn">Vocals Western</button>
-                        <button class="cat-btn">Instruments</button>
-                    </div>
-                </div>
-                <div class="faculty-grid">
-                    <div class="faculty-card glass-card">
-                        <div class="fac-placeholder"></div>
-                        <div class="faculty-card-inner">
-                            <span class="fac-role">Carnatic Vocal</span>
-                            <h3 class="fac-name">Aishwarya Mam</h3>
-                        </div>
-                    </div>
-                    <div class="faculty-card glass-card">
-                        <div class="fac-placeholder"></div>
-                        <div class="faculty-card-inner">
-                            <span class="fac-role">Hindustani Vocal</span>
-                            <h3 class="fac-name">Suresh Ji</h3>
-                        </div>
-                    </div>
-                    <div class="faculty-card glass-card">
-                        <div class="fac-placeholder"></div>
-                        <div class="faculty-card-inner">
-                            <span class="fac-role">Western Vocal</span>
-                            <h3 class="fac-name">John Doe</h3>
-                        </div>
-                    </div>
-                    <div class="faculty-card glass-card">
-                        <div class="fac-placeholder"></div>
-                        <div class="faculty-card-inner">
-                            <span class="fac-role">Instruments</span>
-                            <h3 class="fac-name">Malini Devi</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- PRODUCTS -->
+<div style="background: radial-gradient(ellipse at 70% 30%, var(--bg-grad-mid) 0%, var(--bg-grad-start) 70%); padding: 100px 20px; transition: background var(--transition);" id="products">
+  <div style="max-width:1100px;margin:0 auto;">
+    <h2 class="section-title reveal">Our Products</h2>
+    <div class="product-tabs reveal">
+      <button class="tab-btn active">Apps</button>
+      <button class="tab-btn">Other Products</button>
+    </div>
+    <div class="app-tabs reveal">
+      <button class="app-tab active">Tanpura</button>
+      <button class="app-tab">Thalam App</button>
+      <button class="app-tab">Tuner</button>
+      <button class="app-tab">Harmonium</button>
+      <button class="app-tab">RaagNrhythm App</button>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-image-panel">🎵</div>
+      <div class="product-info">
+        <h3>The Maestro Tanpura</h3>
+        <div class="product-subtitle">Digital Music Companion</div>
+        <p>A simple and reliable Tanpura app designed to stay in perfect pitch during practice. Whether you're a beginner or an advanced learner, it creates a consistent sound base so you can focus on improving your music.</p>
+        <ul class="feature-list">
+          <li><strong>No Ads and interruptions</strong>High-fidelity samples optimized for rhythm precision.</li>
+          <li><strong>Accurate &amp; Stable Sound</strong>High-fidelity samples optimized for rhythm precision.</li>
+          <li><strong>Easy Pitch Control</strong>Quickly adjust scale to match your vocal range or instrument.</li>
+          <li><strong>Modern, Sleek &amp; Easy-to-Use Design</strong>A clean and intuitive interface built for distraction-free practice.</li>
+        </ul>
+        <button class="download-btn">Download (WIP)</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- PREMIUM CURRICULUM SECTION -->
-        <section id="courses" class="section curriculum-section reveal">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-title">Premium <span class="gradient-text">Curriculum</span></h2>
-                    <p class="section-subtitle">The Four Levels: Tap any level to explore what your child will learn.</p>
-                </div>
-                
-                <div class="levels-stack">
-                    <div class="level-card">
-                        <div class="level-info">
-                            <div class="level-number">1</div>
-                            <div class="level-text">
-                                <h3>Foundation</h3>
-                                <p>Beginner grades</p>
-                            </div>
-                        </div>
-                        <div class="level-icon">↓</div>
-                    </div>
-                    
-                    <div class="level-card">
-                        <div class="level-info">
-                            <div class="level-number">2</div>
-                            <div class="level-text">
-                                <h3>Elementary</h3>
-                                <p>Early grades</p>
-                            </div>
-                        </div>
-                        <div class="level-icon">↓</div>
-                    </div>
-                    
-                    <div class="level-card">
-                        <div class="level-info">
-                            <div class="level-number">3</div>
-                            <div class="level-text">
-                                <h3>Intermediate</h3>
-                                <p>Middle grades</p>
-                            </div>
-                        </div>
-                        <div class="level-icon">↓</div>
-                    </div>
-                    
-                    <div class="level-card">
-                        <div class="level-info">
-                            <div class="level-number">4</div>
-                            <div class="level-text">
-                                <h3>Advanced</h3>
-                                <p>Performance grades</p>
-                            </div>
-                        </div>
-                        <div class="level-icon">↓</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- OUR PRODUCTS SECTION -->
-        <section id="app" class="section products-section reveal">
-            <div class="container">
-                <div class="products-tabs">
-                    <button class="cat-btn active">Apps</button>
-                    <button class="cat-btn">Other Products</button>
-                </div>
-                
-                <div class="products-grid">
-                    <div class="app-preview">
-                        <div class="phone-mockup">
-                            <div class="phone-top"></div>
-                            <div class="phone-screen">
-                                <!-- App content placeholder -->
-                                <div style="display: flex; flex-direction: column; align-items: center; padding-top: 40px;">
-                                    <img src="assets/logo-light.svg" style="height: 20px; opacity: 0.5; margin-bottom: 40px;">
-                                    <div style="width: 200px; height: 200px; background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%); border-radius: 50%; opacity: 0.1; filter: blur(20px);"></div>
-                                    <h4 style="font-family: var(--font-heading); margin-top: -100px;">Tanpura</h4>
-                                    <p style="font-size: 10px; color: var(--text-muted);">Digital Music Companion</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-info">
-                        <div style="display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
-                            <span style="color: var(--text-white); font-size: 13px; font-weight: 700; border-bottom: 2px solid var(--bg-red); padding-bottom: 8px;">Tanpura</span>
-                            <span style="color: var(--text-muted); font-size: 13px;">Thalam App</span>
-                            <span style="color: var(--text-muted); font-size: 13px;">Tuner</span>
-                        </div>
-                        
-                        <span class="product-badge">Digital Music Companion</span>
-                        <h2>The Maestro Tanpura</h2>
-                        <p>A simple and reliable Tanpura app designed to help you stay in perfect pitch during practice.</p>
-                        
-                        <div class="product-features">
-                            <div class="feature-point">
-                                <span>→</span>
-                                <div>
-                                    <h4>No Ads and interruptions</h4>
-                                    <p>High-fidelity samples optimized for rhythm precision.</p>
-                                </div>
-                            </div>
-                            <div class="feature-point">
-                                <span>→</span>
-                                <div>
-                                    <h4>Accurate & Stable Sound</h4>
-                                    <p>High-fidelity samples optimized for rhythm precision.</p>
-                                </div>
-                            </div>
-                            <div class="feature-point">
-                                <span>→</span>
-                                <div>
-                                    <h4>Easy Pitch Control</h4>
-                                    <p>Quickly adjust scale to match your vocal range or instrument.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <a href="#" class="btn-download">Download (WIP)</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- TESTIMONIALS -->
+<div class="full-section" id="testimonials">
+  <div class="inner">
+    <h2 class="section-title reveal">Student Voices</h2>
+    <div class="testimonials-grid reveal">
+      <div class="testimonial-card">
+        <blockquote>Aishwarya miss is a good music teacher... pays a lot of attention to the notes... very patient and encouraging.</blockquote>
+        <div class="testimonial-author">Jocelyn Jacob</div>
+        <div class="testimonial-role">Vocals (Carnatic Music)</div>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>Has thorough knowledge and stresses on perfection... very friendly classes.</blockquote>
+        <div class="testimonial-author">Meenu</div>
+        <div class="testimonial-role">Vocals (Carnatic Music)</div>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>Excellent teacher... very patient... keeps a 4-year-old engaged.</blockquote>
+        <div class="testimonial-author">Nyra Chimalakonda</div>
+        <div class="testimonial-role">Vocals Western</div>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>Fantastic singer... melodious voice... great teaching sense.</blockquote>
+        <div class="testimonial-author">Sahil Mishra</div>
+        <div class="testimonial-role">Vocals (Carnatic Music)</div>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>Kind, patient and professional... taught notes, raga and song... very helpful.</blockquote>
+        <div class="testimonial-author">Harsh Sahu</div>
+        <div class="testimonial-role">Vocals (Carnatic Music)</div>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>Seen so much improvement... teaches both theory and practical.</blockquote>
+        <div class="testimonial-author">Anu</div>
+        <div class="testimonial-role">Vocals (Carnatic Music)</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- TESTIMONIALS SECTION -->
-        <section id="testimonials" class="section testimonials-section reveal">
-            <div class="container">
-                <h2 class="section-title text-center">Student Voices</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card glass-card">
-                        <p class="quote">“Aishwarya miss is a good music teacher… pays a lot of attention to the notes… very patient and encouraging.”</p>
-                        <span class="author">Jocelyn Jacob</span>
-                        <span class="role">Vocals (Carnatic)</span>
-                    </div>
-                    <div class="testimonial-card glass-card">
-                        <p class="quote">“Has thorough knowledge and stresses on perfection… very friendly classes.”</p>
-                        <span class="author">Meenu</span>
-                        <span class="role">Vocals (Carnatic)</span>
-                    </div>
-                    <div class="testimonial-card glass-card">
-                        <p class="quote">“Excellent teacher… very patient… keeps a 4-year-old engaged.”</p>
-                        <span class="author">Nyra Chimalakonda</span>
-                        <span class="role">Vocals Western</span>
-                    </div>
-                    <div class="testimonial-card glass-card">
-                        <p class="quote">“Fantastic singer… melodious voice… great teaching sense.”</p>
-                        <span class="author">Sahil Mishra</span>
-                        <span class="role">Vocals (Carnatic)</span>
-                    </div>
-                    <div class="testimonial-card glass-card">
-                        <p class="quote">“Kind, patient and professional… taught notes, raga and song… very helpful.”</p>
-                        <span class="author">Harsh Sahu</span>
-                        <span class="role">Vocals (Carnatic)</span>
-                    </div>
-                    <div class="testimonial-card glass-card">
-                        <p class="quote">“Seen so much improvement… teaches both theory and practical.”</p>
-                        <span class="author">Anu</span>
-                        <span class="role">Vocals (Carnatic)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- FOOTER SECTION -->
-        <footer class="footer-section">
-            <div class="container">
-                <div class="footer-quote-wrap">
-                    <h3>A note to students</h3>
-                    <div class="footer-quote">Show up. Practice. <span class="highlight">Enjoy the process.</span></div>
-                    <p class="footer-subtext">Results will follow. Music is a journey — every small step forward is a win worth celebrating. 🎶</p>
-                </div>
-                
-                <div class="footer-bottom">
-                    <p>© 2026 Raag N Rhythm Music Academy · All rights reserved</p>
-                </div>
-            </div>
-        </footer>
-    </main>
+<!-- FOOTER CTA -->
+<div class="footer-cta" id="resources">
+  <p class="eyebrow">A Note to Students</p>
+  <h2>Show up. Practice. <span>Enjoy the process.</span></h2>
+  <p>Results will follow. Music is a journey — every small<br>step forward is a win worth celebrating. 🎵</p>
+</div>
 
-    <script src="script.js"></script>
+<div class="footer-copy" style="background: var(--footer-bg); transition: background var(--transition);">
+  © 2026 Raag N Rhythm Music Academy · All rights reserved
+</div>
+
+<script>
+  // ===== THEME TOGGLE =====
+  function setTheme(theme) {
+    const overlay = document.getElementById('themeOverlay');
+    overlay.classList.add('flash');
+    setTimeout(() => overlay.classList.remove('flash'), 300);
+
+    document.documentElement.setAttribute('data-theme', theme);
+
+    const btnIndian = document.getElementById('btnIndian');
+    const btnWestern = document.getElementById('btnWestern');
+
+    if (theme === 'indian') {
+      btnIndian.className = 'theme-btn active';
+      btnWestern.className = 'theme-btn inactive';
+    } else {
+      btnWestern.className = 'theme-btn active';
+      btnIndian.className = 'theme-btn inactive';
+    }
+  }
+
+  // ===== ACCORDION =====
+  function toggleLevel(el) {
+    el.classList.toggle('open');
+  }
+
+  // ===== SCROLL REVEAL =====
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // ===== TAB BUTTONS =====
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const parent = this.closest('.faculty-tabs, .curriculum-tabs, .product-tabs');
+      if (parent) {
+        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+  });
+
+  document.querySelectorAll('.app-tab').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.app-tab').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // ===== ACTIVE NAV =====
+  const sections = document.querySelectorAll('[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    document.querySelectorAll('.nav-link').forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
