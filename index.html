@@ -39,8 +39,9 @@
     --nav-pill-bg: rgba(80,0,0,0.55);
     --cta-bg: #1a1a1a;
     --cta-text: #fff;
-    --hero-bg: radial-gradient(ellipse at 70% 40%, #c0392b 0%, #7f1010 40%, #1a0000 80%);
-    --section-bg: radial-gradient(ellipse at 30% 60%, #6b0000 0%, #1a0000 60%);
+    --hero-bg: transparent;
+    --section-bg: transparent;
+    --body-bg: linear-gradient(90deg, #1D1B1B 0%, #D62128 100%);
     --testimonial-bg: rgba(255,255,255,0.06);
     --testimonial-border: rgba(255,255,255,0.1);
   }
@@ -73,8 +74,9 @@
     --nav-pill-bg: rgba(10,10,50,0.55);
     --cta-bg: #1a1a2e;
     --cta-text: #fff;
-    --hero-bg: radial-gradient(ellipse at 70% 40%, #4040a0 0%, #2d2d7a 40%, #0d0d2b 80%);
-    --section-bg: radial-gradient(ellipse at 30% 60%, #1a1a5c 0%, #0d0d2b 60%);
+    --hero-bg: transparent;
+    --section-bg: transparent;
+    --body-bg: linear-gradient(90deg, #0d0d2b 0%, #4040a0 100%);
     --testimonial-bg: rgba(255,255,255,0.06);
     --testimonial-border: rgba(124,106,247,0.2);
   }
@@ -87,7 +89,8 @@
   body {
     font-family: 'Nunito', sans-serif;
     color: #fff;
-    background: var(--bg-grad-start);
+    background: var(--body-bg);
+    background-attachment: fixed;
     overflow-x: hidden;
     transition: background var(--transition);
   }
@@ -932,7 +935,7 @@
 </div>
 
 <!-- FACULTY -->
-<div style="background: radial-gradient(ellipse at 60% 40%, var(--bg-grad-mid) 0%, var(--bg-grad-start) 70%); padding: 100px 20px; transition: background var(--transition);" id="faculty">
+<div style="padding: 100px 20px; transition: background var(--transition);" id="faculty">
   <div style="max-width:1100px;margin:0 auto;">
     <h2 class="section-title reveal">Faculty</h2>
     <div class="faculty-tabs reveal">
@@ -1053,7 +1056,7 @@
 </div>
 
 <!-- PRODUCTS -->
-<div style="background: radial-gradient(ellipse at 70% 30%, var(--bg-grad-mid) 0%, var(--bg-grad-start) 70%); padding: 100px 20px; transition: background var(--transition);" id="products">
+<div style="padding: 100px 20px; transition: background var(--transition);" id="products">
   <div style="max-width:1100px;margin:0 auto;">
     <h2 class="section-title reveal">Our Products</h2>
     <div class="product-tabs reveal">
