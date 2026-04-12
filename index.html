@@ -1437,6 +1437,11 @@
     updateCarousel();
   }
 
+  // Auto-rotate every 1000ms (1 second)
+  setInterval(() => {
+    rotateStack(-1);
+  }, 1000);
+
   // Mouse Parallax for Character Stack
   document.addEventListener('mousemove', (e) => {
     const stack = document.getElementById('characterStack');
