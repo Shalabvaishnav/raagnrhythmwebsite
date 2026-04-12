@@ -4,11 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Raag N Rhythm Music Academy</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ===== CSS VARIABLES / THEMES ===== */
   :root {
     --transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-heading: 'Righteous', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-blur: blur(20px);
   }
 
   [data-theme="indian"] {
@@ -22,8 +27,7 @@
     --pill-active-text: #fff;
     --pill-inactive-border: rgba(255,255,255,0.35);
     --pill-inactive-text: rgba(255,255,255,0.7);
-    --card-bg: rgba(255,255,255,0.07);
-    --card-border: rgba(255,255,255,0.1);
+
     --level-1: linear-gradient(90deg, #c0392b, #e85d04);
     --level-2: linear-gradient(90deg, #e85d04, #f48c06);
     --level-3: linear-gradient(90deg, #f48c06, #faa307);
@@ -42,8 +46,9 @@
     --hero-bg: transparent;
     --section-bg: transparent;
     --body-bg: linear-gradient(90deg, #1D1B1B 0%, #D62128 100%);
-    --testimonial-bg: rgba(255,255,255,0.06);
-    --testimonial-border: rgba(255,255,255,0.1);
+    --glass-bg: rgba(217, 119, 6, 0.08);
+    --glass-border: rgba(217, 119, 6, 0.2);
+    --glass-glow: 0 8px 32px 0 rgba(217, 119, 6, 0.15);
   }
 
   [data-theme="western"] {
@@ -77,8 +82,9 @@
     --hero-bg: transparent;
     --section-bg: transparent;
     --body-bg: linear-gradient(90deg, #4040a0 0%, #0d0d2b 100%);
-    --testimonial-bg: rgba(255,255,255,0.06);
-    --testimonial-border: rgba(124,106,247,0.2);
+    --glass-bg: rgba(124, 106, 247, 0.08);
+    --glass-border: rgba(124, 106, 247, 0.2);
+    --glass-glow: 0 8px 32px 0 rgba(124, 106, 247, 0.15);
   }
 
   /* ===== RESET & BASE ===== */
@@ -87,7 +93,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Nunito', sans-serif;
+    font-family: var(--font-body);
     color: #fff;
     background: var(--body-bg);
     background-attachment: fixed;
@@ -102,10 +108,10 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    background: var(--nav-pill-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
     border-radius: 50px;
     padding: 10px 24px;
     display: flex;
@@ -128,7 +134,7 @@
   }
 
   .nav-link:hover { color: #fff; background: rgba(255,255,255,0.1); }
-  .nav-link.active { color: #fff; background: rgba(255,255,255,0.15); }
+  .nav-link.active { color: #fff; background: var(--glass-border); }
 
   .nav-cta {
     background: var(--cta-bg);
@@ -165,10 +171,12 @@
     display: flex;
     gap: 8px;
     margin-bottom: 48px;
-    background: rgba(0,0,0,0.2);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     border-radius: 50px;
     padding: 4px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid var(--glass-border);
   }
 
   .theme-btn {
@@ -215,7 +223,7 @@
   }
 
   .hero-brand {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 48px;
     font-weight: 900;
     line-height: 1.1;
@@ -232,7 +240,7 @@
   }
 
   .hero-title {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 36px;
     font-weight: 700;
     color: #fff;
@@ -284,7 +292,7 @@
   }
 
   h2.section-title {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 48px;
     font-weight: 900;
     text-align: center;
@@ -300,7 +308,7 @@
   }
 
   .about-text h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 36px;
     font-weight: 700;
     line-height: 1.2;
@@ -341,7 +349,7 @@
   }
 
   .stat-item .num {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 36px;
     font-weight: 900;
     color: #fff;
@@ -358,8 +366,10 @@
   .about-image {
     border-radius: 20px;
     overflow: hidden;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     aspect-ratio: 4/5;
     display: flex;
     align-items: center;
@@ -405,7 +415,7 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
-    font-family: 'Nunito', sans-serif;
+    font-family: var(--font-body);
     letter-spacing: 0.04em;
   }
 
@@ -441,13 +451,22 @@
   .faculty-card {
     border-radius: 16px;
     overflow: hidden;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-glow);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     aspect-ratio: 3/4;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+  }
+  .faculty-card:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 12px 40px 0 rgba(0,0,0,0.3);
   }
 
   .faculty-card-inner {
@@ -471,7 +490,7 @@
   }
 
   .coming-soon-box h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 8px;
@@ -590,8 +609,10 @@
   }
 
   .product-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     border-radius: 20px;
     overflow: hidden;
     display: grid;
@@ -616,7 +637,7 @@
   }
 
   .product-info h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 6px;
@@ -679,7 +700,7 @@
     cursor: pointer;
     background: transparent;
     transition: background 0.2s, border-color 0.2s;
-    font-family: 'Nunito', sans-serif;
+    font-family: var(--font-body);
   }
 
   .download-btn:hover { background: rgba(255,255,255,0.1); }
@@ -703,7 +724,7 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
-    font-family: 'Nunito', sans-serif;
+    font-family: var(--font-body);
   }
 
   .app-tab.active {
@@ -721,15 +742,24 @@
   }
 
   .testimonial-card {
-    background: var(--testimonial-bg);
-    border: 1px solid var(--testimonial-border);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-glow);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 16px;
     padding: 28px;
-    transition: background var(--transition), border-color var(--transition);
+  }
+  .testimonial-card:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 12px 40px 0 rgba(0,0,0,0.3);
   }
 
   .testimonial-card blockquote {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-body);
+    font-weight: 300;
     font-style: italic;
     font-size: 16px;
     color: rgba(255,255,255,0.85);
@@ -774,7 +804,7 @@
   }
 
   .footer-cta h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
     font-size: 48px;
     font-weight: 900;
     color: var(--footer-text);
