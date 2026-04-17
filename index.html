@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="indian">
+<html lang="en" data-theme="western">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -174,6 +174,48 @@
     max-width: 1200px;
     gap: 40px;
     z-index: 2;
+    position: relative;
+  }
+
+  .vertical-theme-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    left: -40px; /* Offset to the left to match the arrows on the right conceptually */
+    z-index: 10;
+    align-items: center;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 12px 10px;
+    box-shadow: var(--glass-glow);
+  }
+
+  .theme-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .theme-dot.western {
+    background: #7c6af7;
+    box-shadow: 0 0 10px rgba(124, 106, 247, 0.4);
+  }
+
+  .theme-dot.indian {
+    background: #D62128;
+    box-shadow: 0 0 10px rgba(214, 33, 40, 0.4);
+  }
+
+  .theme-dot.active {
+    border-color: #fff;
+    transform: scale(1.2);
   }
 
   .hero-text-side {
@@ -286,41 +328,7 @@
     stroke-linejoin: round;
   }
 
-  /* Indian/Western Toggle */
-  .theme-toggle {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 48px;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border-radius: 50px;
-    padding: 4px;
-    border: 1px solid var(--glass-border);
-  }
-
-  .theme-btn {
-    padding: 8px 28px;
-    border-radius: 30px;
-    border: none;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    letter-spacing: 0.04em;
-  }
-
-  .theme-btn.active {
-    background: var(--pill-active-bg);
-    color: var(--pill-active-text);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-  }
-
-  .theme-btn.inactive {
-    background: transparent;
-    color: var(--pill-inactive-text);
-    border: 1px solid var(--pill-inactive-border);
-  }
+  /* ===== BUTTONS & TOGGLES ===== */
 
   /* Logo area */
   .hero-logo {
@@ -1039,13 +1047,14 @@
 <!-- HERO -->
 <div id="hero">
   <div class="hero-content-wrapper">
+    <!-- Vertical Theme Toggle -->
+    <div class="vertical-theme-toggle">
+      <div class="theme-dot western active" title="Western Theme" onclick="setTheme('western')"></div>
+      <div class="theme-dot indian" title="Indian Theme" onclick="setTheme('indian')"></div>
+    </div>
+
     <!-- Left Side: Text and Branding -->
     <div class="hero-text-side reveal visible">
-      <!-- Indian / Western toggle -->
-      <div class="theme-toggle">
-        <button class="theme-btn active" id="btnIndian" onclick="setTheme('indian')">Indian</button>
-        <button class="theme-btn inactive" id="btnWestern" onclick="setTheme('western')">Western</button>
-      </div>
 
       <!-- Logo area -->
       <div class="hero-logo" style="display: flex; align-items: flex-end; gap: 20px; margin-bottom: 32px;">
@@ -1337,20 +1346,24 @@
   // Theme Toggle logic
   function setTheme(theme) {
     const overlay = document.getElementById('themeOverlay');
-    overlay.classList.add('flash');
-    setTimeout(() => overlay.classList.remove('flash'), 300);
+    if(overlay) {
+      overlay.classList.add('flash');
+      setTimeout(() => overlay.classList.remove('flash'), 300);
+    }
 
     document.documentElement.setAttribute('data-theme', theme);
 
-    const btnIndian = document.getElementById('btnIndian');
-    const btnWestern = document.getElementById('btnWestern');
+    const dotIndian = document.querySelector('.theme-dot.indian');
+    const dotWestern = document.querySelector('.theme-dot.western');
 
-    if (theme === 'indian') {
-      btnIndian.className = 'theme-btn active';
-      btnWestern.className = 'theme-btn inactive';
-    } else {
-      btnWestern.className = 'theme-btn active';
-      btnIndian.className = 'theme-btn inactive';
+    if (dotIndian && dotWestern) {
+      if (theme === 'indian') {
+        dotIndian.classList.add('active');
+        dotWestern.classList.remove('active');
+      } else {
+        dotWestern.classList.add('active');
+        dotIndian.classList.remove('active');
+      }
     }
   }
 
