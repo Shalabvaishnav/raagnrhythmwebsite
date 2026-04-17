@@ -270,30 +270,57 @@
     filter: drop-shadow(0 25px 35px rgba(0,0,0,0.5));
   }
 
-  /* Carousel Positions */
+  /* Carousel Positions - Symmetrical 3D Spread */
   .card-pos-1 {
-    transform: translateZ(0) scale(1) translateY(0);
-    z-index: 4;
+    transform: translateZ(0) scale(1) translateX(0) translateY(0);
+    z-index: 8;
     filter: blur(0px);
     opacity: 1;
   }
+  /* Right Side */
   .card-pos-2 {
-    transform: translateZ(-80px) scale(0.85) translateY(-50px) translateX(-40px);
-    z-index: 3;
-    filter: blur(4px);
+    transform: translateZ(-100px) scale(0.85) translateX(140px) translateY(-30px) rotateY(-15deg);
+    z-index: 6;
+    filter: blur(2px);
     opacity: 0.8;
   }
   .card-pos-3 {
-    transform: translateZ(-160px) scale(0.7) translateY(-100px) translateX(-80px);
-    z-index: 2;
-    filter: blur(8px);
+    transform: translateZ(-200px) scale(0.7) translateX(240px) translateY(-60px) rotateY(-25deg);
+    z-index: 4;
+    filter: blur(5px);
     opacity: 0.6;
   }
   .card-pos-4 {
-    transform: translateZ(-240px) scale(0.55) translateY(-150px) translateX(-120px);
+    transform: translateZ(-300px) scale(0.55) translateX(120px) translateY(-90px) rotateY(-35deg);
+    z-index: 2;
+    filter: blur(8px);
+    opacity: 0.4;
+  }
+  /* Back / Transition */
+  .card-pos-5 {
+    transform: translateZ(-400px) scale(0.4) translateX(0) translateY(-120px);
     z-index: 1;
     filter: blur(12px);
+    opacity: 0;
+  }
+  /* Left Side */
+  .card-pos-6 {
+    transform: translateZ(-300px) scale(0.55) translateX(-120px) translateY(-90px) rotateY(35deg);
+    z-index: 2;
+    filter: blur(8px);
     opacity: 0.4;
+  }
+  .card-pos-7 {
+    transform: translateZ(-200px) scale(0.7) translateX(-240px) translateY(-60px) rotateY(25deg);
+    z-index: 4;
+    filter: blur(5px);
+    opacity: 0.6;
+  }
+  .card-pos-8 {
+    transform: translateZ(-100px) scale(0.85) translateX(-140px) translateY(-30px) rotateY(15deg);
+    z-index: 6;
+    filter: blur(2px);
+    opacity: 0.8;
   }
 
   .carousel-nav {
@@ -1152,13 +1179,13 @@
     <div class="hero-carousel-side reveal visible" style="transition-delay: 200ms;">
       <div class="character-stack" id="characterStack">
         <div class="character-card card-pos-1" id="char-1">
-          <img src="assets/characters/1.png" alt="Carnatic Vocalist">
+          <img src="assets/characters/1.png" alt="Musician 1">
         </div>
         <div class="character-card card-pos-2" id="char-2">
-          <img src="assets/characters/2.png" alt="Instrumentalist">
+          <img src="assets/characters/2.png" alt="Musician 2">
         </div>
         <div class="character-card card-pos-3" id="char-3">
-          <img src="assets/characters/4.png" alt="Western Singer">
+          <img src="assets/characters/4.png" alt="Musician 4">
         </div>
         <div class="character-card card-pos-4" id="char-4">
           <img src="assets/characters/3.png" alt="Sitarist">
@@ -1611,7 +1638,11 @@
     { id: 'char-1', pos: 1 },
     { id: 'char-2', pos: 2 },
     { id: 'char-3', pos: 3 },
-    { id: 'char-4', pos: 4 }
+    { id: 'char-4', pos: 4 },
+    { id: 'char-5', pos: 5 },
+    { id: 'char-6', pos: 6 },
+    { id: 'char-7', pos: 7 },
+    { id: 'char-8', pos: 8 }
   ];
 
   function updateCarousel() {
@@ -1627,12 +1658,12 @@
     if (direction === -1) {
       // Move up (next)
       cards.forEach(card => {
-        card.pos = card.pos === 1 ? 4 : card.pos - 1;
+        card.pos = card.pos === 1 ? 8 : card.pos - 1;
       });
     } else {
       // Move down (prev)
       cards.forEach(card => {
-        card.pos = card.pos === 4 ? 1 : card.pos + 1;
+        card.pos = card.pos === 8 ? 1 : card.pos + 1;
       });
     }
     updateCarousel();
