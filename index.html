@@ -541,34 +541,43 @@
     flex-wrap: wrap;
   }
 
-  .tab-btn {
+  .tab-btn, .app-tab {
     padding: 8px 20px;
     border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.25);
-    background: transparent;
-    color: rgba(255,255,255,0.7);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: rgba(255,255,255,0.85);
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     font-family: var(--font-body);
     letter-spacing: 0.04em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
-  .tab-btn.active {
+  .tab-btn:hover, .app-tab:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .tab-btn.active, .app-tab.active {
     background: var(--accent);
     border-color: var(--accent);
     color: #fff;
-    transition: background var(--transition), border-color var(--transition);
+    box-shadow: var(--glass-glow);
   }
 
   .tab-arrow {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: transparent;
-    color: rgba(255,255,255,0.6);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: rgba(255,255,255,0.8);
     font-size: 14px;
     cursor: pointer;
     display: flex;
@@ -576,7 +585,7 @@
     justify-content: center;
     transition: all 0.2s;
   }
-  .tab-arrow:hover { background: rgba(255,255,255,0.1); }
+  .tab-arrow:hover { background: rgba(255,255,255,0.15); }
 
   .faculty-grid {
     display: grid;
@@ -846,28 +855,8 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 48px;
     flex-wrap: wrap;
-  }
-
-  .app-tab {
-    padding: 6px 16px;
-    border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: transparent;
-    color: rgba(255,255,255,0.6);
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: var(--font-body);
-  }
-
-  .app-tab.active {
-    background: var(--tag-bg);
-    border-color: var(--tag-border);
-    color: var(--tag-text);
-    transition: background var(--transition), border-color var(--transition), color var(--transition);
   }
 
   /* ===== TESTIMONIALS ===== */
@@ -1129,7 +1118,7 @@
         <p>This ensures that students don't just learn music — they experience it, perform it, and live it.</p>
         <div class="stats-row">
           <div class="stat-item">
-            <div class="num">40+</div>
+            <div class="num">900+</div>
             <div class="label">Master Classes</div>
           </div>
           <div class="stat-item">
@@ -1137,13 +1126,20 @@
             <div class="label">Students</div>
           </div>
           <div class="stat-item">
-            <div class="num">40+</div>
-            <div class="label">Performances</div>
+            <div class="num">5+</div>
+            <div class="label">TEACHERS</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">5+</div>
+            <div class="label">VISITING FACULTY</div>
           </div>
         </div>
       </div>
-      <div class="about-image reveal">
-        <div class="about-image-placeholder">🎵</div>
+      <div class="about-image reveal" style="position: relative;">
+        <!-- Inner masked frame with 32px padding and 2px border -->
+        <div style="position: absolute; top: 32px; bottom: 32px; left: 32px; right: 32px; border: 2px solid rgba(255,255,255,0.8); border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.5);">
+          <img src="assets/design/about-students.png" alt="Students" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
       </div>
     </div>
   </div>
