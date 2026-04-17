@@ -766,12 +766,13 @@
   }
 
   .product-image-panel {
-    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12));
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
-    font-size: 80px;
+    position: relative;
   }
 
   .product-info {
@@ -1218,7 +1219,7 @@
       <div class="about-image reveal" style="position: relative;">
         <!-- Inner masked frame with 32px padding and 2px border -->
         <div style="position: absolute; top: 32px; bottom: 32px; left: 32px; right: 32px; border: 2px solid rgba(255,255,255,0.8); border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.5);">
-          <img src="assets/design/about-students.png" alt="Students" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0; display: block;">
+          <img src="assets/design/about-students.png" alt="Students" style="width: 100%; height: 100%; object-fit: cover; object-position: right; border-radius: 0; display: block;">
         </div>
       </div>
     </div>
@@ -1362,7 +1363,11 @@
       <button class="app-tab">RaagNrhythm App</button>
     </div>
     <div class="product-card reveal">
-      <div class="product-image-panel">🎵</div>
+      <div class="product-image-panel">
+        <div style="position: absolute; top: 32px; bottom: 32px; left: 32px; right: 32px; border: 2px solid rgba(255,255,255,0.8); border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-top-left-radius: 0; border-bottom-left-radius: 0; overflow: hidden; background: rgba(0,0,0,0.5);">
+          <img src="assets/Tanpura app.png" alt="Tanpura App" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+      </div>
       <div class="product-info">
         <h3>The Maestro Tanpura</h3>
         <div class="product-subtitle">Digital Music Companion</div>
@@ -1373,7 +1378,7 @@
           <li><strong>Easy Pitch Control</strong>Quickly adjust scale to match your vocal range or instrument.</li>
           <li><strong>Modern, Sleek &amp; Easy-to-Use Design</strong>A clean and intuitive interface built for distraction-free practice.</li>
         </ul>
-        <button class="download-btn">Download (WIP)</button>
+        <button class="download-btn">Coming soon...</button>
       </div>
     </div>
   </div>
@@ -1426,7 +1431,7 @@
       
       <div class="contact-info">
         <h3 style="font-size: 28px; margin-bottom: 16px; font-weight: 700;">Start Your Musical Journey</h3>
-        <p>We run our academy seamlessly across both Online and Offline formats, delivering comprehensive music instruction creatively tailored exactly to your and your children's needs. We actively share proper curriculum progress, practice structures, and flexible timing directly with you to guarantee growth.</p>
+        <p>We run our academy seamlessly across both Online and Offline formats, delivering comprehensive music instruction creatively tailored exactly to your and your children's needs.</p>
         
         <ul class="contact-features">
           <li>Customized Music Classes & Courses</li>
@@ -1440,12 +1445,12 @@
         </div>
 
         <div>
-          <p style="margin-bottom: 4px; font-weight: bold; color: #fff;">Direct Contacts / WhatsApp:</p>
+          <p style="margin-bottom: 4px; font-weight: bold; color: rgba(255,255,255,0.6);">Direct Contacts / WhatsApp:</p>
           <p style="font-size: 18px; color: #fff; font-weight: 800; margin: 0; margin-bottom: 12px;">
             <a href="tel:8512832263" style="color: inherit; text-decoration: none;">+91 8512832263</a> <span style="color: rgba(255,255,255,0.3); margin: 0 8px;">|</span> 
             <a href="tel:7888358526" style="color: inherit; text-decoration: none;">+91 7888358526</a>
           </p>
-          <p style="margin-bottom: 4px; font-weight: bold; color: #fff;">Email Us:</p>
+          <p style="margin-bottom: 4px; font-weight: bold; color: rgba(255,255,255,0.6);">Email Us:</p>
           <p style="font-size: 18px; color: #fff; font-weight: 600; margin: 0;">
             <a href="mailto:raagnrhythm2026@gmail.com" style="color: inherit; text-decoration: none;">raagnrhythm2026@gmail.com</a>
           </p>
