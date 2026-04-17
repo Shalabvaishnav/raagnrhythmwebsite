@@ -1258,91 +1258,28 @@
 <div class="full-section" id="curriculum">
   <div class="inner">
     <h2 class="section-title reveal">Premium Curriculum</h2>
-    <div class="curriculum-tabs faculty-tabs reveal">
+    <div class="curriculum-tabs faculty-tabs reveal" id="curriculumTabs">
       <button class="tab-arrow">←</button>
-      <button class="tab-btn active">Vocals Carnatic</button>
-      <button class="tab-btn">Vocals Hindustani</button>
-      <button class="tab-btn">Vocals Western</button>
-      <button class="tab-btn">Instruments</button>
+      <button class="tab-btn active" data-track="carnatic">Vocals Carnatic</button>
+      <button class="tab-btn" data-track="hindustani">Vocals Hindustani</button>
+      <button class="tab-btn" data-track="western">Vocals Western</button>
+      <button class="tab-btn" data-track="instruments">Instruments</button>
       <button class="tab-arrow">→</button>
+    </div>
+
+    <!-- Instrument Sub-tabs (Initially Hidden) -->
+    <div class="curriculum-tabs faculty-tabs reveal" id="instrumentSubTabs" style="display: none; margin-top: -20px; transform: scale(0.9);">
+      <button class="tab-btn active" data-sub="bansuri">Bansuri</button>
+      <button class="tab-btn" data-sub="guitar">Guitar</button>
+      <button class="tab-btn" data-sub="harmonium">Harmonium</button>
+      <button class="tab-btn" data-sub="piano">Piano</button>
     </div>
     <div class="curriculum-intro reveal">
       <h3>The Four Levels</h3>
       <p>Tap any level to explore what your child will learn.</p>
     </div>
-    <div class="level-accordion reveal">
-      <div class="level-item open" onclick="toggleLevel(this)">
-        <div class="level-header">
-          <div class="level-num">1</div>
-          <div class="level-info"><h4>Foundation</h4><p>Beginner grades</p></div>
-          <span class="level-chevron">▾</span>
-        </div>
-        <div class="level-body">
-          <div class="level-body-inner">
-            <ul>
-              <li>Introduction to Swaras (Sa, Ri, Ga, Ma, Pa, Da, Ni)</li>
-              <li>Sarali Varisai — basic ascending/descending exercises</li>
-              <li>Introduction to Talas — Adi Tala (8 beats)</li>
-              <li>Purandaradasa Geethas — beginner compositions</li>
-              <li>Basic pitch matching and voice training</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="level-item" onclick="toggleLevel(this)">
-        <div class="level-header">
-          <div class="level-num">2</div>
-          <div class="level-info"><h4>Elementary</h4><p>Early grades</p></div>
-          <span class="level-chevron">▾</span>
-        </div>
-        <div class="level-body">
-          <div class="level-body-inner">
-            <ul>
-              <li>Janta Varisai and Daatu Varisai</li>
-              <li>Introduction to Gamakas (ornamentations)</li>
-              <li>Raga identification — Mayamalavagowla, Mohanam</li>
-              <li>Swarajathis and Varnams (basic)</li>
-              <li>Rhythm training — Roopaka and Misra Chapu talas</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="level-item" onclick="toggleLevel(this)">
-        <div class="level-header">
-          <div class="level-num">3</div>
-          <div class="level-info"><h4>Intermediate</h4><p>Middle grades</p></div>
-          <span class="level-chevron">▾</span>
-        </div>
-        <div class="level-body">
-          <div class="level-body-inner">
-            <ul>
-              <li>Advanced Varnams and Keerthanas (Musical Trinity)</li>
-              <li>Raga Alapana — structured improvisation</li>
-              <li>Neraval and Kalpana Swara basics</li>
-              <li>Theory of 72 Melakarta ragas</li>
-              <li>Stage performance preparation</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="level-item" onclick="toggleLevel(this)">
-        <div class="level-header">
-          <div class="level-num">4</div>
-          <div class="level-info"><h4>Advanced</h4><p>Performance grades</p></div>
-          <span class="level-chevron">▾</span>
-        </div>
-        <div class="level-body">
-          <div class="level-body-inner">
-            <ul>
-              <li>Full concert format — Varnam, Keerthanas, Ragam Tanam Pallavi</li>
-              <li>Manodharma Sangeetham (creative improvisation)</li>
-              <li>Advanced Tala systems — Khandachapu, Sankirna Chapu</li>
-              <li>Composition and original kriti writing</li>
-              <li>Professional concert preparation and critique</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div class="level-accordion reveal" id="levelAccordion">
+      <!-- Dynamic levels populating here -->
     </div>
   </div>
 </div>
@@ -1545,6 +1482,109 @@
       this.classList.add('active');
     });
   });
+
+  // ===== CURRICULUM LOGIC =====
+  const curData = {
+    carnatic: [
+      { t: "Foundation", s: "Beginner grades", c: ["Swaras Intro (Sa Ri Ga Ma Pa Da Ni)", "Sarali Varisai basic exercises", "Tala Intro — Adi Tala (8 beats)", "Purandaradasa Geethas", "Voice matching & Pitch stability"] },
+      { t: "Elementary", s: "Early grades", c: ["Janta Varisai and Daatu Varisai", "Gamakas (ornamentations) basics", "Raga Intro: Mayamalavagowla, Mohanam", "Swarajathis & Basic Varnams", "Roopaka and Misra Chapu talas"] },
+      { t: "Intermediate", s: "Middle grades", c: ["Advanced Varnams & Keerthanas", "Raga Alapana improvisation", "Neraval and Kalpana Swara intro", "Theory of 72 Melakarta ragas", "Concert flow preparation"] },
+      { t: "Advanced", s: "Performance grades", c: ["Full Concert Format mastery", "Manodharma Sangeetham", "Advanced Talas: Khanda/Sankirna", "Original Kriti & Composition writing"] }
+    ],
+    hindustani: [
+      { t: "Foundation", s: "Basics of Swar & Laya", c: ["Mastering Shuddha Swaras", "Basic Alankars (Paltas)", "Teental & Dadra basics", "Raag Bhupali & Durga Intro", "Vocal posture & breath culture"] },
+      { t: "Elementary", s: "Raga Structure", c: ["Advanced Paltas & dexterity", "Chota Khayal fundamentals", "Basic Taan patterns", "Jhaptaal & Rupak cycles", "Raag Yaman & Kafi study"] },
+      { t: "Intermediate", s: "Improvisation", c: ["Bada Khayal (Slow tempo) intro", "Raag expansion (Badhat) skills", "Complex Layakari variations", "Raag Bageshri & Bhimpalasi", "Tanpura playing & tuning"] },
+      { t: "Advanced", s: "Stage Performance", c: ["Full Raag presentation (Alap to Taan)", "Thumri & Tarana styles", "Vilambit Khayal mastery", "Aesthetics of specific Gharanas", "Performance stage presence"] }
+    ],
+    western: [
+      { t: "Foundation", s: "Voice & Pitch", c: ["Correct breathing & posture", "Major scales & intervals", "Pitch matching foundations", "Simple popular & folk melodies", "Intro to Music Theory (Staff)"] },
+      { t: "Elementary", s: "Technique", c: ["Vocal range expansion", "Vibrato & control basics", "Diction & articulation focus", "Diaphragmatic support skills", "Grade 1-2 repertoire training"] },
+      { t: "Intermediate", s: "Expression", c: ["Harmony & part-singing", "Advanced riffs & runs", "Performance dynamics & tone", "Trinity/ABRSM Grade 3-5 prep", "Intermediate sight-singing"] },
+      { t: "Advanced", s: "Professionalism", c: ["Style specialization (Pop/Jazz)", "Sophisticated improv & riffs", "Professional performance set", "Grade 6-8 certificate level", "Career & platform readiness"] }
+    ],
+    bansuri: [
+      { t: "Foundation", s: "Breath & Note", c: ["Embouchure & blowing stability", "Holding posture & fingering", "Basic Saptak & Shuddha Swaras", "Introductory Alankars", "C-Natural scale grounding"] },
+      { t: "Elementary", s: "Finger Dexterity", c: ["Speed Alankars & crossovers", "Meend (gliding) techniques", "Lower & Upper octave reaches", "Basis of Teental in flute", "Raag Yaman fingerings"] },
+      { t: "Intermediate", s: "Ornaments", c: ["Murki, Khatka & Gamakas", "Complex Raga chalans", "Bansuri specific expressions", "Folk & semi-classical tunes", "Rhythmic syncopations"] },
+      { t: "Advanced", s: "Concert Flute", c: ["Advanced Alap/Jod/Jhalla", "High-speed Taan mastery", "Classical concert format", "Tailoring flute to fusion", "Performance recording setup"] }
+    ],
+    guitar: [
+      { t: "Foundation", s: "Chords & Rhythm", c: ["Tuning & string knowledge", "Basic Open Chords (G/C/D/Em)", "Standard 4/4 strumming patterns", "Reading Tablature & Diagrams", "Simple song accompaniment"] },
+      { t: "Elementary", s: "Transition", c: ["Barre Chords (F/B) mastery", "Major & Minor Scale patterns", "Hammer-ons & Pull-offs", "Introduction to Power Chords", "Rhythm variations (8th/16th)"] },
+      { t: "Intermediate", s: "Style & Theory", c: ["Fingerstyle & Arpeggiation", "Fretboard Theory & Intervals", "Pentatonic soloing basics", "Alternate picking exercises", "Intro to Modes"] },
+      { t: "Advanced", s: "Virtuosity", c: ["Advanced soloing & shredding", "Complex Fusion/Jazz chords", "Hybrid picking & Tapping", "Composition & Songwriting", "Full performance readiness"] }
+    ],
+    harmonium: [
+      { t: "Foundation", s: "Bellows & Keys", c: ["Bellows control & air pressure", "Correct finger placement", "Simple melodies & Bhajans", "Understanding Saptaks (Octaves)", "Introductory Alankars"] },
+      { t: "Elementary", s: "Dexterity", c: ["Speed Paltas on keyboard", "Basic Vocal accompaniment", "Teental & Dadra rhythm matching", "Introduction to Raags", "Harmonium solo nuances"] },
+      { t: "Intermediate", s: "Accompaniment", c: ["Advanced Vocal following", "Ghazal & Thumri accompaniment", "Complex ornamentation keys", "Transposing and Scale shifts", "Intermediate Raga patterns"] },
+      { t: "Advanced", s: "Solo Mastery", c: ["Fast Taan on Harmonium", "Complex Bellows modulation", "Classical solo presentation", "Fusing Indian & Modern styles", "Stage performance readiness"] }
+    ],
+    piano: [
+      { t: "Foundation", s: "Keyboard Basics", c: ["Keyboard geography & posture", "Reading Treble/Bass Clef", "C Major Scale (Hands Separate)", "Basic Rhythm & Notation", "Simple two-hand melodies"] },
+      { t: "Elementary", s: "Coordination", c: ["Hands Together coordination", "Basic Triads & Inversions", "Major/Minor G & D scales", "Dynamic control (p, f, mf)", "Grade 1-2 Classical themes"] },
+      { t: "Intermediate", s: "Performance", c: ["Scale & Arpeggio fluency", "Syncopated & Complex rhythms", "Introduction to Sight-reading", "Grade 3-5 standard repertoire", "Developing musical expression"] },
+      { t: "Advanced", s: "Classical & Pop", c: ["Advanced Sonatas & Etudes", "Counterpoint & Polyphony", "Jazz & Contemporary voicing", "Grade 6-8 Trinity/ABRSM prep", "Diploma & Performance level"] }
+    ]
+  };
+
+  function renderCurriculum(track) {
+    const accordion = document.getElementById('levelAccordion');
+    if(!accordion) return;
+    
+    // Determine the data set
+    const data = curData[track] || curData.carnatic;
+    
+    accordion.innerHTML = data.map((lvl, idx) => `
+      <div class="level-item ${idx === 0 ? 'open' : ''}" onclick="toggleLevel(this)">
+        <div class="level-header">
+          <div class="level-num">${idx + 1}</div>
+          <div class="level-info"><h4>${lvl.t}</h4><p>${lvl.s}</p></div>
+          <span class="level-chevron">▾</span>
+        </div>
+        <div class="level-body">
+          <div class="level-body-inner">
+            <ul>
+              ${lvl.c.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    
+    // Update scroll reveal for new items
+    const reveals = accordion.querySelectorAll('.level-item');
+    reveals.forEach(r => observer.observe(r));
+  }
+
+  // Handle Tab Switching
+  document.querySelectorAll('#curriculumTabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const track = this.getAttribute('data-track');
+      const subTabs = document.getElementById('instrumentSubTabs');
+      
+      if (track === 'instruments') {
+        subTabs.style.display = 'flex';
+        renderCurriculum('bansuri'); // Default instrument
+        subTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        subTabs.querySelector('[data-sub="bansuri"]').classList.add('active');
+      } else {
+        subTabs.style.display = 'none';
+        renderCurriculum(track);
+      }
+    });
+  });
+
+  document.querySelectorAll('#instrumentSubTabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const sub = this.getAttribute('data-sub');
+      renderCurriculum(sub);
+    });
+  });
+
+  // Initial Load
+  renderCurriculum('carnatic');
 
   // ===== ACTIVE NAV =====
   const sections = document.querySelectorAll('[id]');
