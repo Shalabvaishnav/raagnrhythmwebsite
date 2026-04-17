@@ -1160,9 +1160,29 @@
   }
 
   @media (max-width: 600px) {
-    .faculty-grid { grid-template-columns: repeat(2, 1fr); }
-    nav { display: none; } /* simplified for mobile */
-    .stats-row { gap: 20px; }
+    .faculty-grid { grid-template-columns: repeat(1, 1fr); }
+    .nav-link { display: none; } 
+    .top-navigation-container { 
+      padding: 10px 15px;
+      justify-content: space-between;
+      width: 100%;
+    }
+    nav { 
+      width: auto; 
+      gap: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+    .nav-cta {
+      padding: 8px 16px;
+      font-size: 11px;
+    }
+    .top-bar-theme-toggle {
+      transform: scale(0.9);
+    }
+    .stats-row { gap: 20px; flex-wrap: wrap; justify-content: center; }
   }
 
   /* ===== SCROLL ANIMATIONS ===== */
