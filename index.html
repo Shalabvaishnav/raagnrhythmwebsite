@@ -1275,8 +1275,8 @@
       <button class="tab-btn" data-sub="piano">Piano</button>
     </div>
     <div class="curriculum-intro reveal">
-      <h3>The Four Levels</h3>
-      <p>Tap any level to explore what your child will learn.</p>
+      <h3 id="curriculumTitle">Vocals Carnatic</h3>
+      <p id="curriculumSubtitle">4 levels — Tap any level to explore what your child will learn.</p>
     </div>
     <div class="level-accordion reveal" id="levelAccordion">
       <!-- Dynamic levels populating here -->
@@ -1529,12 +1529,17 @@
     ]
   };
 
-  function renderCurriculum(track) {
+  function renderCurriculum(track, displayName) {
     const accordion = document.getElementById('levelAccordion');
+    const titleEl = document.getElementById('curriculumTitle');
+    const subtitleEl = document.getElementById('curriculumSubtitle');
     if(!accordion) return;
     
     // Determine the data set
     const data = curData[track] || curData.carnatic;
+    
+    if(titleEl) titleEl.innerText = displayName || "Vocals Carnatic";
+    if(subtitleEl) subtitleEl.innerText = `${data.length} levels — Tap any level to explore what your child will learn.`;
     
     accordion.innerHTML = data.map((lvl, idx) => `
       <div class="level-item ${idx === 0 ? 'open' : ''}" onclick="toggleLevel(this)">
@@ -1562,16 +1567,17 @@
   document.querySelectorAll('#curriculumTabs .tab-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const track = this.getAttribute('data-track');
+      const name = this.innerText;
       const subTabs = document.getElementById('instrumentSubTabs');
       
       if (track === 'instruments') {
         subTabs.style.display = 'flex';
-        renderCurriculum('bansuri'); // Default instrument
+        renderCurriculum('bansuri', 'Bansuri'); // Default instrument
         subTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         subTabs.querySelector('[data-sub="bansuri"]').classList.add('active');
       } else {
         subTabs.style.display = 'none';
-        renderCurriculum(track);
+        renderCurriculum(track, name);
       }
     });
   });
@@ -1579,12 +1585,13 @@
   document.querySelectorAll('#instrumentSubTabs .tab-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const sub = this.getAttribute('data-sub');
-      renderCurriculum(sub);
+      const name = this.innerText;
+      renderCurriculum(sub, name);
     });
   });
 
   // Initial Load
-  renderCurriculum('carnatic');
+  renderCurriculum('carnatic', 'Vocals Carnatic');
 
   // ===== ACTIVE NAV =====
   const sections = document.querySelectorAll('[id]');
