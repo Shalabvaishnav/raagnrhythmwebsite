@@ -182,7 +182,9 @@
     flex-direction: column;
     gap: 16px;
     position: absolute;
-    left: -40px; /* Offset to the left to match the arrows on the right conceptually */
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 10;
     align-items: center;
     background: var(--glass-bg);
@@ -200,7 +202,7 @@
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
   }
 
   .theme-dot.western {
@@ -214,7 +216,7 @@
   }
 
   .theme-dot.active {
-    border-color: #fff;
+    border-color: rgba(255, 255, 255, 1);
     transform: scale(1.2);
   }
 
@@ -224,6 +226,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-left: 70px; /* Provides 16px+ space from the vertical toggle */
   }
 
   .hero-carousel-side {
@@ -1062,8 +1065,8 @@
         <h1 class="hero-brand" style="margin: 0; line-height: 1.15;">Raag n<br>Rhythm</h1>
       </div>
       
-      <h2 class="hero-title">Experience the Fusion<br>of Dual Traditions</h2>
-      <p class="hero-tagline">Master Carnatic precision, explore Western contemporary hits, and create your unique fusion style in an immersive digital environment.</p>
+      <h2 class="hero-title" style="margin-top: 10px; font-size: 40px; margin-bottom: 24px;">Your trusted companion and mentor in your music journey.</h2>
+      <p class="hero-tagline">Where raag meets rhythm, and tradition blends with modern sound to shape your unique voice. From your first note to confident performance, we guide you with structure, soul, and clarity.</p>
     </div>
 
     <!-- Right Side: 3D Character Carousel -->
