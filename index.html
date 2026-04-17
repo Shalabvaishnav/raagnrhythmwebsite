@@ -177,15 +177,21 @@
     position: relative;
   }
 
-  .vertical-theme-toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  .theme-sidebar-wrapper {
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vertical-theme-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     align-items: center;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -1050,10 +1056,19 @@
 <!-- HERO -->
 <div id="hero">
   <div class="hero-content-wrapper">
-    <!-- Vertical Theme Toggle -->
-    <div class="vertical-theme-toggle">
-      <div class="theme-dot western active" title="Western Theme" onclick="setTheme('western')"></div>
-      <div class="theme-dot indian" title="Indian Theme" onclick="setTheme('indian')"></div>
+    <!-- Vertical Theme Toggle with Curved Text -->
+    <div class="theme-sidebar-wrapper">
+      <svg width="60" height="40" viewBox="0 0 60 40" style="margin-bottom: -4px; pointer-events: none;">
+        <!-- Radius matches the 22px border radius of the pill + 4px gap -->
+        <path id="themeCurve" d="M 4 40 A 26 26 0 0 1 56 40" fill="transparent" />
+        <text>
+          <textPath href="#themeCurve" startOffset="50%" text-anchor="middle" fill="rgba(255,255,255,0.45)" style="font-size: 11px; font-family: 'Poppins', sans-serif; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;">Theme</textPath>
+        </text>
+      </svg>
+      <div class="vertical-theme-toggle">
+        <div class="theme-dot western active" title="Western Theme" onclick="setTheme('western')"></div>
+        <div class="theme-dot indian" title="Indian Theme" onclick="setTheme('indian')"></div>
+      </div>
     </div>
 
     <!-- Left Side: Text and Branding -->
