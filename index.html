@@ -644,6 +644,44 @@
     box-shadow: 0 12px 40px 0 rgba(0,0,0,0.3);
   }
 
+  .faculty-card-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px 20px;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .faculty-card:hover .faculty-card-details {
+    transform: translateY(0);
+  }
+
+  .faculty-card-details h4 {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 800;
+  }
+
+  .faculty-card-details p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+
   .faculty-card-inner {
     width: 100%;
     height: 100%;
@@ -1450,10 +1488,26 @@
     </div>
     <div class="faculty-grid reveal">
       <div class="faculty-card">
-        <img src="assets/characters/Faculty/Flow_202604172348.jpeg" alt="Faculty member" style="width:100%; height:100%; object-fit:cover;">
+        <img src="assets/characters/Faculty/Flow_202604172348.jpeg" alt="AISHWARYA UNNI" style="width:100%; height:100%; object-fit:cover;">
+        <div class="faculty-card-details">
+          <h4>AISHWARYA UNNI</h4>
+          <p>10+ years experience</p>
+        </div>
       </div>
-      <div class="faculty-card"><div class="faculty-card-inner"></div></div>
-      <div class="faculty-card"><div class="faculty-card-inner"></div></div>
+      <div class="faculty-card">
+        <div class="faculty-card-inner"></div>
+        <div class="faculty-card-details">
+          <h4>Faculty Name</h4>
+          <p>Expertise Level</p>
+        </div>
+      </div>
+      <div class="faculty-card">
+        <div class="faculty-card-inner"></div>
+        <div class="faculty-card-details">
+          <h4>Faculty Name</h4>
+          <p>Expertise Level</p>
+        </div>
+      </div>
     </div>
     <div class="coming-soon-box reveal" style="margin-top:32px;">
       <div style="font-size:40px;">🎓</div>
