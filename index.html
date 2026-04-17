@@ -102,12 +102,18 @@
   }
 
   /* ===== NAVBAR ===== */
-  nav {
+  .top-navigation-container {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  nav {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
@@ -177,35 +183,39 @@
     position: relative;
   }
 
-  .theme-sidebar-wrapper {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .vertical-theme-toggle {
+  .top-bar-theme-toggle {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     align-items: center;
+    justify-content: center;
+    gap: 2px;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid var(--glass-border);
     border-radius: 30px;
-    padding: 12px 10px;
+    padding: 0 16px;
     box-shadow: var(--glass-glow);
   }
 
+  .theme-label-top {
+    font-size: 9px;
+    font-family: var(--font-body);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    font-weight: 700;
+  }
+
+  .theme-dots {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
   .theme-dot {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -233,7 +243,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 100px; /* 68px toggle wrapper + 32px gap */
   }
 
   .hero-carousel-side {
@@ -1044,28 +1053,30 @@
 <div class="theme-overlay" id="themeOverlay"></div>
 
 <!-- NAVBAR -->
-<nav>
-  <a href="#hero" class="nav-link active">Home</a>
-  <a href="#about" class="nav-link">About</a>
-  <a href="#faculty" class="nav-link">Courses</a>
-  <a href="#products" class="nav-link">Products</a>
-  <a href="resources/" class="nav-link">Resources</a>
-  <a href="#testimonials" class="nav-link">Contact Us</a>
-  <button class="nav-cta">Join the Academy</button>
-</nav>
+<div class="top-navigation-container">
+  <nav>
+    <a href="#hero" class="nav-link active">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#faculty" class="nav-link">Courses</a>
+    <a href="#products" class="nav-link">Products</a>
+    <a href="resources/" class="nav-link">Resources</a>
+    <a href="#testimonials" class="nav-link">Contact Us</a>
+    <button class="nav-cta">Join the Academy</button>
+  </nav>
+
+  <!-- Theme Toggle in Navigation -->
+  <div class="top-bar-theme-toggle">
+    <div class="theme-label-top">Theme</div>
+    <div class="theme-dots">
+      <div class="theme-dot western active" title="Western Theme" onclick="setTheme('western')"></div>
+      <div class="theme-dot indian" title="Indian Theme" onclick="setTheme('indian')"></div>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <div id="hero">
   <div class="hero-content-wrapper">
-    <!-- Vertical Theme Toggle with Text Left -->
-    <div class="theme-sidebar-wrapper">
-      <div style="font-size: 11px; font-family: 'Poppins', sans-serif; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.45); writing-mode: vertical-rl; text-orientation: upright; font-weight: 600;">Theme</div>
-      <div class="vertical-theme-toggle">
-        <div class="theme-dot western active" title="Western Theme" onclick="setTheme('western')"></div>
-        <div class="theme-dot indian" title="Indian Theme" onclick="setTheme('indian')"></div>
-      </div>
-    </div>
-
     <!-- Left Side: Text and Branding -->
     <div class="hero-text-side reveal visible">
 
