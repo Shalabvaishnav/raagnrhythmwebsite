@@ -1217,6 +1217,16 @@
   }
 
   @media (max-width: 600px) {
+    #hero {
+      justify-content: flex-start !important;
+      padding-top: 180px !important; /* Move content near top */
+    }
+    .hero-logo img {
+      height: 132px !important; /* 20% smaller than 165px */
+    }
+    .hero-brand {
+      font-size: 28px !important;
+    }
     .product-card { grid-template-columns: 1fr; }
     .product-image-panel { height: 350px; }
     .hamburger { display: flex !important; }
