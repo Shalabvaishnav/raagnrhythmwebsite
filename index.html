@@ -1418,12 +1418,22 @@
       background: #FFC304;
       color: #000;
       text-decoration: none;
-      font-size: 12px;
-      font-weight: 800;
-      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 400; /* Regular weight as requested */
+      padding: 10px 18px;
       border-radius: 8px;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+    .mobile-snackbar.dark-text {
+      background: rgba(0, 0, 0, 0.1);
+      border-color: rgba(0,0,0,0.1);
+    }
+    .mobile-snackbar.dark-text .snackbar-header {
+      color: #1a1a1a;
+    }
+    .mobile-snackbar.dark-text .snackbar-sub {
+      color: rgba(0,0,0,0.6);
     }
   }
 
@@ -1550,7 +1560,7 @@
       </p>
       
       <!-- GET IN TOUCH CTA -->
-      <a href="#contact" class="hero-cta" style="text-decoration: none; font-size: 14px; letter-spacing: 0.2em; color: #FFC304; text-transform: uppercase; font-weight: 400; display: inline-flex; align-items: center; gap: 6px; margin-top: 0;">
+      <a href="#contact" class="hero-cta" id="mainHeroCTA" style="text-decoration: none; font-size: 14px; letter-spacing: 0.2em; color: #FFC304; text-transform: uppercase; font-weight: 400; display: inline-flex; align-items: center; gap: 6px; margin-top: 0;">
         GET IN TOUCH
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
@@ -1931,8 +1941,11 @@
     }
   });
 
-  // 2. Snackbar Trigger using IntersectionObserver
-  const heroObserver = new IntersectionObserver((entries) => {
+  // 2. Snackbar Trigger observing the Hero CTA
+  const heroCTA = document.getElementById('mainHeroCTA');
+  const footer = document.querySelector('.footer-copy');
+
+  const snackbarObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (window.innerWidth <= 600) {
         if (!entry.isIntersecting) {
@@ -1942,9 +1955,22 @@
         }
       }
     });
+  }, { threshold: 0 });
+
+  if (heroCTA) snackbarObserver.observe(heroCTA);
+
+  // 3. Dark Text Trigger (when overlapping footer/white areas)
+  const darkTriggerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        snackbar.classList.add('dark-text');
+      } else {
+        snackbar.classList.remove('dark-text');
+      }
+    });
   }, { threshold: 0.1 });
 
-  if (hero) heroObserver.observe(hero);
+  if (footer) darkTriggerObserver.observe(footer);
 
   // Theme Toggle logic
   function setTheme(theme) {
