@@ -1098,13 +1098,69 @@
   }
 
   .footer-copy {
-    background: var(--footer-bg);
-    border-top: 1px solid rgba(0,0,0,0.08);
-    text-align: center;
-    padding: 24px;
+    background: var(--footer-accent);
+    color: #fff;
     font-size: 13px;
-    color: rgba(0,0,0,0.35);
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* ===== WHITE THEME OVERRIDES ===== */
+  .white-theme-section {
+    background: var(--footer-bg) !important;
     transition: background var(--transition);
+  }
+  .white-theme-section .section-title,
+  .white-theme-section .curriculum-intro h3 {
+    color: var(--footer-text);
+  }
+  .white-theme-section .curriculum-intro p {
+    color: var(--footer-sub);
+    opacity: 0.8;
+  }
+  .white-theme-section .tab-btn {
+    background: rgba(0,0,0,0.05);
+    border-color: rgba(0,0,0,0.1);
+    color: var(--footer-text);
+  }
+  .white-theme-section .tab-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .white-theme-section .level-body {
+    background: rgba(0,0,0,0.03);
+  }
+  .white-theme-section .level-body-inner {
+    color: var(--footer-text);
+  }
+  .white-theme-section .level-num {
+    color: #fff;
+  }
+  .white-theme-section .view-details-link {
+    color: var(--accent) !important;
+  }
+  .white-theme-section .tab-arrow {
+    background: rgba(0,0,0,0.05);
+    border-color: rgba(0,0,0,0.1);
+    color: var(--footer-text);
+  }
+  .white-theme-section .tab-arrow:hover {
+    background: rgba(0,0,0,0.1);
+  }
+
+  /* ===== NAV SCROLLED LIGHT ===== */
+  .top-navigation-container.nav-dark nav {
+    background: rgba(0,0,0,0.08);
+    border-color: rgba(0,0,0,0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .top-navigation-container.nav-dark .nav-link {
+    color: #1a0000;
+  }
+  .top-navigation-container.nav-dark .hamburger span {
+    background: #1a0000;
   }
 
   /* ===== THEME TRANSITION OVERLAY ===== */
@@ -1308,7 +1364,7 @@
       </p>
       
       <!-- GET IN TOUCH CTA -->
-      <a href="#contact" style="text-decoration: none; font-size: 15px; letter-spacing: 0.2em; color: #FFC304; text-transform: uppercase; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; margin-top: 0;">
+      <a href="#contact" style="text-decoration: none; font-size: 15px; letter-spacing: 0.2em; color: #FFC304; text-transform: uppercase; font-weight: 400; display: inline-flex; align-items: center; gap: 8px; margin-top: 0;">
         GET IN TOUCH
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
@@ -1406,16 +1462,20 @@
 
 <!-- FACULTY -->
 <!-- CURRICULUM -->
-<div class="full-section" id="curriculum">
+<div class="full-section white-theme-section" id="curriculum">
   <div class="inner">
     <h2 class="section-title reveal">Premium Curriculum</h2>
     <div class="curriculum-tabs faculty-tabs reveal" id="curriculumTabs">
-      <button class="tab-arrow">←</button>
+      <button class="tab-arrow" id="prevTrack" style="padding: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
       <button class="tab-btn active" data-track="carnatic">Vocals Carnatic</button>
       <button class="tab-btn" data-track="hindustani">Vocals Hindustani</button>
       <button class="tab-btn" data-track="western">Vocals Western</button>
       <button class="tab-btn" data-track="instruments">Instruments</button>
-      <button class="tab-arrow">→</button>
+      <button class="tab-arrow" id="nextTrack" style="padding: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
     </div>
 
     <!-- Instrument Sub-tabs (Initially Hidden) -->
@@ -1431,6 +1491,14 @@
     </div>
     <div class="level-accordion reveal" id="levelAccordion">
       <!-- Dynamic levels populating here -->
+    </div>
+
+    <!-- VIEW MORE DETAILS CTA -->
+    <div class="reveal" style="display: flex; justify-content: center; margin-top: 40px;">
+      <a href="resources/" class="view-details-link" style="text-decoration: none; font-size: 15px; letter-spacing: 0.2em; color: #FFC304; text-transform: uppercase; font-weight: 800; display: inline-flex; align-items: center; gap: 8px;">
+        View more details
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
     </div>
   </div>
 </div>
@@ -1804,17 +1872,47 @@
   // Initial Load
   renderCurriculum('carnatic', 'Vocals Carnatic');
 
-  // ===== ACTIVE NAV =====
+  // ===== ACTIVE NAV & SCROLL THEME =====
   const sections = document.querySelectorAll('[id]');
+  const navContainer = document.querySelector('.top-navigation-container');
+  const curriculumSection = document.getElementById('curriculum');
+
   window.addEventListener('scroll', () => {
     let current = '';
+    const scrollPos = window.scrollY;
+
     sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      if (scrollPos >= s.offsetTop - 80) current = s.id;
     });
+
     document.querySelectorAll('.nav-link').forEach(l => {
       l.classList.remove('active');
       if (l.getAttribute('href') === '#' + current) l.classList.add('active');
     });
+
+    // Toggle Nav Dark Theme based on Curriculum section
+    if (curriculumSection) {
+      const rect = curriculumSection.getBoundingClientRect();
+      // If curriculum section is under the nav bar (typical height ~80px)
+      if (rect.top <= 80 && rect.bottom >= 80) {
+        navContainer.classList.add('nav-dark');
+      } else {
+        navContainer.classList.remove('nav-dark');
+      }
+    }
+  });
+
+  // ===== CURRICULUM ARROW LOGIC =====
+  const trackBtns = Array.from(document.querySelectorAll('#curriculumTabs .tab-btn'));
+  document.getElementById('prevTrack')?.addEventListener('click', () => {
+    let curIdx = trackBtns.findIndex(b => b.classList.contains('active'));
+    let prevIdx = (curIdx - 1 + trackBtns.length) % trackBtns.length;
+    trackBtns[prevIdx].click();
+  });
+  document.getElementById('nextTrack')?.addEventListener('click', () => {
+    let curIdx = trackBtns.findIndex(b => b.classList.contains('active'));
+    let nextIdx = (curIdx + 1) % trackBtns.length;
+    trackBtns[nextIdx].click();
   });
 
   // ===== 3D CAROUSEL LOGIC =====
