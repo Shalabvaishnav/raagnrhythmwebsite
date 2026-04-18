@@ -831,7 +831,7 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 540px; /* Consistent fixed height */
+    height: 540px !important; /* Forces consistent height on desktop */
   }
 
   .product-image-panel {
@@ -1209,8 +1209,11 @@
     .testimonials-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .contact-info { padding-right: 0; }
-    .product-card { grid-template-columns: 1fr; }
-    .product-image-panel { height: 350px; }
+    .product-card { 
+      grid-template-columns: 1fr; 
+      height: 820px !important; /* Fixed height for mobile to match Tanpura */
+    }
+    .product-image-panel { height: 320px !important; }
     nav { padding: 8px 12px; gap: 2px; }
     .nav-link { font-size: 10px; padding: 5px 8px; }
     .hero-brand { font-size: 32px; }
@@ -1278,8 +1281,11 @@
     .carousel-nav .nav-arrow.up { transform: rotate(-90deg); }
     .carousel-nav .nav-arrow.down { transform: rotate(-90deg); }
     .nav-arrow:hover { transform: scale(1.1) rotate(-90deg) !important; }
-    .product-card { grid-template-columns: 1fr; }
-    .product-image-panel { height: 350px; }
+    .product-card { 
+      grid-template-columns: 1fr; 
+      height: 820px !important; /* Consistent height */
+    }
+    .product-image-panel { height: 300px !important; }
     .hamburger { display: flex !important; }
     .nav-link { display: none; } 
     .top-navigation-container { 
