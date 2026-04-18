@@ -1569,16 +1569,49 @@
 <div style="padding: 100px 20px; transition: background var(--transition);" id="products">
   <div style="max-width:1100px;margin:0 auto;">
     <h2 class="section-title reveal">Our Products</h2>
-    <div class="product-tabs reveal">
-      <button class="tab-btn active">Apps</button>
-      <button class="tab-btn">Other Products</button>
+    <div class="product-selector reveal" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
+      <button class="tab-arrow left" id="productPrev">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="product-tabs" id="productTabs" style="display: flex; gap: 8px; overflow: hidden; white-space: nowrap; scroll-behavior: smooth; margin-bottom:0;">
+        <button class="tab-btn active" data-cat="apps">Apps</button>
+        <button class="tab-btn" data-cat="others">Other Products</button>
+      </div>
+      <button class="tab-arrow right" id="productNext">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
     </div>
-    <div class="app-tabs reveal">
-      <button class="app-tab active">Tanpura</button>
-      <button class="app-tab">Thalam App</button>
-      <button class="app-tab">Tuner</button>
-      <button class="app-tab">Harmonium</button>
-      <button class="app-tab">RaagNrhythm App</button>
+
+    <!-- APP SUB-TABS -->
+    <div class="app-selector reveal" id="appSelector" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px;">
+      <button class="tab-arrow left" id="appPrev">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="app-tabs" id="appTabs" style="display: flex; gap: 8px; overflow: hidden; white-space: nowrap; scroll-behavior: smooth; margin-bottom:0;">
+        <button class="app-tab active" data-prod="tanpura">Tanpura</button>
+        <button class="app-tab" data-prod="thalam">Thalam App</button>
+        <button class="app-tab" data-prod="tuner">Tuner</button>
+        <button class="app-tab" data-prod="harmonium">Harmonium</button>
+        <button class="app-tab" data-prod="rnr">RaagNrhythm App</button>
+      </div>
+      <button class="tab-arrow right" id="appNext">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    <!-- OTHER PRODUCTS SUB-TABS -->
+    <div class="other-selector reveal" id="otherSelector" style="display: none; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px;">
+      <button class="tab-arrow left" id="otherPrev">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="app-tabs" id="otherTabs" style="display: flex; gap: 8px; overflow: hidden; white-space: nowrap; scroll-behavior: smooth; margin-bottom:0;">
+        <button class="app-tab active" data-prod="handpan">Handpan</button>
+        <button class="app-tab" data-prod="keyboard">Keyboard</button>
+        <button class="app-tab" data-prod="ukulele">Ukulele</button>
+      </div>
+      <button class="tab-arrow right" id="otherNext">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
     </div>
     <div class="product-card reveal">
       <div class="product-image-panel">
@@ -2030,6 +2063,112 @@
     // Apply slight 3D rotation
     stack.style.transform = `rotateY(${xOffset}deg) rotateX(${-yOffset}deg)`;
   });
+
+  // ===== PRODUCT LOGIC =====
+  const prodData = {
+    tanpura: { title: "The Maestro Tanpura", sub: "Digital Music Companion", desc: "A simple and reliable Tanpura app designed to stay in perfect pitch during practice. No Ads and interruptions. High-fidelity samples.", img: "assets/tanpura_app.png", features: ["No Ads and interruptions", "Accurate & Stable Sound", "Easy Pitch Control", "Modern, Sleek Design"] },
+    thalam: { title: "Thalam App", sub: "Rhythm Perfected", desc: "Master complex Carnatic tala with visual indicators and high-quality percussion guide. Perfect for students and performers.", img: "assets/thalam_app.png", features: ["Visual beat counter", "Multiple Tala variations", "Adjustable Tempo (BPM)", "Practice Mode"] },
+    tuner: { title: "Vocal Tuner", sub: "Find Your Pitch", desc: "A precision tuner designed specifically for vocalists and acoustic instruments common in Indian Classical music.", img: "assets/tuner_app.png", features: ["Real-time pitch tracking", "Scale reference tones", "Noise cancellation", "Beginner friendly"] },
+    harmonium: { title: "Digital Harmonium", sub: "Practice Anywhere", desc: "Authentic harmonium bellows feel and keyboard response on your device. Perfect for riyaz on the move.", img: "assets/harmonium_app.png", features: ["Bellows sensitivity", "Full octave range", "Authentic recording", "Chord support"] },
+    rnr: { title: "RaagNrhythm App", sub: "All-in-One Academy", desc: "Access your lessons, resources, and community workshops all in one place. Your digital link to the academy.", img: "assets/rnr_app.png", features: ["Course tracker", "Live session links", "Practice logs", "Resource library"] },
+    handpan: { title: "Professional Handpan", sub: "Ethereal Sounds", desc: "Explore our range of Nitrided and Stainless steel Handpans tuned to perfection for meditation and performance.", img: "assets/handpan.png", features: ["High-grade steel", "Sustain mastery", "Protective case included", "10-year tuning warranty"] },
+    keyboard: { title: "Learner Keyboards", sub: "Start Your Journey", desc: "Curated selection of keyboards perfect for beginners at our academy, balancing quality and affordability.", img: "assets/keyboard.png", features: ["Touch sensitive keys", "Built-in rhythms", "Headphone support", "Special student pricing"] },
+    ukulele: { title: "Music Academy Ukulele", sub: "Small Size, Big Sound", desc: "Hand-picked ukuleles for our younger students and hobbyists wanting a portable, fun instrument.", img: "assets/ukulele.png", features: ["Quality tonewood", "Gig bag included", "Tuning guide", "Online setup video"] }
+  };
+
+  function renderProduct(id) {
+    const data = prodData[id];
+    if(!data) return;
+    const card = document.querySelector('.product-card');
+    card.innerHTML = `
+      <div class="product-image-panel">
+        <div style="position: absolute; top: 32px; bottom: 32px; left: 32px; right: 32px; border: 2px solid rgba(255,255,255,0.4); border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.5);">
+          <img src="${data.img}" alt="${data.title}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+        </div>
+      </div>
+      <div class="product-info">
+        <h3>${data.title}</h3>
+        <div class="product-subtitle">${data.sub}</div>
+        <p>${data.desc}</p>
+        <ul class="feature-list">
+          ${data.features.map(f => `<li><strong>Highlight</strong> ${f}</li>`).join('')}
+        </ul>
+        <button class="download-btn">Coming soon...</button>
+      </div>
+    `;
+    const reveals = card.querySelectorAll('h3, .product-subtitle, p, ul, button, img');
+    reveals.forEach(r => observer.observe(r));
+  }
+
+  function scrollTabs(id, amount) {
+    document.getElementById(id).scrollBy({ left: amount, behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('#productTabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const cat = this.getAttribute('data-cat');
+      document.querySelectorAll('#productTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      const appSel = document.getElementById('appSelector');
+      const otherSel = document.getElementById('otherSelector');
+      
+      if(cat === 'apps') {
+        appSel.style.display = 'flex';
+        otherSel.style.display = 'none';
+        renderProduct('tanpura');
+        document.querySelectorAll('#appTabs .app-tab').forEach(b => b.classList.remove('active'));
+        document.querySelector('#appTabs .app-tab[data-prod="tanpura"]').classList.add('active');
+      } else {
+        appSel.style.display = 'none';
+        otherSel.style.display = 'flex';
+        renderProduct('handpan');
+        document.querySelectorAll('#otherTabs .app-tab').forEach(b => b.classList.remove('active'));
+        document.querySelector('#otherTabs .app-tab[data-prod="handpan"]').classList.add('active');
+      }
+    });
+  });
+
+  document.querySelectorAll('.app-tabs .app-tab').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const prod = this.getAttribute('data-prod');
+      const parent = this.parentElement;
+      parent.querySelectorAll('.app-tab').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      renderProduct(prod);
+    });
+  });
+
+  // Cycle Category Arrows
+  const catBtns = Array.from(document.querySelectorAll('#productTabs .tab-btn'));
+  document.getElementById('productPrev')?.addEventListener('click', () => {
+    let curIdx = catBtns.findIndex(b => b.classList.contains('active'));
+    let prevIdx = (curIdx - 1 + catBtns.length) % catBtns.length;
+    catBtns[prevIdx].click();
+  });
+  document.getElementById('productNext')?.addEventListener('click', () => {
+    let curIdx = catBtns.findIndex(b => b.classList.contains('active'));
+    let nextIdx = (curIdx + 1) % catBtns.length;
+    catBtns[nextIdx].click();
+  });
+
+  // Cycle App Arrows
+  function addCycleLogic(prevId, nextId, tabClassName) {
+    document.getElementById(prevId)?.addEventListener('click', () => {
+      const btns = Array.from(document.querySelectorAll(`.${tabClassName} .app-tab`));
+      let curIdx = btns.findIndex(b => b.classList.contains('active'));
+      let prevIdx = (curIdx - 1 + btns.length) % btns.length;
+      btns[prevIdx].click();
+    });
+    document.getElementById(nextId)?.addEventListener('click', () => {
+      const btns = Array.from(document.querySelectorAll(`.${tabClassName} .app-tab`));
+      let curIdx = btns.findIndex(b => b.classList.contains('active'));
+      let nextIdx = (curIdx + 1) % btns.length;
+      btns[nextIdx].click();
+    });
+  }
+  addCycleLogic('appPrev', 'appNext', 'app-tabs');
+  addCycleLogic('otherPrev', 'otherNext', 'app-tabs');
 </script>
 </body>
 </html>
