@@ -145,6 +145,27 @@
   .nav-link:hover { color: #fff; background: rgba(255,255,255,0.1); }
   .nav-link.active { color: #fff; background: var(--glass-border); }
 
+  .download-btn {
+    background: var(--cta-bg);
+    color: var(--cta-text);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s;
+    margin-top: auto; /* Pushes button to the bottom */
+    width: fit-content;
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+  }
+
   .nav-cta {
     background: var(--cta-bg);
     color: var(--cta-text);
@@ -848,7 +869,7 @@
     padding: 48px 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Content top aligned */
   }
 
   .product-info h3 {
