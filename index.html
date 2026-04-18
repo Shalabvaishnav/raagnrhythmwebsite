@@ -46,6 +46,7 @@
     --hero-bg: transparent;
     --section-bg: transparent;
     --body-bg: linear-gradient(90deg, #1D1B1B 0%, #D62128 100%);
+    --body-color: #1D1B1B; /* Dark fallback to prevent white flash/footer */
     --glass-bg: rgba(217, 119, 6, 0.08);
     --glass-border: rgba(217, 119, 6, 0.2);
     --glass-glow: 0 8px 32px 0 rgba(217, 119, 6, 0.15);
@@ -82,6 +83,7 @@
     --hero-bg: transparent;
     --section-bg: transparent;
     --body-bg: linear-gradient(90deg, #4040a0 0%, #0d0d2b 100%);
+    --body-color: #0d0d2b; /* Dark fallback */
     --glass-bg: rgba(124, 106, 247, 0.08);
     --glass-border: rgba(124, 106, 247, 0.2);
     --glass-glow: 0 8px 32px 0 rgba(124, 106, 247, 0.15);
@@ -93,6 +95,8 @@
   html { 
     scroll-behavior: smooth; 
     -webkit-text-size-adjust: 100%;
+    background-color: var(--body-color);
+    min-height: 100%;
   }
 
   body {
@@ -100,8 +104,10 @@
     color: #fff;
     background: var(--body-bg);
     background-attachment: fixed;
+    background-color: var(--body-color);
     overflow-x: hidden;
     transition: background var(--transition);
+    min-height: 100vh;
   }
 
   /* ===== NAVBAR ===== */
