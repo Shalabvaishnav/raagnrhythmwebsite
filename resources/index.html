@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Raag N Rhythm — Student & Parent Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --crimson:   #D62128;
@@ -106,6 +106,7 @@
     object-fit: contain;
   }
   .hero-brand {
+    font-family: 'Righteous', sans-serif;
     font-size: 40px;
     line-height: 1.15;
     margin: 0;
@@ -590,6 +591,83 @@
     }
   }
 
+  /* ═══ MOBILE SNACKBAR ═══ */
+  .mobile-snackbar {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(29, 27, 27, 0.95);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 16px 20px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    z-index: 9999;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    color: #fff;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s, color 0.3s;
+  }
+  .mobile-snackbar.visible { transform: translateY(0); } /* Keep for compatibility if needed */
+  
+  .snackbar-info { display: flex; flex-direction: column; gap: 2px; }
+  .snackbar-title { font-family: 'Righteous', sans-serif; font-size: 14px; letter-spacing: 0.5px; }
+  .snackbar-sub { font-size: 11px; color: rgba(255, 255, 255, 0.7); }
+  
+  .snackbar-cta {
+    background: #FFC304;
+    color: #000;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  /* Dark text variation for light sections */
+  .mobile-snackbar.dark-text {
+    background: rgba(0, 0, 0, 0.08); /* Slightly darker for better contrast */
+    color: #1a1a1a;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .mobile-snackbar.dark-text .snackbar-title { color: #000 !important; font-weight: 700; }
+  .mobile-snackbar.dark-text .snackbar-sub { color: rgba(0, 0, 0, 0.7) !important; }
+  .mobile-snackbar.dark-text .snackbar-cta { background: #000; color: #fff; }
+
+  @media (max-width: 600px) {
+    .mobile-snackbar { display: flex; }
+  }
+
+  /* Desktop Top Bar Style */
+  @media (min-width: 601px) {
+    .mobile-snackbar {
+      display: flex;
+      top: 0;
+      bottom: auto;
+      left: 0;
+      right: 0;
+      width: 100%;
+      border-radius: 0;
+      padding: 8px 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      justify-content: center;
+      gap: 32px;
+    }
+    .snackbar-info { flex-direction: row; gap: 16px; align-items: center; }
+    .snackbar-title { font-size: 15px; }
+    .snackbar-sub { font-size: 12px; }
+    .back-home { top: 80px !important; }
+    .hero { margin-top: 50px; }
+  }
+
   /* ── DESKTOP TWEAKS ── */
   @media (min-width: 640px) {
     .benefit-grid { grid-template-columns: 1fr 1fr 1fr; }
@@ -610,7 +688,7 @@
       <line x1="19" y1="12" x2="5" y2="12"></line>
       <polyline points="12 19 5 12 12 5"></polyline>
     </svg>
-    <span>Home</span>
+    <span>Go to <span style="font-weight: 600;">RAAG n RHYTHM ACADEMY</span> Website</span>
   </a>
 
   <div class="hero-logo" style="justify-content: center; animation: fadeDown .9s ease both;">
@@ -627,7 +705,7 @@
     <div class="cred-name">Ms. Aishwarya Unni</div>
     <div class="cred-line">
       <strong>10+ Years Experience</strong> &nbsp;·&nbsp; B.A. &amp; M.A. Music <strong>(Topper)</strong>, Delhi University<br>
-      Music Teacher · Basava Int. School, Dwarka
+      Music Teacher · Basava Int. School, Dwarka — <strong>Contact: 8512832263</strong>
     </div>
   </div>
 
@@ -640,7 +718,7 @@
 <div class="band"></div>
 
 <!-- ═══ WHY CARNATIC ═══ -->
-<section class="section reveal">
+<section class="section reveal white-theme-section">
   <p class="section-label">The Foundation</p>
   <h2 class="section-title">Why <span>Carnatic Music?</span></h2>
   <p class="prose">Carnatic music forms the foundation of most music we hear today — including film and contemporary styles. A student who understands this system deeply can learn and adapt to any style later, much faster and with more confidence.</p>
@@ -658,7 +736,7 @@
 <div class="band"></div>
 
 <!-- ═══ JOURNEY STRUCTURE ═══ -->
-<section class="section reveal">
+<section class="section reveal white-theme-section">
   <p class="section-label">The Roadmap</p>
   <h2 class="section-title">Learning Like a <span>Language</span></h2>
   <p class="prose">We think of music learning just like learning a language — building from letters to sentences to full expression.</p>
@@ -690,7 +768,7 @@
 <div class="band"></div>
 
 <!-- ═══ LEVELS ═══ -->
-<section class="section reveal">
+<section class="section reveal white-theme-section">
   <p class="section-label">Curriculum</p>
   <h2 class="section-title">The Four <span>Levels</span></h2>
   <p class="prose">Tap any level to explore what your child will learn.</p>
@@ -817,7 +895,7 @@
 <div class="band"></div>
 
 <!-- ═══ CLASS STRUCTURE ═══ -->
-<section class="section reveal">
+<section class="section reveal white-theme-section">
   <p class="section-label">How We Teach</p>
   <h2 class="section-title">Every <span>Class</span></h2>
   <p class="prose">Each session follows a clear, productive structure so no time is wasted and every student progresses.</p>
@@ -856,7 +934,7 @@
 <div class="band"></div>
 
 <!-- ═══ PRACTICE ═══ -->
-<section class="section reveal">
+<section class="section reveal white-theme-section">
   <p class="section-label">At Home</p>
   <h2 class="section-title">Practice is the <span>Key</span></h2>
   <p class="prose">Classes run twice a week — 8 per month. But real progress happens between sessions. Short, consistent practice at home makes all the difference.</p>
@@ -889,7 +967,7 @@
 <div class="band"></div>
 
 <!-- ═══ TIMELINE ═══ -->
-<section class="section reveal">
+<section class="section reveal white-theme-section">
   <p class="section-label">What to Expect</p>
   <h2 class="section-title">Progress <span>Milestones</span></h2>
   <p class="prose">With regular, daily practice here is what you can realistically expect:</p>
@@ -913,7 +991,7 @@
 <div class="band"></div>
 
 <!-- ═══ LIFE SKILLS ═══ -->
-<section class="section reveal">
+<section class="section reveal white-theme-section">
   <p class="section-label">Beyond Music</p>
   <h2 class="section-title">Life <span>Skills</span> Too</h2>
   <p class="prose">Music trains far more than the voice. Students consistently build these qualities through their practice.</p>
@@ -928,7 +1006,7 @@
 <div class="band"></div>
 
 <!-- ═══ FOR PARENTS ═══ -->
-<section class="section reveal">
+<section class="section reveal white-theme-section">
   <p class="section-label">For Parents</p>
   <h2 class="section-title">How to <span>Support</span> Your Child</h2>
   <p class="prose">Your involvement makes a visible difference. You don't need to know music — you just need to be consistent.</p>
@@ -942,22 +1020,22 @@
 
   <!-- Coming soon -->
   <div class="coming-card">
-    <div class="coming-badge">Coming Soon</div>
-    <h3>Raag N Rhythm Website</h3>
-    <p>Our full website will be live soon with detailed curriculum information, all levels and grades, learning resources, and more to support your child's journey.</p>
+    <div class="coming-badge" style="background: #4CAF50;">LIVE NOW</div>
+    <h3>New Carnatic Vocals Classes</h3>
+    <p>New batches for Carnatic Vocals starting now! Join our structured classes both online and offline. Limited seats available for the new session.</p>
   </div>
 </section>
 
 <div class="band"></div>
 
 <!-- ═══ NOTE TO STUDENTS ═══ -->
-<section class="section reveal" style="text-align:center; padding-bottom: 1rem;">
+<section class="section reveal white-theme-section" style="text-align:center; padding-bottom: 1rem;">
   <p class="section-label">A Note to Students</p>
   <h2 class="section-title" style="margin-bottom:.8rem;">Show up. Practice. <span>Enjoy the process.</span></h2>
   <p class="prose" style="max-width:36ch; margin: 0 auto;">Results will follow. Music is a journey — every small step forward is a win worth celebrating. 🎶</p>
 </section>
 
-<footer>
+<footer class="white-theme-section footer-copy">
   <p>© 2025 Raag N Rhythm Music Academy · All rights reserved</p>
 </footer>
 
@@ -990,6 +1068,39 @@
         backHome.classList.remove('dark');
       }
     }
-  });</script>
+  });
+
+  // Sync snackbar style with background
+  function updateSnackbarColor() {
+    const snackbarElement = document.getElementById('rnrSnackbar');
+    if (window.innerWidth > 600 || !snackbarElement) return;
+    const whiteSections = document.querySelectorAll('.white-theme-section');
+    const snackbarRect = snackbarElement.getBoundingClientRect();
+    
+    const isOverWhite = Array.from(whiteSections).some(section => {
+      const rect = section.getBoundingClientRect();
+      return (rect.top < snackbarRect.bottom - 10 && rect.bottom > snackbarRect.top + 10);
+    });
+
+    if (isOverWhite) {
+      snackbarElement.classList.add('dark-text');
+    } else {
+      snackbarElement.classList.remove('dark-text');
+    }
+  }
+
+  window.addEventListener('scroll', updateSnackbarColor);
+  window.addEventListener('resize', updateSnackbarColor);
+  // Initial check
+  setTimeout(updateSnackbarColor, 100);
+</script>
+
+<div class="mobile-snackbar" id="rnrSnackbar">
+  <div class="snackbar-info">
+    <div class="snackbar-title">New Carnatic Vocal Classes Starting Soon...</div>
+    <div class="snackbar-sub">Contact us and we will guide you</div>
+  </div>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdatXXsHeI5TP4NLgLyGdkfffaHjtlPdZiAbS4ipluyHNIpQ/viewform" target="_blank" class="snackbar-cta">CONNECT</a>
+</div>
 </body>
 </html>
