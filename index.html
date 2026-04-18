@@ -1328,12 +1328,13 @@
       gap: 8px !important;
     }
     .product-tabs, .app-tabs {
-      flex-wrap: nowrap !important;
-      overflow-x: auto !important;
+      flex-wrap: wrap !important;
+      overflow-x: visible !important;
+      justify-content: center !important;
+      gap: 10px !important;
     }
-    .tab-arrow {
-      width: 30px !important;
-      height: 30px !important;
+    .product-tabs button, .app-tabs button {
+      margin: 4px !important;
     }
     .product-image-panel { height: 300px !important; }
     .hamburger { display: flex !important; }
@@ -1625,46 +1626,40 @@
 <div style="padding: 100px 20px; transition: background var(--transition);" id="products">
   <div style="max-width:1100px;margin:0 auto;">
     <h2 class="section-title reveal">Our Products</h2>
-    <div class="product-selector reveal" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
+    <div class="product-tabs faculty-tabs reveal" id="productTabs" style="margin-bottom: 20px;">
       <button class="tab-arrow" id="productPrev" style="padding: 0;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
-      <div class="product-tabs" id="productTabs" style="display: flex; gap: 8px; overflow: hidden; white-space: nowrap; scroll-behavior: smooth; margin-bottom:0;">
-        <button class="tab-btn active" data-cat="apps">Apps</button>
-        <button class="tab-btn" data-cat="others">Other Products</button>
-      </div>
+      <button class="tab-btn active" data-cat="apps">Apps</button>
+      <button class="tab-btn" data-cat="others">Other Products</button>
       <button class="tab-arrow" id="productNext" style="padding: 0;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
     </div>
 
     <!-- APP SUB-TABS -->
-    <div class="app-selector reveal" id="appSelector" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px;">
+    <div class="app-tabs faculty-tabs reveal" id="appSelector" style="margin-bottom: 30px;">
       <button class="tab-arrow" id="appPrev" style="padding: 0;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
-      <div class="app-tabs" id="appTabs" style="display: flex; gap: 8px; overflow: hidden; white-space: nowrap; scroll-behavior: smooth; margin-bottom:0;">
-        <button class="app-tab active" data-prod="tanpura">Tanpura</button>
-        <button class="app-tab" data-prod="thalam">Thalam App</button>
-        <button class="app-tab" data-prod="tuner">Tuner</button>
-        <button class="app-tab" data-prod="harmonium">Harmonium</button>
-        <button class="app-tab" data-prod="rnr">RaagNrhythm App</button>
-      </div>
+      <button class="app-tab active" data-prod="tanpura">Tanpura</button>
+      <button class="app-tab" data-prod="thalam">Thalam App</button>
+      <button class="app-tab" data-prod="tuner">Tuner</button>
+      <button class="app-tab" data-prod="harmonium">Harmonium</button>
+      <button class="app-tab" data-prod="rnr">RaagNrhythm App</button>
       <button class="tab-arrow" id="appNext" style="padding: 0;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
     </div>
 
     <!-- OTHER PRODUCTS SUB-TABS -->
-    <div class="other-selector reveal" id="otherSelector" style="display: none; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px;">
+    <div class="app-tabs faculty-tabs reveal" id="otherSelector" style="display: none; margin-bottom: 30px;">
       <button class="tab-arrow" id="otherPrev" style="padding: 0;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
-      <div class="app-tabs" id="otherTabs" style="display: flex; gap: 8px; overflow: hidden; white-space: nowrap; scroll-behavior: smooth; margin-bottom:0;">
-        <button class="app-tab active" data-prod="handpan">Handpan</button>
-        <button class="app-tab" data-prod="keyboard">Keyboard</button>
-        <button class="app-tab" data-prod="ukulele">Ukulele</button>
-      </div>
+      <button class="app-tab active" data-prod="handpan">Handpan</button>
+      <button class="app-tab" data-prod="keyboard">Keyboard</button>
+      <button class="app-tab" data-prod="ukulele">Ukulele</button>
       <button class="tab-arrow" id="otherNext" style="padding: 0;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
@@ -2227,8 +2222,9 @@
       btns[nextIdx].click();
     });
   }
-  addCycleLogic('appPrev', 'appNext', 'appTabs');
-  addCycleLogic('otherPrev', 'otherNext', 'otherTabs');
+  addCycleLogic('productPrev', 'productNext', 'productTabs');
+  addCycleLogic('appPrev', 'appNext', 'appSelector');
+  addCycleLogic('otherPrev', 'otherNext', 'otherSelector');
 </script>
 </body>
 </html>
