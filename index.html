@@ -1322,7 +1322,14 @@
     .nav-arrow:hover { transform: scale(1.1) rotate(-90deg) !important; }
     .product-card { 
       grid-template-columns: 1fr; 
-      height: 780px !important; 
+      height: 900px !important; /* Increased to prevent clipping on mobile */
+    }
+    .product-selector, .app-selector, .other-selector {
+      gap: 8px !important;
+    }
+    .tab-arrow {
+      width: 30px !important;
+      height: 30px !important;
     }
     .product-image-panel { height: 300px !important; }
     .hamburger { display: flex !important; }
@@ -2198,22 +2205,26 @@
   });
 
   // Cycle App Arrows
-  function addCycleLogic(prevId, nextId, tabClassName) {
+  function addCycleLogic(prevId, nextId, containerId) {
     document.getElementById(prevId)?.addEventListener('click', () => {
-      const btns = Array.from(document.querySelectorAll(`.${tabClassName} .app-tab`));
+      const container = document.getElementById(containerId);
+      if(!container) return;
+      const btns = Array.from(container.querySelectorAll('.app-tab'));
       let curIdx = btns.findIndex(b => b.classList.contains('active'));
       let prevIdx = (curIdx - 1 + btns.length) % btns.length;
       btns[prevIdx].click();
     });
     document.getElementById(nextId)?.addEventListener('click', () => {
-      const btns = Array.from(document.querySelectorAll(`.${tabClassName} .app-tab`));
+      const container = document.getElementById(containerId);
+      if(!container) return;
+      const btns = Array.from(container.querySelectorAll('.app-tab'));
       let curIdx = btns.findIndex(b => b.classList.contains('active'));
       let nextIdx = (curIdx + 1) % btns.length;
       btns[nextIdx].click();
     });
   }
-  addCycleLogic('appPrev', 'appNext', 'app-tabs');
-  addCycleLogic('otherPrev', 'otherNext', 'app-tabs');
+  addCycleLogic('appPrev', 'appNext', 'appTabs');
+  addCycleLogic('otherPrev', 'otherNext', 'otherTabs');
 </script>
 </body>
 </html>
