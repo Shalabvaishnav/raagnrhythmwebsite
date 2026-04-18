@@ -1374,6 +1374,61 @@
     }
     .stats-row { gap: 20px; flex-wrap: wrap; justify-content: center; }
     .mobile-menu { display: flex; }
+
+    /* Auto-hiding Navbar */
+    .top-navigation-container.nav-hidden {
+      transform: translateY(-100px) !important;
+    }
+
+    /* Floating Snackbar */
+    .mobile-snackbar {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      z-index: 9999;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      transform: translateY(150%);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mobile-snackbar.visible {
+      transform: translateY(0);
+    }
+    .snackbar-header {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .snackbar-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.7);
+    }
+    .snackbar-cta {
+      background: #FFC304;
+      color: #000;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  @media (min-width: 601px) {
+    .mobile-snackbar { display: none !important; }
   }
 
   /* ===== HAMBURGER & MOBILE MENU ===== */
@@ -1846,8 +1901,51 @@
   © 2026 Raag N Rhythm Music Academy · All rights reserved
 </div>
 
+<!-- MOBILE SNACKBAR -->
+<div id="mobileSnackbar" class="mobile-snackbar">
+  <div class="snackbar-info">
+    <div class="snackbar-header">Start your Music Journey</div>
+    <div class="snackbar-sub">we will guide you before you start</div>
+  </div>
+  <a href="#contact" class="snackbar-cta">CONNECT</a>
+</div>
+
 <!-- Javascript for Interactivity and Carousel -->
 <script>
+  // Mobile Scroll Effects
+  let lastScrollY = window.scrollY;
+  const nav = document.querySelector('.top-navigation-container');
+  const snackbar = document.getElementById('mobileSnackbar');
+  const hero = document.getElementById('hero');
+
+  window.addEventListener('scroll', () => {
+    if (window.innerWidth <= 600) {
+      // 1. Auto-hide Navbar
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        nav.classList.add('nav-hidden');
+      } else {
+        nav.classList.remove('nav-hidden');
+      }
+      lastScrollY = currentScrollY;
+    }
+  });
+
+  // 2. Snackbar Trigger using IntersectionObserver
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (window.innerWidth <= 600) {
+        if (!entry.isIntersecting) {
+          snackbar.classList.add('visible');
+        } else {
+          snackbar.classList.remove('visible');
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+
+  if (hero) heroObserver.observe(hero);
+
   // Theme Toggle logic
   function setTheme(theme) {
     const overlay = document.getElementById('themeOverlay');
