@@ -1257,7 +1257,7 @@
   @media (max-width: 600px) {
     #hero {
       justify-content: flex-start !important;
-      padding-top: 100px !important; /* Fixed 100px gap for mobile too */
+      padding-top: 100px !important; /* Top gap of 100px */
       padding-left: 40px !important;
       padding-right: 40px !important;
     }
@@ -1272,15 +1272,20 @@
       position: relative !important;
       bottom: auto !important;
     }
+    .hero-logo {
+      gap: 12px !important; /* Brought closer by 8px */
+      margin-bottom: 40px !important; /* 40px gap to title */
+    }
     .hero-logo img {
-      height: 132px !important; /* 20% smaller than 165px */
+      height: 119px !important; /* 10% smaller than previous 132px */
     }
     .hero-brand {
       font-size: 28px !important;
     }
     .hero-title {
       font-size: 24px !important;
-      margin-bottom: 20px !important;
+      margin-top: 0 !important;
+      margin-bottom: 16px !important;
     }
     .hero-cta {
       background: rgba(255, 255, 255, 0.12) !important;
