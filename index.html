@@ -1966,19 +1966,19 @@
       <a href="#hero" onclick="toggleMenu()">Home</a>
       <a href="#about" onclick="toggleMenu()">About</a>
       <a href="#curriculum" onclick="toggleMenu()">Curriculum</a>
-      <a href="#products" onclick="toggleMenu()">Products</a>
+      <a href="#faculty" onclick="toggleMenu()">Faculty</a>
       <a href="resources/" onclick="toggleMenu()">Resources</a>
       <a href="#contact" onclick="toggleMenu()">Contact Us</a>
-      <a href="#faculty" onclick="toggleMenu()">Faculty</a>
+      <a href="#products" onclick="toggleMenu()">Products</a>
     </div>
 
     <nav>
       <a href="#hero" class="nav-link active">Home</a>
       <a href="#about" class="nav-link">About</a>
       <a href="#curriculum" class="nav-link">Curriculum</a>
-      <a href="#products" class="nav-link">Products</a>
-      <a href="#contact" class="nav-link">Contact Us</a>
       <a href="#faculty" class="nav-link">Faculty</a>
+      <a href="#contact" class="nav-link">Contact Us</a>
+      <a href="#products" class="nav-link">Products</a>
       <a href="resources/" class="nav-link">Resources</a>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdatXXsHeI5TP4NLgLyGdkfffaHjtlPdZiAbS4ipluyHNIpQ/viewform?usp=publish-editor"
         target="_blank" class="nav-cta" style="text-decoration: none; display: flex; align-items: center;">Join the
@@ -2187,100 +2187,6 @@
     </div>
   </div>
 
-  <!-- PRODUCTS -->
-  <div style="padding: 100px 20px; transition: background var(--transition);" id="products">
-    <div style="max-width:1100px;margin:0 auto;">
-      <h2 class="section-title reveal">Our Products</h2>
-      <div class="product-tabs faculty-tabs reveal" id="productTabs" style="margin-bottom: 20px;">
-        <button class="tab-arrow" id="productPrev" style="padding: 0;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-        <button class="tab-btn active" data-cat="apps">Apps</button>
-        <button class="tab-btn" data-cat="others">Other Products</button>
-        <button class="tab-arrow" id="productNext" style="padding: 0;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-      </div>
-
-      <!-- APP SUB-TABS -->
-      <div class="app-tabs faculty-tabs reveal" id="appSelector" style="margin-bottom: 30px;">
-        <button class="tab-arrow" id="appPrev" style="padding: 0;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-        <button class="app-tab active" data-prod="tanpura">Tanpura</button>
-        <button class="app-tab" data-prod="thalam">Thalam App</button>
-        <button class="app-tab" data-prod="tuner">Tuner</button>
-        <button class="app-tab" data-prod="harmonium">Harmonium</button>
-        <button class="app-tab" data-prod="rnr">RaagNrhythm App</button>
-        <button class="tab-arrow" id="appNext" style="padding: 0;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-      </div>
-
-      <!-- OTHER PRODUCTS SUB-TABS -->
-      <div class="app-tabs faculty-tabs reveal" id="otherSelector" style="display: none; margin-bottom: 30px;">
-        <button class="tab-arrow" id="otherPrev" style="padding: 0;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-        <button class="app-tab active" data-prod="handpan">Handpan</button>
-        <button class="app-tab" data-prod="keyboard">Keyboard</button>
-        <button class="app-tab" data-prod="ukulele">Ukulele</button>
-        <button class="tab-arrow" id="otherNext" style="padding: 0;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-      </div>
-      <div class="product-card reveal">
-        <div class="product-image-panel">
-          <div
-            style="position: absolute; top: 32px; bottom: 32px; left: 32px; right: 32px; border: 2px solid rgba(255,255,255,0.4); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 0; border-bottom-right-radius: 0; overflow: hidden; background: rgba(0,0,0,0.5);">
-            <img src="assets/characters/FINALCharacters/tanpura_app.webp" alt="Tanpura App"
-              style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 0; display: block;"
-              loading="lazy" decoding="async">
-          </div>
-        </div>
-        <div class="product-info">
-          <h3>The Maestro Tanpura</h3>
-          <div class="product-subtitle">Digital Music Companion</div>
-          <p>A simple and reliable Tanpura app designed to stay in perfect pitch during practice. Whether you're a
-            beginner or an advanced learner, it creates a consistent sound base so you can focus on improving your
-            music.</p>
-          <ul class="feature-list">
-            <li><strong>No Ads and interruptions</strong>High-fidelity samples optimized for rhythm precision.</li>
-            <li><strong>Accurate &amp; Stable Sound</strong>High-fidelity samples optimized for rhythm precision.</li>
-            <li><strong>Easy Pitch Control</strong>Quickly adjust scale to match your vocal range or instrument.</li>
-            <li><strong>Modern, Sleek &amp; Easy-to-Use Design</strong>A clean and intuitive interface built for
-              distraction-free practice.</li>
-          </ul>
-          <button class="download-btn">Coming soon...</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- TESTIMONIALS -->
   <div class="full-section" id="testimonials">
     <div class="inner">
@@ -2321,7 +2227,54 @@
     </div>
   </div>
 
-  <!-- CONTACT US -->
+  <!-- FACULTY (WIP) -->
+<div style="padding: 100px 20px; transition: background var(--transition);" id="faculty">
+  <div style="max-width:1100px;margin:0 auto;">
+    <h2 class="section-title reveal">Faculty</h2>
+    <div class="faculty-tabs reveal">
+      <button class="tab-arrow">←</button>
+      <button class="tab-btn active">Vocals Carnatic</button>
+      <button class="tab-btn">Vocals Hindustani</button>
+      <button class="tab-btn">Vocals Western</button>
+      <button class="tab-btn">Instruments</button>
+      <button class="tab-arrow">→</button>
+    </div>
+    <div class="faculty-grid reveal">
+      <div class="faculty-card">
+        <img src="assets/characters/Faculty/Flow_202604172348.jpeg" alt="AISHWARYA UNNI"
+          style="width:100%; height:100%; object-fit:cover;" loading="lazy" decoding="async">
+        <div class="faculty-card-details">
+          <h4>AISHWARYA UNNI</h4>
+          <p>10+ years experience</p>
+        </div>
+      </div>
+      <div class="faculty-card">
+        <img src="assets/characters/Faculty/Linet.webp" alt="Linet Jose K"
+          style="width:100%; height:100%; object-fit:cover;" loading="lazy" decoding="async">
+        <div class="faculty-card-details">
+          <h4>Linet Jose K</h4>
+          <p>8+ Years experience</p>
+        </div>
+      </div>
+      <div class="faculty-card">
+        <img src="assets/characters/Faculty/25995056.webp" alt="MANISH KUMAR"
+          style="width:100%; height:100%; object-fit:cover;" loading="lazy" decoding="async">
+        <div class="faculty-card-details">
+          <h4>MANISH KUMAR</h4>
+          <p>8+ Years experience</p>
+        </div>
+      </div>
+    </div>
+    <div class="coming-soon-box reveal" style="margin-top:32px;">
+      <div style="font-size:40px;">🎓</div>
+      <div>
+        <h3>Coming Soon...</h3>
+        <p>We're building something exciting to make your learning experience even better. Stay tuned!</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- CONTACT US -->
   <div class="full-section" id="contact">
     <div class="inner">
       <h2 class="section-title reveal">Contact Us</h2>
@@ -2385,53 +2338,89 @@
     </div>
   </div>
 
-  <!-- FACULTY (WIP) -->
-  <div style="padding: 100px 20px; transition: background var(--transition);" id="faculty">
-    <div style="max-width:1100px;margin:0 auto;">
-      <h2 class="section-title reveal">Faculty</h2>
-      <div class="faculty-tabs reveal">
-        <button class="tab-arrow">←</button>
-        <button class="tab-btn active">Vocals Carnatic</button>
-        <button class="tab-btn">Vocals Hindustani</button>
-        <button class="tab-btn">Vocals Western</button>
-        <button class="tab-btn">Instruments</button>
-        <button class="tab-arrow">→</button>
+  <!-- PRODUCTS -->
+<div style="padding: 100px 20px; transition: background var(--transition);" id="products">
+  <div style="max-width:1100px;margin:0 auto;">
+    <h2 class="section-title reveal">Our Products</h2>
+    <div class="product-tabs faculty-tabs reveal" id="productTabs" style="margin-bottom: 20px;">
+      <button class="tab-arrow" id="productPrev" style="padding: 0;">←</button>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+      <button class="tab-btn active" data-cat="apps">Apps</button>
+      <button class="tab-btn" data-cat="others">Other Products</button>
+      <button class="tab-arrow" id="productNext" style="padding: 0;">→</button>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </div>
+    <!-- APP SUB-TABS -->
+    <div class="app-tabs faculty-tabs reveal" id="appSelector" style="margin-bottom: 30px;">
+      <button class="tab-arrow" id="appPrev" style="padding: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+      <button class="app-tab active" data-prod="tanpura">Tanpura</button>
+      <button class="app-tab" data-prod="thalam">Thalam App</button>
+      <button class="app-tab" data-prod="tuner">Tuner</button>
+      <button class="app-tab" data-prod="harmonium">Harmonium</button>
+      <button class="app-tab" data-prod="rnr">RaagNrhythm App</button>
+      <button class="tab-arrow" id="appNext" style="padding: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+    <!-- OTHER PRODUCTS SUB-TABS -->
+    <div class="app-tabs faculty-tabs reveal" id="otherSelector" style="display: none; margin-bottom: 30px;">
+      <button class="tab-arrow" id="otherPrev" style="padding: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+      <button class="app-tab active" data-prod="handpan">Handpan</button>
+      <button class="app-tab" data-prod="keyboard">Keyboard</button>
+      <button class="app-tab" data-prod="ukulele">Ukulele</button>
+      <button class="tab-arrow" id="otherNext" style="padding: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-image-panel">
+        <div style="position: absolute; top: 32px; bottom: 32px; left: 32px; right: 32px; border: 2px solid rgba(255,255,255,0.4); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 0; border-bottom-right-radius: 0; overflow: hidden; background: rgba(0,0,0,0.5);">
+          <img src="assets/characters/FINALCharacters/tanpura_app.webp" alt="Tanpura App"
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 0; display: block;"
+            loading="lazy" decoding="async">
+        </div>
       </div>
-      <div class="faculty-grid reveal">
-        <div class="faculty-card">
-          <img src="assets/characters/Faculty/Flow_202604172348.jpeg" alt="AISHWARYA UNNI"
-            style="width:100%; height:100%; object-fit:cover;" loading="lazy" decoding="async">
-          <div class="faculty-card-details">
-            <h4>AISHWARYA UNNI</h4>
-            <p>10+ years experience</p>
-          </div>
-        </div>
-        <div class="faculty-card">
-          <div class="faculty-card-inner"></div>
-          <div class="faculty-card-details">
-            <h4>Faculty Name</h4>
-            <p>Expertise Level</p>
-          </div>
-        </div>
-        <div class="faculty-card">
-          <div class="faculty-card-inner"></div>
-          <div class="faculty-card-details">
-            <h4>Faculty Name</h4>
-            <p>Expertise Level</p>
-          </div>
-        </div>
-      </div>
-      <div class="coming-soon-box reveal" style="margin-top:32px;">
-        <div style="font-size:40px;">🎓</div>
-        <div>
-          <h3>Coming Soon...</h3>
-          <p>We're building something exciting to make your learning experience even better. Stay tuned!</p>
-        </div>
+      <div class="product-info">
+        <h3>The Maestro Tanpura</h3>
+        <div class="product-subtitle">Digital Music Companion</div>
+        <p>A simple and reliable Tanpura app designed to stay in perfect pitch during practice. Whether you're a
+          beginner or an advanced learner, it creates a consistent sound base so you can focus on improving your
+          music.</p>
+        <ul class="feature-list">
+          <li><strong>No Ads and interruptions</strong>High-fidelity samples optimized for rhythm precision.</li>
+          <li><strong>Accurate &amp; Stable Sound</strong>High-fidelity samples optimized for rhythm precision.</li>
+          <li><strong>Easy Pitch Control</strong>Quickly adjust scale to match your vocal range or instrument.</li>
+          <li><strong>Modern, Sleek &amp; Easy-to-Use Design</strong>A clean and intuitive interface built for
+            distraction-free practice.</li>
+        </ul>
+        <button class="download-btn">Coming soon...</button>
       </div>
     </div>
   </div>
-
-  <!-- FOOTER CTA -->
+</div>
+<!-- FOOTER CTA -->
   <div class="footer-cta" id="resources">
     <p class="eyebrow">A Note to Students</p>
     <h2>Show up. Practice. <span>Enjoy the process.</span></h2>
