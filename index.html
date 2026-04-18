@@ -1959,36 +1959,29 @@
 
   if (heroCTA) snackbarObserver.observe(heroCTA);
 
-  // 3. Dark Text Trigger (when overlapping footer/white areas)
-  const darkTriggerObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        snackbar.classList.add('dark-text');
-      } else {
-        // Only remove if NO observed white sections are intersecting
-        // Actually, a simpler way for multiple targets is to check if ANY is intersecting
-        const anyIntersecting = entries.some(e => e.isIntersecting);
-        // But since IntersectionObserver triggers per entry, we need to be careful.
-        // Let's use a simpler check or just rely on the most recent toggle.
-        if (entry.isIntersecting) snackbar.classList.add('dark-text');
-        else {
-           // Small delay/check to avoid flickering if one leaves and another enters
-           setTimeout(() => {
-             const whiteSections = document.querySelectorAll('.white-theme-section, .footer-copy');
-             const stillOverWhite = Array.from(whiteSections).some(el => {
-                const rect = el.getBoundingClientRect();
-                return rect.top < window.innerHeight && rect.bottom > 0;
-             });
-             if (!stillOverWhite) snackbar.classList.remove('dark-text');
-           }, 50);
-        }
-      }
+  // 3. Dark Text Trigger (when overlapping white-themed sections)
+  function updateSnackbarColor() {
+    if (window.innerWidth > 600) return;
+    const whiteSections = document.querySelectorAll('.white-theme-section, .footer-copy');
+    const snackbarRect = snackbar.getBoundingClientRect();
+    
+    // Check if the bottom-anchored snackbar overlaps any light section
+    const isOverWhite = Array.from(whiteSections).some(section => {
+      const rect = section.getBoundingClientRect();
+      // If the top of the white section is above the snackbar bottom 
+      // AND the bottom of the white section is below the snackbar top
+      return (rect.top < snackbarRect.bottom - 10 && rect.bottom > snackbarRect.top + 10);
     });
-  }, { threshold: 0.1 });
 
-  document.querySelectorAll('.white-theme-section, .footer-copy').forEach(el => {
-    darkTriggerObserver.observe(el);
-  });
+    if (isOverWhite) {
+      snackbar.classList.add('dark-text');
+    } else {
+      snackbar.classList.remove('dark-text');
+    }
+  }
+
+  window.addEventListener('scroll', updateSnackbarColor);
+  window.addEventListener('resize', updateSnackbarColor);
 
   // Theme Toggle logic
   function setTheme(theme) {
