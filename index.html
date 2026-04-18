@@ -168,8 +168,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Aligned to top */
-    padding: 100px 20px 80px; /* 100px gap from top */
+    justify-content: center;
+    padding: 120px 20px 80px;
     position: relative;
     transition: background var(--transition);
     overflow: hidden;
@@ -422,8 +422,8 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    margin-top: 32px; /* 32px away from carousel */
-    position: relative;
+    position: absolute;
+    bottom: 36px;
     z-index: 5;
   }
 
@@ -1232,6 +1232,8 @@
     }
     .explore-label {
       margin-top: 50px !important;
+      position: relative !important;
+      bottom: auto !important;
     }
     .hero-logo img {
       height: 132px !important; /* 20% smaller than 165px */
