@@ -1917,7 +1917,7 @@
     <div class="snackbar-header">Start your Music Journey</div>
     <div class="snackbar-sub">we will guide you before you start</div>
   </div>
-  <a href="#contact" class="snackbar-cta">CONNECT</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdatXXsHeI5TP4NLgLyGdkfffaHjtlPdZiAbS4ipluyHNIpQ/viewform?usp=publish-editor" target="_blank" class="snackbar-cta">CONNECT</a>
 </div>
 
 <!-- Javascript for Interactivity and Carousel -->
@@ -1965,12 +1965,30 @@
       if (entry.isIntersecting) {
         snackbar.classList.add('dark-text');
       } else {
-        snackbar.classList.remove('dark-text');
+        // Only remove if NO observed white sections are intersecting
+        // Actually, a simpler way for multiple targets is to check if ANY is intersecting
+        const anyIntersecting = entries.some(e => e.isIntersecting);
+        // But since IntersectionObserver triggers per entry, we need to be careful.
+        // Let's use a simpler check or just rely on the most recent toggle.
+        if (entry.isIntersecting) snackbar.classList.add('dark-text');
+        else {
+           // Small delay/check to avoid flickering if one leaves and another enters
+           setTimeout(() => {
+             const whiteSections = document.querySelectorAll('.white-theme-section, .footer-copy');
+             const stillOverWhite = Array.from(whiteSections).some(el => {
+                const rect = el.getBoundingClientRect();
+                return rect.top < window.innerHeight && rect.bottom > 0;
+             });
+             if (!stillOverWhite) snackbar.classList.remove('dark-text');
+           }, 50);
+        }
       }
     });
   }, { threshold: 0.1 });
 
-  if (footer) darkTriggerObserver.observe(footer);
+  document.querySelectorAll('.white-theme-section, .footer-copy').forEach(el => {
+    darkTriggerObserver.observe(el);
+  });
 
   // Theme Toggle logic
   function setTheme(theme) {
