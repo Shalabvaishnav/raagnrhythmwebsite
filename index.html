@@ -1696,7 +1696,7 @@
 
       <!-- Logo area -->
       <div class="hero-logo" style="display: flex; align-items: flex-end; gap: 20px; margin-bottom: 32px;">
-        <img src="assets/logo.svg?v=2" alt="Raag N Rhythm Logo" style="height: 165px; width: auto; object-fit: contain;">
+        <img src="assets/logo.svg?v=2" alt="Raag N Rhythm Logo" style="height: 165px; width: auto; object-fit: contain;" fetchpriority="high" decoding="async">
         <h1 class="hero-brand" style="margin: 0; line-height: 1.15;">Raag n<br>Rhythm</h1>
       </div>
       
@@ -1716,28 +1716,28 @@
     <div class="hero-carousel-side reveal visible" style="transition-delay: 200ms;">
       <div class="character-stack" id="characterStack">
         <div class="character-card card-pos-1" id="char-1">
-          <img src="assets/characters/FINALCharacters/0.png" alt="Musician 0">
+          <img src="assets/characters/FINALCharacters/0.webp" alt="Musician 0" fetchpriority="high" decoding="async">
         </div>
         <div class="character-card card-pos-2" id="char-2">
-          <img src="assets/characters/FINALCharacters/1.png" alt="Musician 1">
+          <img src="assets/characters/FINALCharacters/1.webp" alt="Musician 1" decoding="async" loading="lazy">
         </div>
         <div class="character-card card-pos-3" id="char-3">
-          <img src="assets/characters/FINALCharacters/2.png" alt="Musician 2">
+          <img src="assets/characters/FINALCharacters/2.webp" alt="Musician 2" decoding="async" loading="lazy">
         </div>
         <div class="character-card card-pos-4" id="char-4">
-          <img src="assets/characters/FINALCharacters/3.png" alt="Musician 3">
+          <img src="assets/characters/FINALCharacters/3.webp" alt="Musician 3" decoding="async" loading="lazy">
         </div>
         <div class="character-card card-pos-5" id="char-5">
-          <img src="assets/characters/FINALCharacters/4.png" alt="Musician 4">
+          <img src="assets/characters/FINALCharacters/4.webp" alt="Musician 4" decoding="async" loading="lazy">
         </div>
         <div class="character-card card-pos-6" id="char-6">
-          <img src="assets/characters/FINALCharacters/6.png" alt="Musician 6">
+          <img src="assets/characters/FINALCharacters/6.webp" alt="Musician 6" decoding="async" loading="lazy">
         </div>
         <div class="character-card card-pos-7" id="char-7">
-          <img src="assets/characters/FINALCharacters/7.png" alt="Musician 7">
+          <img src="assets/characters/FINALCharacters/7.webp" alt="Musician 7" decoding="async" loading="lazy">
         </div>
         <div class="character-card card-pos-8" id="char-8">
-          <img src="assets/characters/FINALCharacters/5.png" alt="Musician 5">
+          <img src="assets/characters/FINALCharacters/5.webp" alt="Musician 5" decoding="async" loading="lazy">
         </div>
       </div>
 
@@ -1796,7 +1796,7 @@
       <div class="about-image reveal" style="position: relative;">
         <!-- Inner masked frame with 32px padding and 2px border -->
         <div style="position: absolute; top: 32px; bottom: 32px; left: 32px; right: 32px; border: 2px solid rgba(255,255,255,0.8); border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.5);">
-          <img src="assets/design/about-students.png" alt="Students" style="width: 100%; height: 100%; object-fit: cover; object-position: 75% center; border-radius: 0; display: block;">
+          <img src="assets/characters/FINALCharacters/about-students.webp" alt="Students" style="width: 100%; height: 100%; object-fit: cover; object-position: 75% center; border-radius: 0; display: block;" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1891,7 +1891,7 @@
     <div class="product-card reveal">
       <div class="product-image-panel">
         <div style="position: absolute; top: 32px; bottom: 32px; left: 32px; right: 32px; border: 2px solid rgba(255,255,255,0.4); border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 0; border-bottom-right-radius: 0; overflow: hidden; background: rgba(0,0,0,0.5);">
-          <img src="assets/tanpura_app.png" alt="Tanpura App" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 0; display: block;">
+          <img src="assets/characters/FINALCharacters/tanpura_app.webp" alt="Tanpura App" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 0; display: block;" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="product-info">
@@ -2015,7 +2015,7 @@
     </div>
     <div class="faculty-grid reveal">
       <div class="faculty-card">
-        <img src="assets/characters/Faculty/Flow_202604172348.jpeg" alt="AISHWARYA UNNI" style="width:100%; height:100%; object-fit:cover;">
+        <img src="assets/characters/Faculty/Flow_202604172348.jpeg" alt="AISHWARYA UNNI" style="width:100%; height:100%; object-fit:cover;" loading="lazy" decoding="async">
         <div class="faculty-card-details">
           <h4>AISHWARYA UNNI</h4>
           <p>10+ years experience</p>
@@ -2412,7 +2412,7 @@
 
   // ===== PRODUCT LOGIC =====
   const prodData = {
-    tanpura: { title: "The Maestro Tanpura", sub: "Digital Music Companion", desc: "A simple and reliable Tanpura app designed to stay in perfect pitch during practice. No Ads and interruptions. High-fidelity samples.", img: "assets/tanpura_app.png", features: ["No Ads and interruptions", "Accurate & Stable Sound", "Easy Pitch Control", "Modern, Sleek Design"] },
+    tanpura: { title: "The Maestro Tanpura", sub: "Digital Music Companion", desc: "A simple and reliable Tanpura app designed to stay in perfect pitch during practice. No Ads and interruptions. High-fidelity samples.", img: "assets/characters/FINALCharacters/tanpura_app.webp", features: ["No Ads and interruptions", "Accurate & Stable Sound", "Easy Pitch Control", "Modern, Sleek Design"] },
     thalam: { title: "Thalam App", sub: "Rhythm Perfected", desc: "Master complex Carnatic tala with visual indicators and high-quality percussion guide. Perfect for students and performers.", img: "", features: ["Visual beat counter", "Multiple Tala variations", "Adjustable Tempo (BPM)", "Practice Mode"] },
     tuner: { title: "Vocal Tuner", sub: "Find Your Pitch", desc: "A precision tuner designed specifically for vocalists and acoustic instruments common in Indian Classical music.", img: "", features: ["Real-time pitch tracking", "Scale reference tones", "Noise cancellation", "Beginner friendly"] },
     harmonium: { title: "Digital Harmonium", sub: "Practice Anywhere", desc: "Authentic harmonium bellows feel and keyboard response on your device. Perfect for riyaz on the move.", img: "", features: ["Bellows sensitivity", "Full octave range", "Authentic recording", "Chord support"] },
