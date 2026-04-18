@@ -1251,7 +1251,26 @@
     .hero-carousel-side {
       height: 220px !important;
       margin-top: -10px !important;
+      position: relative;
     }
+    .carousel-nav {
+      position: absolute !important;
+      bottom: -10px !important;
+      left: 50% !important;
+      right: auto !important;
+      transform: translateX(-50%) !important;
+      flex-direction: row !important;
+      gap: 30px !important;
+      margin-left: 0 !important;
+      z-index: 100 !important;
+    }
+    .carousel-nav .nav-arrow {
+      width: 42px !important;
+      height: 42px !important;
+    }
+    .carousel-nav .nav-arrow.up { transform: rotate(-90deg); }
+    .carousel-nav .nav-arrow.down { transform: rotate(-90deg); }
+    .nav-arrow:hover { transform: scale(1.1) rotate(-90deg) !important; }
     .product-card { grid-template-columns: 1fr; }
     .product-image-panel { height: 350px; }
     .hamburger { display: flex !important; }
