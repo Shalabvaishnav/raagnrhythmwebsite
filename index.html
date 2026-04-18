@@ -2094,13 +2094,13 @@
   // ===== PRODUCT LOGIC =====
   const prodData = {
     tanpura: { title: "The Maestro Tanpura", sub: "Digital Music Companion", desc: "A simple and reliable Tanpura app designed to stay in perfect pitch during practice. No Ads and interruptions. High-fidelity samples.", img: "assets/tanpura_app.png", features: ["No Ads and interruptions", "Accurate & Stable Sound", "Easy Pitch Control", "Modern, Sleek Design"] },
-    thalam: { title: "Thalam App", sub: "Rhythm Perfected", desc: "Master complex Carnatic tala with visual indicators and high-quality percussion guide. Perfect for students and performers.", img: "assets/thalam_app.png", features: ["Visual beat counter", "Multiple Tala variations", "Adjustable Tempo (BPM)", "Practice Mode"] },
-    tuner: { title: "Vocal Tuner", sub: "Find Your Pitch", desc: "A precision tuner designed specifically for vocalists and acoustic instruments common in Indian Classical music.", img: "assets/tuner_app.png", features: ["Real-time pitch tracking", "Scale reference tones", "Noise cancellation", "Beginner friendly"] },
-    harmonium: { title: "Digital Harmonium", sub: "Practice Anywhere", desc: "Authentic harmonium bellows feel and keyboard response on your device. Perfect for riyaz on the move.", img: "assets/harmonium_app.png", features: ["Bellows sensitivity", "Full octave range", "Authentic recording", "Chord support"] },
-    rnr: { title: "RaagNrhythm App", sub: "All-in-One Academy", desc: "Access your lessons, resources, and community workshops all in one place. Your digital link to the academy.", img: "assets/rnr_app.png", features: ["Course tracker", "Live session links", "Practice logs", "Resource library"] },
-    handpan: { title: "Professional Handpan", sub: "Ethereal Sounds", desc: "Explore our range of Nitrided and Stainless steel Handpans tuned to perfection for meditation and performance.", img: "assets/handpan.png", features: ["High-grade steel", "Sustain mastery", "Protective case included", "10-year tuning warranty"] },
-    keyboard: { title: "Learner Keyboards", sub: "Start Your Journey", desc: "Curated selection of keyboards perfect for beginners at our academy, balancing quality and affordability.", img: "assets/keyboard.png", features: ["Touch sensitive keys", "Built-in rhythms", "Headphone support", "Special student pricing"] },
-    ukulele: { title: "Music Academy Ukulele", sub: "Small Size, Big Sound", desc: "Hand-picked ukuleles for our younger students and hobbyists wanting a portable, fun instrument.", img: "assets/ukulele.png", features: ["Quality tonewood", "Gig bag included", "Tuning guide", "Online setup video"] }
+    thalam: { title: "Thalam App", sub: "Rhythm Perfected", desc: "Master complex Carnatic tala with visual indicators and high-quality percussion guide. Perfect for students and performers.", img: "", features: ["Visual beat counter", "Multiple Tala variations", "Adjustable Tempo (BPM)", "Practice Mode"] },
+    tuner: { title: "Vocal Tuner", sub: "Find Your Pitch", desc: "A precision tuner designed specifically for vocalists and acoustic instruments common in Indian Classical music.", img: "", features: ["Real-time pitch tracking", "Scale reference tones", "Noise cancellation", "Beginner friendly"] },
+    harmonium: { title: "Digital Harmonium", sub: "Practice Anywhere", desc: "Authentic harmonium bellows feel and keyboard response on your device. Perfect for riyaz on the move.", img: "", features: ["Bellows sensitivity", "Full octave range", "Authentic recording", "Chord support"] },
+    rnr: { title: "RaagNrhythm App", sub: "All-in-One Academy", desc: "Access your lessons, resources, and community workshops all in one place. Your digital link to the academy.", img: "", features: ["Course tracker", "Live session links", "Practice logs", "Resource library"] },
+    handpan: { title: "Professional Handpan", sub: "Ethereal Sounds", desc: "Explore our range of Nitrided and Stainless steel Handpans tuned to perfection for meditation and performance.", img: "", features: ["High-grade steel", "Sustain mastery", "Protective case included", "10-year tuning warranty"] },
+    keyboard: { title: "Learner Keyboards", sub: "Start Your Journey", desc: "Curated selection of keyboards perfect for beginners at our academy, balancing quality and affordability.", img: "", features: ["Touch sensitive keys", "Built-in rhythms", "Headphone support", "Special student pricing"] },
+    ukulele: { title: "Music Academy Ukulele", sub: "Small Size, Big Sound", desc: "Hand-picked ukuleles for our younger students and hobbyists wanting a portable, fun instrument.", img: "", features: ["Quality tonewood", "Gig bag included", "Tuning guide", "Online setup video"] }
   };
 
   function renderProduct(id) {
@@ -2110,7 +2110,7 @@
     card.innerHTML = `
       <div class="product-image-panel">
         <div style="position: absolute; top: 32px; bottom: 32px; left: 32px; right: 32px; border: 2px solid rgba(255,255,255,0.4); border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.5);">
-          <img src="${data.img}" alt="${data.title}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+          ${data.img ? `<img src="${data.img}" alt="${data.title}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">` : ''}
         </div>
       </div>
       <div class="product-info">
