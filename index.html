@@ -1513,9 +1513,38 @@
   }
   .reveal.visible { opacity: 1; transform: none; }
   
-  /* Navbar position adjust when ribbon dismissed */
   .nav-top-default .top-navigation-container {
     top: 20px !important;
+  }
+
+  /* ===== SPLASH SCREEN ===== */
+  #splashScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: all;
+  }
+  #splashScreen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #splashVideo {
+    width: 70vw;
+    height: auto;
+    display: block;
+    margin-bottom: 0px;
+    outline: none;
+  }
+  body.loading {
+    overflow: hidden;
   }
   /* ===== NOTIFICATION RIBBON ===== */
   .notification-ribbon {
@@ -1623,7 +1652,14 @@
   }
 </style>
 </head>
-<body>
+<body class="loading">
+
+<!-- SPLASH SCREEN -->
+<div id="splashScreen">
+  <video id="splashVideo" playsinline autoplay>
+    <source src="assets/Website%20Splash/Splash%20low.webm" type="video/webm">
+  </video>
+</div>
 
 <!-- Theme transition overlay -->
 <div class="theme-overlay" id="themeOverlay"></div>
@@ -2520,6 +2556,34 @@
   addCycleLogic('productPrev', 'productNext', 'productTabs');
   addCycleLogic('appPrev', 'appNext', 'appSelector');
   addCycleLogic('otherPrev', 'otherNext', 'otherSelector');
+  // ===== SPLASH SCREEN LOGIC =====
+  const splashVideo = document.getElementById('splashVideo');
+  const splashScreen = document.getElementById('splashScreen');
+
+  if (splashVideo && splashScreen) {
+    // Start video playback
+    splashVideo.play().catch(err => {
+      console.log("Unmuted autoplay blocked, retrying muted:", err);
+      splashVideo.muted = true;
+      splashVideo.play().catch(mutedErr => {
+        console.log("Muted autoplay also blocked:", mutedErr);
+        setTimeout(dismissSplash, 2000);
+      });
+    });
+
+    splashVideo.onended = () => {
+      dismissSplash();
+    };
+  }
+
+  function dismissSplash() {
+    splashScreen.classList.add('fade-out');
+    document.body.classList.remove('loading');
+    setTimeout(() => {
+      splashScreen.remove();
+    }, 1500);
+  }
+
 </script>
 </body>
 </html>
