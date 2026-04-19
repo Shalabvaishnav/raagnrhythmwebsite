@@ -919,7 +919,7 @@
     }
 
     .level-item.open .level-body {
-      max-height: 300px;
+      max-height: 1000px;
     }
 
     .level-body-inner {
@@ -2309,12 +2309,24 @@
     <div style="max-width:1100px;margin:0 auto;">
       <h2 class="section-title reveal">Faculty</h2>
       <div class="faculty-tabs reveal">
-        <button class="tab-arrow">←</button>
+        <button class="tab-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
         <button class="tab-btn active">Vocals Carnatic</button>
         <button class="tab-btn">Vocals Hindustani</button>
         <button class="tab-btn">Vocals Western</button>
         <button class="tab-btn">Instruments</button>
-        <button class="tab-arrow">→</button>
+        <button class="tab-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
       </div>
       <div class="faculty-grid reveal">
         <div class="faculty-card">
@@ -2420,20 +2432,22 @@
     <div style="max-width:1100px;margin:0 auto;">
       <h2 class="section-title reveal">Our Products</h2>
       <div class="product-tabs faculty-tabs reveal" id="productTabs" style="margin-bottom: 20px;">
-        <button class="tab-arrow" id="productPrev" style="padding: 0;">←</button>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-          stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
+        <button class="tab-arrow" id="productPrev" style="padding: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
         <button class="tab-btn active" data-cat="apps">Apps</button>
         <button class="tab-btn" data-cat="others">Other Products</button>
-        <button class="tab-arrow" id="productNext" style="padding: 0;">→</button>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
+        <button class="tab-arrow" id="productNext" style="padding: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
       </div>
       <!-- APP SUB-TABS -->
       <div class="app-tabs faculty-tabs reveal" id="appSelector" style="margin-bottom: 30px;">
