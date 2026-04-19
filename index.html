@@ -937,6 +937,53 @@
       color: var(--accent);
     }
 
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    .outcomes-title {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .outcomes-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .outcomes-list li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    .outcomes-list li::before {
+      content: '✓' !important;
+      font-size: 12px;
+      color: var(--accent) !important;
+      position: absolute;
+      left: 0;
+    }
+
     /* ===== PRODUCTS ===== */
     .product-tabs {
       display: flex;
@@ -2607,10 +2654,26 @@
     // ===== CURRICULUM LOGIC =====
     const curData = {
       carnatic: [
-        { t: "Foundation", s: "Beginner grades", c: ["Swaras Intro (Sa Ri Ga Ma Pa Da Ni)", "Sarali Varisai basic exercises", "Tala Intro — Adi Tala (8 beats)", "Purandaradasa Geethas", "Voice matching & Pitch stability"] },
-        { t: "Elementary", s: "Early grades", c: ["Janta Varisai and Daatu Varisai", "Gamakas (ornamentations) basics", "Raga Intro: Mayamalavagowla, Mohanam", "Swarajathis & Basic Varnams", "Roopaka and Misra Chapu talas"] },
-        { t: "Intermediate", s: "Middle grades", c: ["Advanced Varnams & Keerthanas", "Raga Alapana improvisation", "Neraval and Kalpana Swara intro", "Theory of 72 Melakarta ragas", "Concert flow preparation"] },
-        { t: "Advanced", s: "Performance grades", c: ["Full Concert Format mastery", "Manodharma Sangeetham", "Advanced Talas: Khanda/Sankirna", "Original Kriti & Composition writing"] }
+        {
+          t: "Foundation", s: "Beginner grades",
+          tags: ["Swaras (Sa Ri Ga Ma Pa Da Ni)", "Sarali Varisai", "Madhya Sthayi", "Mandra Sthayi", "Taara Sthayi", "Voice Culture", "Talam Basics"],
+          outcomes: ["Sing basic patterns with confidence", "Improved focus and listening", "Strong base for all future learning"]
+        },
+        {
+          t: "Elementary", s: "Early grades",
+          tags: ["Janta Varisai", "Daatu Varisai", "Alankaras", "Introduction to Ragas"],
+          outcomes: ["Better rhythm and timing", "Stronger voice control", "Early understanding of musical structure"]
+        },
+        {
+          t: "Intermediate", s: "Middle grades",
+          tags: ["Geethams", "Swarajatis", "Jatiswaras", "Gamakas (Ornamentation)"],
+          outcomes: ["Sing simple compositions end-to-end", "Development of musical expression", "Increased confidence on stage"]
+        },
+        {
+          t: "Advanced", s: "Performance grades",
+          tags: ["Varnams", "Kritis", "Basic Improvisation"],
+          outcomes: ["Performance readiness", "Deeper understanding of music", "Creative expression and improvisation"]
+        }
       ],
       hindustani: [
         { t: "Foundation", s: "Basics of Swar & Laya", c: ["Mastering Shuddha Swaras", "Basic Alankars (Paltas)", "Teental & Dadra basics", "Raag Bhupali & Durga Intro", "Vocal posture & breath culture"] },
@@ -2671,9 +2734,19 @@
         </div>
         <div class="level-body">
           <div class="level-body-inner">
-            <ul>
-              ${lvl.c.map(item => `<li>${item}</li>`).join('')}
-            </ul>
+            ${lvl.tags && lvl.outcomes ? `
+              <div class="tag-cloud">
+                ${lvl.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+              </div>
+              <div class="outcomes-title">Outcomes</div>
+              <ul class="outcomes-list">
+                ${lvl.outcomes.map(out => `<li>${out}</li>`).join('')}
+              </ul>
+            ` : `
+              <ul>
+                ${lvl.c ? lvl.c.map(item => `<li>${item}</li>`).join('') : ''}
+              </ul>
+            `}
           </div>
         </div>
       </div>
