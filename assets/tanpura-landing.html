@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanpura — By Raag N Rhythm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-top:    #8b0000;
+  --bg-mid:    #3a0008;
+  --bg-bot:    #0d0000;
+  --accent:    #e85858;
+  --accent2:   #ffaaaa;
+  --nm-light:  rgba(232,88,88,0.15);
+  --nm-dark:   rgba(0,0,0,0.55);
+  --glass-tint:rgba(139,0,0,0.18);
+  --text:      #fff0f0;
+  --muted:     rgba(255,240,240,0.5);
+  --border-g:  rgba(232,88,88,0.22);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── PAGE BACKGROUND ── */
+.page-bg {
+  position: fixed; inset: 0; z-index: -2;
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%);
+  transition: background 1.4s cubic-bezier(.4,0,.2,1);
+}
+.page-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 28%, transparent 35%, rgba(0,0,0,0.5) 100%);
+}
+.grain {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── NM HELPERS ── */
+.nm {
+  background: var(--glass-tint);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  border: 1px solid var(--border-g);
+  box-shadow:
+    4px 4px 18px var(--nm-dark),
+    -2px -2px 10px var(--nm-light),
+    inset 0 1px 0 rgba(255,255,255,0.09);
+  transition: background 1.4s ease, border-color 1.4s ease, box-shadow 1.4s ease;
+}
+
+/* ════════ NAV ════════ */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px 52px;
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.nl-main {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#fff; line-height:1;
+}
+.nl-sub { font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+.nav-links { display:flex; gap:32px; list-style:none; }
+.nav-links a { color:var(--muted); text-decoration:none; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; transition:color .3s; }
+.nav-links a:hover { color:#fff; }
+.nav-dl {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 24px; border-radius:40px;
+  font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase;
+  color:#fff; cursor:pointer; border:1px solid rgba(255,255,255,0.2); text-decoration:none;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.14);
+  transition:all .3s;
+}
+.nav-dl:hover { background:rgba(255,255,255,.2); transform:translateY(-1px); }
+
+/* ════════ HERO ════════ */
+.hero {
+  min-height:100vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center;
+  padding:140px 40px 80px;
+  position:relative;
+}
+
+.hero-glow {
+  position:absolute;
+  width:520px; height:520px; border-radius:50%;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 65%);
+  opacity:.16; top:50%; left:50%;
+  transform:translate(-50%,-58%);
+  pointer-events:none; filter:blur(44px);
+  animation: pglow 6s ease-in-out infinite;
+  transition: background 1.4s ease;
+}
+@keyframes pglow { 0%,100%{opacity:.14;transform:translate(-50%,-58%) scale(1)} 50%{opacity:.24;transform:translate(-50%,-58%) scale(1.1)} }
+
+.hero-eyebrow {
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  font-size:.67rem; letter-spacing:.44em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:26px;
+}
+.eyebrow-line { width:26px; height:1px; background:var(--muted); }
+
+h1.hero-h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,7.5vw,8rem); font-weight:300; line-height:1.0; letter-spacing:-.015em;
+  color:#fff; margin-bottom:8px;
+}
+h1.hero-h1 em {
+  font-style:italic; display:block;
+  background: linear-gradient(135deg,#fff 10%,var(--accent2) 50%,#fff 90%);
+  background-size:200%;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation: shimmer 5s ease infinite;
+  transition: background 1.4s ease;
+}
+@keyframes shimmer { 0%{background-position:0%} 100%{background-position:200%} }
+
+.hero-sub {
+  font-size:1rem; line-height:1.72; color:var(--muted);
+  max-width:440px; margin:22px auto 0;
+}
+
+/* GLASS TANPURA */
+.hero-inst {
+  position:relative;
+  margin:50px auto 40px;
+  width:260px;
+}
+.inst-img {
+  width:100%; display:block;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,.65)) drop-shadow(0 0 36px var(--accent));
+  animation: floatup 7s ease-in-out infinite;
+  transition: filter 1.4s ease;
+}
+@keyframes floatup { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-13px)} }
+
+.ring {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);
+  top:50%; left:50%; transform-origin:center;
+  pointer-events:none;
+}
+.r1 {
+  width:330px; height:330px; margin-left:-165px; margin-top:-165px;
+  animation:rspin 28s linear infinite;
+  border-color: rgba(255,255,255,0.09);
+}
+.r1::after {
+  content:''; position:absolute;
+  width:7px; height:7px; border-radius:50%;
+  background:var(--accent2);
+  box-shadow:0 0 10px var(--accent2);
+  top:-3.5px; left:50%; transform:translateX(-50%);
+  transition:background 1.4s ease, box-shadow 1.4s ease;
+}
+.r2 {
+  width:410px; height:410px; margin-left:-205px; margin-top:-205px;
+  animation:rspin 46s linear infinite reverse;
+  border-style:dashed; border-color:rgba(255,255,255,.04);
+}
+.r2::after {
+  content:''; position:absolute;
+  width:5px; height:5px; border-radius:50%;
+  background:rgba(255,255,255,.35);
+  bottom:22%; right:-2.5px;
+}
+@keyframes rspin { to{transform:rotate(360deg)} }
+
+/* CTA buttons */
+.hero-ctas { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:36px; }
+.btn-glass {
+  display:flex; align-items:center; gap:10px;
+  padding:14px 30px; border-radius:50px;
+  font-size:.84rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase;
+  color:#fff; text-decoration:none; cursor:pointer; border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.18);
+  transition:all .35s;
+}
+.btn-glass:hover { background:rgba(255,255,255,.2); transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.22); }
+.btn-glass-p { background:rgba(255,255,255,.17); border-color:rgba(255,255,255,.28); }
+
+/* theme switcher */
+.theme-sw { display:flex; gap:14px; justify-content:center; align-items:center; margin-top:36px; }
+.tp {
+  width:44px; height:13px; border-radius:20px;
+  cursor:pointer; border:1.5px solid rgba(255,255,255,.14);
+  transition:all .35s; flex-shrink:0;
+}
+.tp.on { transform:scaleX(1.55) scaleY(1.35); border-color:rgba(255,255,255,.65); box-shadow:0 0 14px rgba(255,255,255,.3); }
+.tp-e { background:linear-gradient(90deg,#8b0000,#3a0008); }
+.tp-v { background:linear-gradient(90deg,#1e1e26,#0d0d0f); }
+.tp-a { background:linear-gradient(90deg,#004d2a,#000d06); }
+.tp-c { background:linear-gradient(90deg,#3d1c08,#0d0500); }
+.tp-s { background:linear-gradient(90deg,#c080c8,#7b3fa0); }
+
+.theme-hint {
+  font-size:.64rem; letter-spacing:.2em; color:var(--muted);
+  text-transform:uppercase; text-align:center; margin-top:12px;
+  transition:color 1.4s ease;
+}
+
+/* ════════ MARQUEE ════════ */
+.mq-wrap {
+  padding:16px 0; overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  background:rgba(0,0,0,.15);
+}
+.mq-track {
+  display:flex; width:max-content;
+  animation: mq 28s linear infinite;
+}
+.mq-item {
+  padding:0 38px; font-size:.68rem; letter-spacing:.32em;
+  text-transform:uppercase; color:var(--muted); white-space:nowrap;
+}
+.mq-dot { color:rgba(255,255,255,.25); }
+@keyframes mq { to{transform:translateX(-50%)} }
+
+/* ════════ SHARED SECTION ════════ */
+.section { padding:110px 60px; }
+.sec-lbl {
+  font-size:.65rem; letter-spacing:.4em; text-transform:uppercase; color:var(--muted);
+  margin-bottom:18px; display:flex; align-items:center; gap:14px;
+}
+.sec-lbl::before { content:''; display:block; width:26px; height:1px; background:rgba(255,255,255,.3); }
+h2.st {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4.2vw,4rem); font-weight:300; line-height:1.15; color:#fff;
+}
+h2.st em { font-style:italic; color:var(--accent2); transition:color 1.4s ease; }
+
+/* ════════ PHILOSOPHY ════════ */
+.phil-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; margin-top:56px; }
+.phil-cards { display:flex; flex-direction:column; gap:16px; }
+.phil-card {
+  padding:22px 24px; border-radius:20px;
+  display:grid; grid-template-columns:44px 1fr; gap:16px; align-items:start;
+  transition:all .4s; cursor:default;
+}
+.phil-card:hover { transform:translateX(6px); }
+.phil-icon {
+  width:44px; height:44px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center; font-size:1.2rem;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.1); flex-shrink:0;
+}
+.phil-title { font-family:'Cormorant Garamond',serif; font-size:1.12rem; font-weight:600; color:#fff; margin-bottom:5px; }
+.phil-body { font-size:.82rem; color:var(--muted); line-height:1.7; }
+
+/* ════════ THEMES SHOWCASE ════════ */
+.themes-sec { padding:110px 60px; text-align:center; }
+.themes-row { display:flex; gap:14px; justify-content:center; margin-top:58px; flex-wrap:wrap; }
+.ts-card {
+  width:158px; border-radius:26px; overflow:hidden;
+  cursor:pointer; transition:all .45s; position:relative; flex-shrink:0;
+  border:1px solid rgba(255,255,255,.07);
+}
+.ts-card:hover { transform:translateY(-10px) scale(1.03); }
+.ts-card.on { transform:translateY(-18px) scale(1.07); box-shadow:0 36px 70px rgba(0,0,0,.65), 0 0 0 2px rgba(255,255,255,.28); }
+.ts-img { height:256px; width:100%; }
+.ts-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.ts-body {
+  padding:13px 13px 15px;
+  background:rgba(0,0,0,.4); backdrop-filter:blur(12px);
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.ts-name { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; color:#fff; }
+.ts-mood { font-size:.67rem; color:var(--muted); margin-top:3px; line-height:1.45; }
+.ts-dot {
+  position:absolute; top:10px; right:10px;
+  width:7px; height:7px; border-radius:50%;
+  background:#fff; box-shadow:0 0 8px #fff;
+  opacity:0; transition:opacity .3s;
+}
+.ts-card.on .ts-dot { opacity:1; }
+
+.swipe-hint-row {
+  margin-top:34px; font-size:.7rem; letter-spacing:.2em; color:var(--muted);
+  text-transform:uppercase; display:flex; align-items:center; gap:10px; justify-content:center;
+}
+.sa span { animation:sab 1.9s ease-in-out infinite; display:inline-block; }
+.sa span:nth-child(2){animation-delay:.2s} .sa span:nth-child(3){animation-delay:.4s}
+@keyframes sab { 0%,100%{opacity:.3;transform:translateX(0)} 50%{opacity:1;transform:translateX(5px)} }
+
+/* ════════ FEATURES ════════ */
+.feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:58px; }
+.feat-card { padding:28px 22px; border-radius:22px; transition:all .4s; }
+.feat-card:hover { transform:translateY(-5px); box-shadow:0 22px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12) !important; }
+.feat-ic {
+  width:46px; height:46px; border-radius:14px;
+  display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:16px;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.1);
+  box-shadow:inset 2px 2px 6px rgba(0,0,0,.35), inset -1px -1px 4px rgba(255,255,255,.06);
+}
+.feat-title { font-family:'Cormorant Garamond',serif; font-size:1.18rem; font-weight:600; color:#fff; margin-bottom:7px; }
+.feat-body { font-size:.81rem; color:var(--muted); line-height:1.7; }
+
+/* ════════ APP PREVIEW ════════ */
+.preview-sec { padding:110px 60px; display:flex; align-items:center; gap:80px; }
+.prev-left { flex:1; max-width:440px; }
+.prev-left .st { margin:14px 0 18px; }
+.prev-left p { font-size:.87rem; color:var(--muted); line-height:1.75; margin-bottom:12px; }
+.prev-stats { display:flex; gap:38px; margin-top:34px; }
+.sn { font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:300; color:#fff; line-height:1; }
+.sl { font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+.prev-phones { flex:1; position:relative; height:520px; display:flex; align-items:center; justify-content:center; }
+.pf { position:absolute; width:185px; transition:all .4s; }
+.pf img { width:100%; display:block; border-radius:28px; box-shadow:0 28px 60px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.07); }
+.pf-1 { transform:rotate(-9deg) translateX(-80px) translateY(20px); z-index:1; }
+.pf-2 { z-index:3; }
+.pf-3 { transform:rotate(9deg) translateX(80px) translateY(20px); z-index:2; }
+.pf:hover { transform:rotate(0) scale(1.06) !important; z-index:10 !important; }
+
+/* ════════ CTA ════════ */
+.cta-sec { padding:130px 60px; text-align:center; position:relative; overflow:hidden; }
+.cta-glow {
+  position:absolute; border-radius:50%;
+  width:800px; height:600px;
+  background:radial-gradient(circle, rgba(255,255,255,.055) 0%, transparent 65%);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.cta-h {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,6.5vw,7rem); font-weight:300; line-height:1.05; color:#fff;
+  position:relative; z-index:2; margin-bottom:16px;
+}
+.cta-h em {
+  font-style:italic;
+  background:linear-gradient(135deg,#fff 0%,var(--accent2) 50%,#fff 100%);
+  background-size:200%;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:shimmer 4s ease infinite;
+}
+.cta-sub { font-size:.93rem; color:var(--muted); max-width:380px; margin:0 auto 50px; line-height:1.7; position:relative; z-index:2; }
+.dl-row { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative; z-index:2; }
+.dl-btn {
+  display:flex; align-items:center; gap:14px;
+  padding:15px 26px; border-radius:16px; min-width:185px;
+  color:#fff; text-decoration:none; transition:all .35s;
+}
+.dl-btn:hover { transform:translateY(-3px); }
+.dl-ic svg { width:26px; height:26px; fill:#fff; display:block; }
+.dl-txt small { display:block; font-size:.63rem; text-transform:uppercase; letter-spacing:.1em; color:rgba(255,255,255,.55); margin-bottom:1px; }
+.dl-txt strong { font-size:1rem; font-weight:500; }
+
+/* ════════ STICKY ════════ */
+.sticky {
+  position:fixed; bottom:0; left:0; right:0; z-index:300;
+  padding:13px 52px;
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(0,0,0,.55); backdrop-filter:blur(24px);
+  border-top:1px solid rgba(255,255,255,.08);
+  transform:translateY(100%); transition:transform .45s ease;
+}
+.sticky.show { transform:translateY(0); }
+.st-txt { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:#fff; }
+.st-txt em { font-style:italic; color:var(--accent2); transition:color 1.4s ease; }
+.st-btns { display:flex; gap:10px; }
+.stb {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 20px; border-radius:10px; font-size:.76rem; font-weight:500;
+  letter-spacing:.06em; text-transform:uppercase;
+  cursor:pointer; text-decoration:none; color:#fff; border:none; transition:all .3s;
+}
+.stb-a { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.22); }
+.stb-g { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); }
+.stb:hover { background:rgba(255,255,255,.22); transform:translateY(-1px); }
+
+/* ════════ FOOTER ════════ */
+footer { padding:34px 60px; border-top:1px solid rgba(255,255,255,.07); display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,.22); }
+.f-logo { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; letter-spacing:.16em; color:rgba(255,255,255,.55); }
+.f-copy { font-size:.73rem; color:rgba(255,255,255,.28); }
+
+/* ════════ REVEAL ════════ */
+.rv { opacity:0; transform:translateY(26px); transition:opacity .8s ease,transform .8s ease; }
+.rv.in { opacity:1; transform:none; }
+.rv:nth-child(2){transition-delay:.1s} .rv:nth-child(3){transition-delay:.2s}
+.rv:nth-child(4){transition-delay:.3s} .rv:nth-child(5){transition-delay:.4s}
+
+/* ════════ RESPONSIVE ════════ */
+@media(max-width:1000px){
+  .feat-grid{grid-template-columns:repeat(2,1fr);}
+  .preview-sec{flex-direction:column;}
+  .phil-grid{grid-template-columns:1fr;gap:40px;}
+}
+@media(max-width:700px){
+  nav{padding:18px 20px;}
+  .nav-links{display:none;}
+  .section,.themes-sec,.preview-sec,.cta-sec{padding:68px 22px;}
+  .feat-grid{grid-template-columns:1fr;}
+  .ts-card{width:130px;} .ts-img{height:200px;}
+  footer{padding:26px 22px;flex-direction:column;gap:10px;text-align:center;}
+  .sticky{padding:12px 18px;}
+  .pf-1,.pf-3{display:none;} .pf-2{transform:none;position:static;width:230px;}
+  .prev-phones{height:auto;}
+}
+</style>
+</head>
+<body>
+
+<div class="page-bg" id="pgBg"></div>
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <div class="nl-main">Tanpura</div>
+    <div class="nl-sub">by Raag N Rhythm</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#philosophy">Soul</a></li>
+    <li><a href="#themes">Themes</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#preview">The App</a></li>
+  </ul>
+  <a href="#download" class="nav-dl">Download Free</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-glow" id="hglow"></div>
+
+  <div class="hero-eyebrow">
+    <span class="eyebrow-line"></span>
+    Raag N Rhythm Presents
+    <span class="eyebrow-line"></span>
+  </div>
+
+  <h1 class="hero-h1 rv in">
+    Not a tool.<br><em>Your instrument.</em>
+  </h1>
+
+  <!-- GLASS TANPURA — always the crystal one -->
+  <div class="hero-inst rv in">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <img class="inst-img" src="/mnt/user-data/uploads/ChatGPT_Image_May_2__2026__11_01_04_PM.png" alt="Crystal Glass Tanpura">
+  </div>
+
+  <p class="hero-sub rv in">
+    A tanpura that breathes. That resonates.<br>
+    That disappears into the music — leaving only the raga, and you.
+  </p>
+
+  <div class="hero-ctas rv in">
+    <a href="#download" class="btn-glass btn-glass-p">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v10m0 0l-4-4m4 4l4-4M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2"/></svg>
+      Download Free
+    </a>
+    <a href="#themes" class="btn-glass">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+      Explore Themes
+    </a>
+  </div>
+
+  <div class="theme-sw rv in">
+    <div class="tp tp-e on" data-t="ember"></div>
+    <div class="tp tp-v" data-t="void"></div>
+    <div class="tp tp-a" data-t="aranya"></div>
+    <div class="tp tp-c" data-t="chandan"></div>
+    <div class="tp tp-s" data-t="sphatik"></div>
+  </div>
+  <div class="theme-hint" id="tHint">Ember — touch to change the world</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap">
+  <div class="mq-track">
+    <span class="mq-item">Feel the Shruti <span class="mq-dot">✦</span></span>
+    <span class="mq-item">5 Living Themes <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Swipe to Transform <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Zero Setup <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Instant Immersion <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Not a Loop — A Presence <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Neumorphic Design <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Raag N Rhythm <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Feel the Shruti <span class="mq-dot">✦</span></span>
+    <span class="mq-item">5 Living Themes <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Swipe to Transform <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Zero Setup <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Instant Immersion <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Not a Loop — A Presence <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Neumorphic Design <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Raag N Rhythm <span class="mq-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- ══ PHILOSOPHY ══ -->
+<section class="section" id="philosophy">
+  <div class="sec-lbl">The Soul</div>
+  <div class="phil-grid">
+    <div>
+      <h2 class="st rv">
+        Most tanpura apps are<br><em>background noise.</em><br>This one is a presence.
+      </h2>
+    </div>
+    <div class="phil-cards">
+      <div class="phil-card nm rv">
+        <div class="phil-icon">🎧</div>
+        <div>
+          <div class="phil-title">Alive, Not Looped</div>
+          <p class="phil-body">You wouldn't hear a mechanical cycle. You'd feel a continuous, breathing resonance — the way a real tanpura fills a room with its living hum.</p>
+        </div>
+      </div>
+      <div class="phil-card nm rv">
+        <div class="phil-icon">🧘</div>
+        <div>
+          <div class="phil-title">Zero Setup. Instant Immersion.</div>
+          <p class="phil-body">Open the app. It already sounds right. No configuration, no fumbling — just the shruti, exactly as it should be, right now.</p>
+        </div>
+      </div>
+      <div class="phil-card nm rv">
+        <div class="phil-icon">✨</div>
+        <div>
+          <div class="phil-title">Emotional, Not Functional</div>
+          <p class="phil-body">Designed for calm. For focus. For flow. Every visual is crafted to disappear — so only the music and the raga remain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THEMES ══ -->
+<section class="themes-sec" id="themes">
+  <div class="sec-lbl" style="justify-content:center;margin-bottom:16px;">Five Worlds</div>
+  <h2 class="st rv">Choose your <em>soul.</em></h2>
+  <p style="color:var(--muted);font-size:.9rem;max-width:420px;margin:14px auto 0;line-height:1.7;" class="rv">
+    Five meticulously crafted themes. Each a different emotional world.<br>Click any to feel the page transform.
+  </p>
+
+  <div class="themes-row">
+    <div class="ts-card on" data-t="ember">
+      <div class="ts-dot"></div>
+      <div class="ts-img"><img src="/mnt/user-data/uploads/1777744694533_image.png" alt="Ember"></div>
+      <div class="ts-body"><div class="ts-name">Ember</div><div class="ts-mood">Devotion &amp; passion.<br>The warmth of a dhuni fire.</div></div>
+    </div>
+    <div class="ts-card" data-t="void">
+      <div class="ts-dot"></div>
+      <div class="ts-img"><img src="/mnt/user-data/uploads/1777744711715_image.png" alt="Void"></div>
+      <div class="ts-body"><div class="ts-name">Void</div><div class="ts-mood">Deep space. Pure focus.<br>Where sound is infinite.</div></div>
+    </div>
+    <div class="ts-card" data-t="aranya">
+      <div class="ts-dot"></div>
+      <div class="ts-img"><img src="/mnt/user-data/uploads/1777744728157_image.png" alt="Aranya"></div>
+      <div class="ts-body"><div class="ts-name">Aranya</div><div class="ts-mood">The forest at dawn.<br>Green stillness and clarity.</div></div>
+    </div>
+    <div class="ts-card" data-t="chandan">
+      <div class="ts-dot"></div>
+      <div class="ts-img"><img src="/mnt/user-data/uploads/1777744739685_image.png" alt="Chandan"></div>
+      <div class="ts-body"><div class="ts-name">Chandan</div><div class="ts-mood">Sandalwood incense rising.<br>Warm, ancient, sacred.</div></div>
+    </div>
+    <div class="ts-card" data-t="sphatik">
+      <div class="ts-dot"></div>
+      <div class="ts-img"><img src="/mnt/user-data/uploads/1777744753584_image.png" alt="Sphatik"></div>
+      <div class="ts-body"><div class="ts-name">Sphatik</div><div class="ts-mood">Crystal clarity.<br>Pure as a mountain spring.</div></div>
+    </div>
+  </div>
+  <div class="swipe-hint-row">
+    <span>Swipe to live between themes</span>
+    <span class="sa"><span>›</span><span>›</span><span>›</span></span>
+  </div>
+</section>
+
+<!-- ══ FEATURES ══ -->
+<section class="section" id="features">
+  <div class="sec-lbl">What's Inside</div>
+  <h2 class="st rv">Powerful. <em>Invisible.</em></h2>
+  <div class="feat-grid">
+    <div class="feat-card nm rv">
+      <div class="feat-ic">🎵</div>
+      <div class="feat-title">Scale Selection</div>
+      <p class="feat-body">All 12 chromatic keys. Tap once to shift the entire resonance. Like retuning a real instrument in your hands.</p>
+    </div>
+    <div class="feat-card nm rv">
+      <div class="feat-ic">🎼</div>
+      <div class="feat-title">Octave Control</div>
+      <p class="feat-body">Low, Medium, High modes. Match the register of your raga, your voice, your mood. Three worlds, one tap.</p>
+    </div>
+    <div class="feat-card nm rv">
+      <div class="feat-ic">🪷</div>
+      <div class="feat-title">1st String Selection</div>
+      <p class="feat-body">Pa Sa Sa Sa or Ma Sa Sa Sa — the traditional choice that shapes the entire character and colour of the drone.</p>
+    </div>
+    <div class="feat-card nm rv">
+      <div class="feat-ic">⚡</div>
+      <div class="feat-title">Speed &amp; Volume</div>
+      <p class="feat-body">Smooth neumorphic sliders. Set the pluck cycle tempo and presence level to match your practice pace.</p>
+    </div>
+    <div class="feat-card nm rv">
+      <div class="feat-ic">👆</div>
+      <div class="feat-title">Swipe Themes</div>
+      <p class="feat-body">A horizontal swipe transforms the entire visual world — gradient, instrument skin, accent colours — seamlessly.</p>
+    </div>
+    <div class="feat-card nm rv">
+      <div class="feat-ic">🔇</div>
+      <div class="feat-title">Minimal UI</div>
+      <p class="feat-body">Every control appears when needed, fades when not. The instrument is always the centrepiece. Always.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ APP PREVIEW ══ -->
+<section class="preview-sec" id="preview">
+  <div class="prev-left rv">
+    <div class="sec-lbl">The App</div>
+    <h2 class="st">Built with the eye of an artist,<br><em>the ear of a musician.</em></h2>
+    <p>Neumorphic surfaces meet Indian classical aesthetics in a way that feels both modern and ancient. Every shadow considered. Every gradient intentional.</p>
+    <p>This is not a utility dressed in a theme. This is a musical instrument that lives in your phone.</p>
+    <div class="prev-stats">
+      <div><div class="sn">5</div><div class="sl">Living Themes</div></div>
+      <div><div class="sn">12</div><div class="sl">Scales</div></div>
+      <div><div class="sn">∞</div><div class="sl">Immersion</div></div>
+    </div>
+  </div>
+  <div class="prev-phones">
+    <div class="pf pf-1"><img src="/mnt/user-data/uploads/1777744728157_image.png" alt="Aranya"></div>
+    <div class="pf pf-2"><img src="/mnt/user-data/uploads/1777744694533_image.png" alt="Ember"></div>
+    <div class="pf pf-3"><img src="/mnt/user-data/uploads/1777744753584_image.png" alt="Sphatik"></div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-sec" id="download">
+  <div class="cta-glow"></div>
+  <h2 class="cta-h">Feel your<br><em>shruti.</em></h2>
+  <p class="cta-sub">Free to download. No ads. No subscriptions.<br>Just the purest tanpura experience on your phone.</p>
+  <div class="dl-row">
+    <a href="#" class="dl-btn nm">
+      <div class="dl-ic"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
+      <div class="dl-txt"><small>Download on the</small><strong>App Store</strong></div>
+    </a>
+    <a href="#" class="dl-btn nm">
+      <div class="dl-ic"><svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.21.96.12l12.14-7.01-2.61-2.61-10.49 9.5zM.48 1.15C.18 1.46 0 1.93 0 2.54v18.91c0 .61.18 1.08.49 1.39l.07.07 10.59-10.59v-.25L.55 1.08l-.07.07zM20.73 10.52l-2.81-1.62-2.93 2.93 2.93 2.93 2.83-1.63c.81-.46.81-1.22-.02-1.61zM3.18.24l12.14 7.01-2.61 2.61L2.22.36C2.54.16 2.9.09 3.18.24z"/></svg></div>
+      <div class="dl-txt"><small>Get it on</small><strong>Google Play</strong></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Tanpura · Raag N Rhythm</div>
+  <div class="f-copy">© 2026 Raag N Rhythm. All rights reserved.</div>
+</footer>
+
+<div class="sticky" id="stk">
+  <div class="st-txt">Feel your <em>shruti</em> — download free</div>
+  <div class="st-btns">
+    <a href="#" class="stb stb-a">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      App Store
+    </a>
+    <a href="#" class="stb stb-g">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.21.96.12l12.14-7.01-2.61-2.61-10.49 9.5zM.48 1.15C.18 1.46 0 1.93 0 2.54v18.91c0 .61.18 1.08.49 1.39l.07.07 10.59-10.59v-.25L.55 1.08l-.07.07zM20.73 10.52l-2.81-1.62-2.93 2.93 2.93 2.93 2.83-1.63c.81-.46.81-1.22-.02-1.61zM3.18.24l12.14 7.01-2.61 2.61L2.22.36C2.54.16 2.9.09 3.18.24z"/></svg>
+      Google Play
+    </a>
+  </div>
+</div>
+
+<script>
+const THEMES = {
+  ember:   {top:'#8b0000',mid:'#3a0008',bot:'#0d0000',accent:'#e85858',accent2:'#ffaaaa',nmLight:'rgba(232,88,88,0.15)',glass:'rgba(139,0,0,0.2)',border:'rgba(232,88,88,0.22)',text:'#fff0f0',muted:'rgba(255,240,240,0.5)',hint:'Ember — devotion & fire'},
+  void:    {top:'#1e1e26',mid:'#0f0f18',bot:'#060608',accent:'#8888ff',accent2:'#bbbbff',nmLight:'rgba(120,120,255,0.12)',glass:'rgba(30,30,60,0.22)',border:'rgba(120,120,255,0.18)',text:'#f0f0ff',muted:'rgba(220,220,255,0.45)',hint:'Void — deep space & focus'},
+  aranya:  {top:'#004d2a',mid:'#001c10',bot:'#000804',accent:'#44cc88',accent2:'#88ffcc',nmLight:'rgba(68,204,136,0.12)',glass:'rgba(0,60,30,0.22)',border:'rgba(68,204,136,0.18)',text:'#f0fff6',muted:'rgba(220,255,235,0.5)',hint:'Aranya — forest at dawn'},
+  chandan: {top:'#3d1c08',mid:'#1a0900',bot:'#080300',accent:'#cc7744',accent2:'#ffbb88',nmLight:'rgba(204,119,68,0.14)',glass:'rgba(60,28,8,0.22)',border:'rgba(204,119,68,0.2)',text:'#fff5ee',muted:'rgba(255,235,210,0.5)',hint:'Chandan — sandalwood & sacred'},
+  sphatik: {top:'#c080c8',mid:'#7b3fa0',bot:'#2a0845',accent:'#d090e0',accent2:'#f0c8ff',nmLight:'rgba(208,144,224,0.14)',glass:'rgba(100,40,140,0.2)',border:'rgba(208,144,224,0.22)',text:'#fef0ff',muted:'rgba(240,210,255,0.5)',hint:'Sphatik — crystal clarity'},
+};
+
+let cur = 'ember', auto;
+const order = ['ember','void','aranya','chandan','sphatik'];
+
+function applyTheme(name) {
+  const t = THEMES[name];
+  const r = document.documentElement.style;
+  r.setProperty('--bg-top',    t.top);
+  r.setProperty('--bg-mid',    t.mid);
+  r.setProperty('--bg-bot',    t.bot);
+  r.setProperty('--accent',    t.accent);
+  r.setProperty('--accent2',   t.accent2);
+  r.setProperty('--nm-light',  t.nmLight);
+  r.setProperty('--glass-tint',t.glass);
+  r.setProperty('--border-g',  t.border);
+  r.setProperty('--text',      t.text);
+  r.setProperty('--muted',     t.muted);
+  document.getElementById('tHint').textContent = t.hint;
+  cur = name;
+  document.querySelectorAll('.tp').forEach(p => p.classList.toggle('on', p.dataset.t === name));
+  document.querySelectorAll('.ts-card').forEach(c => c.classList.toggle('on', c.dataset.t === name));
+}
+
+document.querySelectorAll('.tp').forEach(p => {
+  p.addEventListener('click', () => { clearInterval(auto); applyTheme(p.dataset.t); startAuto(); });
+});
+document.querySelectorAll('.ts-card').forEach(c => {
+  c.addEventListener('click', () => { clearInterval(auto); applyTheme(c.dataset.t); startAuto(); window.scrollTo({top:0,behavior:'smooth'}); });
+});
+
+function startAuto() {
+  auto = setInterval(() => { applyTheme(order[(order.indexOf(cur)+1)%order.length]); }, 4200);
+}
+startAuto();
+
+// reveal
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('in'); }), {threshold:.12});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// sticky
+window.addEventListener('scroll', () => { document.getElementById('stk').classList.toggle('show', scrollY > 500); }, {passive:true});
+</script>
+</body>
+</html>

@@ -2331,14 +2331,16 @@
         </button>
       </div>
       <div class="faculty-grid reveal">
-        <div class="faculty-card">
-          <img src="assets/characters/Faculty/Flow_202604172348.jpeg" alt="AISHWARYA UNNI"
-            style="width:100%; height:100%; object-fit:cover;" loading="lazy" decoding="async">
-          <div class="faculty-card-details">
-            <h4>AISHWARYA UNNI</h4>
-            <p>10+ years experience</p>
+        <a href="aishwarya-unni.html" style="text-decoration: none; color: inherit;">
+          <div class="faculty-card">
+            <img src="assets/characters/Faculty/Flow_202604172348.jpeg" alt="AISHWARYA UNNI"
+              style="width:100%; height:100%; object-fit:cover;" loading="lazy" decoding="async">
+            <div class="faculty-card-details">
+              <h4>AISHWARYA UNNI</h4>
+              <p>10+ years experience</p>
+            </div>
           </div>
-        </div>
+        </a>
         <div class="faculty-card">
           <img src="assets/characters/Faculty/Linet.webp" alt="Linet Jose K"
             style="width:100%; height:100%; object-fit:cover;" loading="lazy" decoding="async">
@@ -2515,7 +2517,7 @@
             <li><strong>Modern, Sleek &amp; Easy-to-Use Design</strong>A clean and intuitive interface built for
               distraction-free practice.</li>
           </ul>
-          <button class="download-btn">Coming soon...</button>
+          <a href="products/mytanpuraapp/" class="download-btn" style="text-decoration: none; display: inline-block; text-align: center;">View Details</a>
         </div>
       </div>
     </div>
@@ -2940,7 +2942,7 @@
         <ul class="feature-list">
           ${data.features.map(f => `<li><strong>Highlight</strong> ${f}</li>`).join('')}
         </ul>
-        <button class="download-btn">Coming soon...</button>
+        ${id === 'tanpura' ? `<a href="products/mytanpuraapp/" class="download-btn" style="text-decoration: none; display: inline-block; text-align: center;">View Details</a>` : `<button class="download-btn">Coming soon...</button>`}
       </div>
     `;
       const reveals = card.querySelectorAll('h3, .product-subtitle, p, ul, button, img');

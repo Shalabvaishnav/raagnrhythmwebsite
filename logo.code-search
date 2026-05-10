@@ -1,0 +1,112 @@
+# Query: logo
+# ContextLines: 1
+
+37 results - 4 files
+
+index.html:
+    27   
+    28:   <link rel="icon" type="image/svg+xml" href="assets/Logo.svg">
+    29:   <link rel="apple-touch-icon" href="assets/Logo.svg">
+    30    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Poppins:wght@300;400;500;600;700&display=swap"
+
+   450  
+   451:     /* Logo area */
+   452:     .hero-logo {
+   453        display: flex;
+
+   458  
+   459:     .logo-icon {
+   460        width: 90px;
+
+   464  
+   465:     /* SVG Logo */
+   466:     .logo-circle {
+   467        fill: var(--accent);
+
+  1441  
+  1442:       .hero-logo {
+  1443          gap: 12px !important;
+
+  1448  
+  1449:       .hero-logo img {
+  1450          height: 119px !important;
+
+  1975      <nav>
+  1976:       <img src="assets/Logo_Dark.svg" alt="Logo" style="height: 29.5px; width: auto; object-fit: contain; margin-right: 8px;">
+  1977        <a href="#hero" class="nav-link active">Home</a>
+
+  2003  
+  2004:         <!-- Logo area -->
+  2005:         <div class="hero-logo" style="display: flex; align-items: flex-end; gap: 20px; margin-bottom: 32px; padding-bottom: 16px;">
+  2006:           <img src="assets/Logo with text_Dark.svg" alt="Raag n Rhythm"
+  2007              style="height: 124px; width: auto; object-fit: contain;" fetchpriority="high" decoding="async">
+
+style.css:
+   66  
+   67: .nav-logo {
+   68      height: 36px;
+
+  181  
+  182: .hero-logo-wrap {
+  183      width: 280px;
+
+  186  
+  187: .hero-logo-wrap img {
+  188      width: 100%;
+
+figma-to-html/raag-n-rhythm.html:
+  193  
+  194:   /* Logo area */
+  195:   .hero-logo {
+  196      display: flex;
+
+  201  
+  202:   .logo-icon {
+  203      width: 90px;
+
+  207  
+  208:   /* SVG Logo */
+  209:   .logo-circle {
+  210      fill: var(--accent);
+
+  870  
+  871:   <!-- Logo -->
+  872:   <div class="hero-logo">
+  873:     <svg class="logo-icon" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  874:       <circle cx="45" cy="55" r="32" class="logo-circle"/>
+  875        <!-- veena/guitar merged silhouette -->
+
+resources/index.html:
+    27  
+    28:   <link rel="icon" type="image/svg+xml" href="../assets/Logo.svg">
+    29:   <link rel="apple-touch-icon" href="../assets/Logo.svg">
+    30    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+   116  
+   117:     .logo-wrap {
+   118        position: relative;
+
+   124  
+   125:     .logo-wrap svg {
+   126        width: 100%;
+
+   141      /* Shared Branding Styles */
+   142:     .hero-logo {
+   143        position: relative;
+
+   150  
+   151:     .hero-logo img {
+   152        height: 165px;
+
+   890  
+   891:       .hero-logo {
+   892          gap: 12px !important;
+
+   895  
+   896:       .hero-logo img {
+   897          height: 119px !important;
+
+  1066  
+  1067:     <div class="hero-logo" style="justify-content: center; animation: fadeDown .9s ease both;">
+  1068:       <img src="../assets/logo.svg?v=2" alt="Raag N Rhythm Logo" fetchpriority="high" decoding="async">
+  1069        <h1 class="hero-brand">Raag n<br>Rhythm</h1>
