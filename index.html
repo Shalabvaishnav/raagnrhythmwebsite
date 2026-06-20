@@ -2942,7 +2942,7 @@
         <ul class="feature-list">
           ${data.features.map(f => `<li><strong>Highlight</strong> ${f}</li>`).join('')}
         </ul>
-        ${id === 'tanpura' ? `<a href="products/mytanpuraapp/" class="download-btn" style="text-decoration: none; display: inline-block; text-align: center;">View Details</a>` : `<button class="download-btn">Coming soon...</button>`}
+        ${id === 'tanpura' ? `<a href="products/mytanpuraapp/" class="download-btn" style="text-decoration: none; display: inline-block; text-align: center;">View Details</a>` : (id === 'thalam' ? `<a href="products/mytalam/" class="download-btn" style="text-decoration: none; display: inline-block; text-align: center;">View Details</a>` : `<button class="download-btn">Coming soon...</button>`)}
       </div>
     `;
       const reveals = card.querySelectorAll('h3, .product-subtitle, p, ul, button, img');
